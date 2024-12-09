@@ -1,4 +1,4 @@
-**Secure SHell. OpenSSH remote login client**
+Secure SHell. OpenSSH remote login client
 
 ---
 
