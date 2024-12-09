@@ -1,4 +1,4 @@
-**Learn how to execute linux commands inside a shell script file**
+Learn how to execute linux commands inside a shell script file
 
 
 ```shell
