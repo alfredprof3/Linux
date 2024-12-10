@@ -2,4 +2,4 @@
 ---
 
 ## Install
-`$ sudo apt install xorg xinit xterm x11-xserver-utils`
+`$ sudo apt install xorg xinit xterm x11-xserver-utils xsel xclip`
