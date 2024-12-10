@@ -1,4 +1,5 @@
-# X server
+Graphic server configuration
+
 ---
 
 ## Install
