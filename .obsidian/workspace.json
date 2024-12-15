@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Monday-26-Aug-2024.md",
+                "file": "Xterm.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Monday-26-Aug-2024"
+              "title": "Xterm"
             }
           }
         ]
@@ -163,7 +163,24 @@
   "lastOpenFiles": [
     "X server (graphic interface).md",
     "Vimrc (dot file).md",
-    "Xterm.md",
-    "Monday-26-Aug-2024.md"
+    "Vim.md",
+    "Ufw debian.md",
+    "Termux.md",
+    "SSH.md",
+    "Sources list.md",
+    "Shell scripting.md",
+    "README.md",
+    "Qemu & virt manager.md",
+    "Nvm (node version manager).md",
+    "Monday-26-Aug-2024.md",
+    "ls command.md",
+    "Linux commands.md",
+    "GPG - Gnu Privacy Guard.md",
+    "Git.md",
+    "Custom scripts-commands.md",
+    "Command execution inside shell script file.md",
+    "Browser-sync.md",
+    "Aircrack-ng.md",
+    "Xterm.md"
   ]
 }
