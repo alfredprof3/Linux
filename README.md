@@ -2,3 +2,4 @@
 
 ## Table of contents
 Install dashboard
+Install Git Sync plugin
