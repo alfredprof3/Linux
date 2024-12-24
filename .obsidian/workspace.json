@@ -150,6 +150,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "dashboard-navigator:Open dashboard navigator": false,
       "obsidian42-brat:BRAT": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
