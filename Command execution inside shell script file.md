@@ -1,6 +1,5 @@
 Learn how to execute linux commands inside a shell script file
 
-
 ```shell
 #!/bin/bash
 var=ˋpwdˋ

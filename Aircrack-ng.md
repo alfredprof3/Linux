@@ -1,7 +1,5 @@
 Collection of tools used to audit WiFi networks
 
----
-
 #### Install
 ```bash
 # apt install autoconf \
