@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Monday-26-Aug-2024.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Monday-26-Aug-2024"
+              "title": "README"
             }
           }
         ]
@@ -170,13 +170,14 @@
       "obsidian42-brat:BRAT": false,
       "dashboard-navigator:Open dashboard navigator": false,
       "tldraw:Create new tldrawing": false,
-      "single-file-daily-notes:Open daily notes": false
+      "single-file-daily-notes:Open daily notes": false,
+      "github-sync:Sync with Remote": false
     }
   },
   "active": "10a6b3a5ed030a9d",
   "lastOpenFiles": [
-    "Daily Notes.md",
     "Monday-26-Aug-2024.md",
+    "Daily Notes.md",
     "README.md",
     "Xterm.md",
     "X server (graphic interface).md",
