@@ -1,7 +1,5 @@
 Is a Terminal emulator for the X window system.
 
----
-
 #### Install
 
 `$ sudo apt install xterm`

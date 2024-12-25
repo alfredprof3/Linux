@@ -1,6 +1,4 @@
-**Create customs scripts to execute as commands keeping them in a custom directory**
-
----
+Create customs scripts to execute as commands keeping them in a custom directory
 
 ### Create the directory
 

@@ -1,7 +1,5 @@
 Configuration file for Vim with plugins and user configurations
 
----
-
 ###### Option 1
 ```bash
 " URL: https://vim.wikia.com/wiki/Example_vimrc
