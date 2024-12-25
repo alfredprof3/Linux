@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Daily Notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Daily Notes"
             }
           }
         ]
@@ -176,10 +176,13 @@
   },
   "active": "10a6b3a5ed030a9d",
   "lastOpenFiles": [
-    "Monday-26-Aug-2024.md",
-    "Daily Notes.md",
-    "README.md",
     "Xterm.md",
+    "Daily Notes.md",
+    "Command execution inside shell script file.md",
+    "Browser-sync.md",
+    "Aircrack-ng.md",
+    "README.md",
+    "Monday-26-Aug-2024.md",
     "X server (graphic interface).md",
     "Vimrc (dot file).md",
     "Vim.md",
@@ -194,9 +197,6 @@
     "Linux commands.md",
     "GPG - Gnu Privacy Guard.md",
     "Git.md",
-    "Custom scripts-commands.md",
-    "Command execution inside shell script file.md",
-    "Browser-sync.md",
-    "Aircrack-ng.md"
+    "Custom scripts-commands.md"
   ]
 }
