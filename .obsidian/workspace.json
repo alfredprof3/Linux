@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Notes.md",
+                "file": "Github Sync (Obsidian plugin).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Daily Notes"
+              "title": "Github Sync (Obsidian plugin)"
             }
           }
         ]
@@ -176,8 +176,8 @@
   },
   "active": "10a6b3a5ed030a9d",
   "lastOpenFiles": [
-    "Untitled.md",
     "Daily Notes.md",
+    "Untitled.md",
     "Github Sync (Obsidian plugin).md",
     "Aircrack-ng.md",
     "Browser-sync.md",
