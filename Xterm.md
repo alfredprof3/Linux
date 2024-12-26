@@ -1,10 +1,10 @@
 Is a Terminal emulator for the X window system.
 
-#### Install
+# Install
 
 `$ sudo apt install xterm`
 
-#### Customize
+# Customize
 
 1. Create **.Xresources** file at home user
 
