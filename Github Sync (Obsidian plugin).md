@@ -43,4 +43,13 @@ For first time you need some Git configurations before pushing the commits and c
 	
 	You can set locally or global, just replace the flag `--local` for `--global` if you want to set it up globally.
 
-5. Make changes to the repository and manually push them with `git push` this will bring you up the advice for credentials. After that the user and token will be stored in `.git-credentials` file
+5. Make changes to the repository and manually push them with
+
+	```sh
+	git push
+	```
+	
+	This will bring you up the advice for credentials. After that the user and token will be stored in `.git-credentials` file in $HOME. You only do this one time for this commit, then you can push the changes via Github Sync plugin. Clic in ribbon icon placed in the left side bar of Obsidian app.
+
+# Github Sync plugin
+
