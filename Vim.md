@@ -1,24 +1,33 @@
 Is a text editor that is upwards compatible to Vi.  It can be used to edit all kinds of plain text.  It is especially useful for editing programs
 
 ### Installation
+
 `$ sudo apt install vim-gtk3`
+
 or
+
 `$ sudo apt install vim`
 
 ### Usage
+
 Open vim
+
 `$ vim`
 
 Create a new file
+
 `$ vim newFile.txt`
 
 Open an existing file
+
 `$ vim file.txt`
 
 **Command Mode** Open a file:
+
 `:open Scripts/text.sh`
 
 ### Keyboard
+
 Split screen vertical:
 \<C-w>v
 
