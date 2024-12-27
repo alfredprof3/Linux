@@ -1,5 +1,7 @@
 ## 27-12-2024, Friday
 - Primera entrada
+- Segunda entrada
+- Tercera entrada
 ## 26-12-2024, Thursday
 - Primera entrada
 ## 25-12-2024, Wednesday
