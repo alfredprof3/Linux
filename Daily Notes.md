@@ -1,3 +1,5 @@
+## 26-12-2024, Thursday
+- Primera entrada
 ## 25-12-2024, Wednesday
 - Clone the repo via `git clone https://github.com/alfredprof3/Linux.git`
 - After cloning the repo, `cd Linux`  to get inside the directory
