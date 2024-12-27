@@ -147,12 +147,22 @@
             "state": {
               "type": "sfdn-calendar",
               "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "0bc71e7939707eb9",
+            "type": "leaf",
+            "state": {
+              "type": "sfdn-calendar",
+              "state": {},
               "icon": "calendar-days",
               "title": "Calendar"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
