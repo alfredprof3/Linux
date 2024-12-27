@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Github Sync (Obsidian plugin).md",
+                "file": "Daily Notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Github Sync (Obsidian plugin)"
+              "title": "Daily Notes"
             }
           }
         ]
@@ -147,22 +147,12 @@
             "state": {
               "type": "sfdn-calendar",
               "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
-            }
-          },
-          {
-            "id": "0bc71e7939707eb9",
-            "type": "leaf",
-            "state": {
-              "type": "sfdn-calendar",
-              "state": {},
               "icon": "calendar-days",
               "title": "Calendar"
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -186,12 +176,12 @@
   },
   "active": "41f0669ff53f50a6",
   "lastOpenFiles": [
+    "Github Sync (Obsidian plugin).md",
     "Custom scripts-commands.md",
     "Aircrack-ng.md",
     "Termux.md",
     "X server (graphic interface).md",
     "Xterm.md",
-    "Github Sync (Obsidian plugin).md",
     "Daily Notes.md",
     "Command execution inside shell script file.md",
     "Browser-sync.md",
