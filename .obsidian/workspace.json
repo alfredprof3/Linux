@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Custom scripts-commands.md",
+                "file": "Github Sync (Obsidian plugin).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Custom scripts-commands"
+              "title": "Github Sync (Obsidian plugin)"
             }
           }
         ]
@@ -176,6 +176,7 @@
   },
   "active": "41f0669ff53f50a6",
   "lastOpenFiles": [
+    "Custom scripts-commands.md",
     "Aircrack-ng.md",
     "Termux.md",
     "X server (graphic interface).md",
@@ -184,7 +185,6 @@
     "Daily Notes.md",
     "Command execution inside shell script file.md",
     "Browser-sync.md",
-    "Custom scripts-commands.md",
     "Vimrc (dot file).md",
     "Vim.md",
     "Ufw debian.md",
