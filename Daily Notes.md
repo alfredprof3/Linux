@@ -1,7 +1,11 @@
 ## 27-12-2024, Friday
-- Primera entrada
-- Segunda entrada
-- Tercera entrada
+- https://www.madpenguin.org/how-to-set-default-browser-in-linux/
+- https://linuxconfig.org/how-to-set-browser-environment-variable-on-linux
+- https://vitux.com/how-to-set-the-default-browser-on-debian-trough-the-command-line/
+- https://wiki.debian.org/DefaultWebBrowser
+- https://thelinuxcode.com/open-default-browser-command-line-linux/
+- https://askubuntu.com/questions/16621/how-to-set-the-default-browser-from-the-command-line
+- https://askubuntu.com/questions/8252/how-to-launch-default-web-browser-from-the-terminal
 ## 26-12-2024, Thursday
 - Primera entrada
 ## 25-12-2024, Wednesday
