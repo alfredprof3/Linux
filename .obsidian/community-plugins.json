@@ -4,5 +4,6 @@
   "tldraw",
   "image-inline",
   "single-file-daily-notes",
-  "github-sync"
+  "github-sync",
+  "git-sync"
 ]
