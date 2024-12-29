@@ -1,6 +1,7 @@
 ## 29-12-2024, Sunday
 - Primera entrada
 - Segunda entrada
+- Tercera entrada
 ## 27-12-2024, Friday
 - https://www.madpenguin.org/how-to-set-default-browser-in-linux/
 - https://linuxconfig.org/how-to-set-browser-environment-variable-on-linux
