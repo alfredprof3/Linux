@@ -1,3 +1,5 @@
+## 30-12-2024, Monday
+- Configure vim clipboard system
 ## 29-12-2024, Sunday
 - Links
 	- [Pop_OS Guide](https://pop-os.github.io/docs/getting-started/getting-started.html)
