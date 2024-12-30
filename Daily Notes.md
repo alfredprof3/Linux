@@ -32,8 +32,6 @@
 - https://thelinuxcode.com/open-default-browser-command-line-linux/
 - https://askubuntu.com/questions/16621/how-to-set-the-default-browser-from-the-command-line
 - https://askubuntu.com/questions/8252/how-to-launch-default-web-browser-from-the-terminal
-## 26-12-2024, Thursday
-- Primera entrada
 ## 25-12-2024, Wednesday
 - Clone the repo via `git clone https://github.com/alfredprof3/Linux.git`
 - After cloning the repo, `cd Linux`  to get inside the directory
