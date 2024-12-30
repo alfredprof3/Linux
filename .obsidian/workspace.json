@@ -8,17 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "41f0669ff53f50a6",
+            "id": "a194361f6e32027f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Vimrc (dot file).md",
+                "file": "Vim plugins.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Vimrc (dot file)"
+              "title": "Vim plugins"
             }
           }
         ]
@@ -184,10 +184,13 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "41f0669ff53f50a6",
+  "active": "a194361f6e32027f",
   "lastOpenFiles": [
-    "Vim.md",
+    "Vimrc (dot file).md",
+    "Vim plugins.md",
     "Daily Notes.md",
+    "Vim.md",
+    "Git.md",
     "Github Sync (Obsidian plugin).md",
     "Xterm.md",
     "X server (graphic interface).md",
@@ -196,7 +199,6 @@
     "Termux.md",
     "Command execution inside shell script file.md",
     "Browser-sync.md",
-    "Vimrc (dot file).md",
     "Ufw debian.md",
     "SSH.md",
     "Sources list.md",
@@ -206,7 +208,6 @@
     "Monday-26-Aug-2024.md",
     "ls command.md",
     "GPG - Gnu Privacy Guard.md",
-    "Git.md",
     "Linux commands.md",
     "README.md"
   ]

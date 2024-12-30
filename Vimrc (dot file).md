@@ -493,4 +493,9 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
+" Emmet
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+" CSS Complete
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 ```
