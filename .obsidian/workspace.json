@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "41f0669ff53f50a6",
+            "id": "eeff199286d7cdec",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -184,8 +184,9 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "41f0669ff53f50a6",
+  "active": "eeff199286d7cdec",
   "lastOpenFiles": [
+    "Vim plugins.md",
     "Github Sync (Obsidian plugin).md",
     "Daily Notes.md",
     "Xterm.md",

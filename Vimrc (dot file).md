@@ -448,7 +448,7 @@ packloadall
 
 " Colorscheme for Vim
 set background=dark
-colorscheme nightfox
+colorscheme abyss
 
 " Airline for Vim
 let g:airline_section_c = '🎸 %F'
@@ -486,4 +486,16 @@ let g:WebDevIconsUnicodeDecorateFolderNodeDefaultSymbol = ''
 
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['nerdtree'] = ''
+
+" NERDTree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+" Emmet
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+" CSS Complete
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 ```
