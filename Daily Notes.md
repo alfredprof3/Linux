@@ -1,3 +1,5 @@
+## 30-12-2024, Monday
+- entry
 ## 29-12-2024, Sunday
 - Primera entrada
 - Segunda entrada
