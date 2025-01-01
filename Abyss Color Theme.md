@@ -58,4 +58,3 @@
 	#5863f8
 	```
 
-Una línea añadida
