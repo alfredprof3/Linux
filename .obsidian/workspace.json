@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Abyss Color Theme.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Abyss Color Theme"
             }
           }
         ],
@@ -201,8 +201,8 @@
   },
   "active": "28853a690b8f9719",
   "lastOpenFiles": [
-    "Abyss Color Theme.md",
     "README.md",
+    "Abyss Color Theme.md",
     "Daily Notes.md",
     "FFMPEG.md",
     "Catppuccin.md",
