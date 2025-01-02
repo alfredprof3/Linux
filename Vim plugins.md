@@ -8,3 +8,4 @@ vim airline
 vim devicons
 vim surround
 vim visual multi
+[[Abyss Color Theme]]
