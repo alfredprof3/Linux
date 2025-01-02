@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Daily Notes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Daily Notes"
             }
           }
         ]
@@ -186,6 +186,8 @@
   },
   "active": "71b922d6388b5c97",
   "lastOpenFiles": [
+    "README.md",
+    "Untitled.md",
     "Daily Notes.md",
     "FFMPEG.md",
     "Catppuccin.md",
@@ -209,8 +211,6 @@
     "Nvm (node version manager).md",
     "Monday-26-Aug-2024.md",
     "ls command.md",
-    "GPG - Gnu Privacy Guard.md",
-    "Git.md",
-    "Linux commands.md"
+    "GPG - Gnu Privacy Guard.md"
   ]
 }
