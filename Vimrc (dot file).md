@@ -417,7 +417,7 @@ set relativenumber
 " Good scrolling
 set scrolloff=10
 
-" Press Ctrl C in visual mode to copy
+" Clipboard; Ctrl C in visual mode to copy
 vnoremap <C-c> "+y
 
 " Syntax complete
@@ -433,11 +433,14 @@ vnoremap > >gv
 " Add placeholder after close
 inoremap <leader><leader> <Esc>/[)}"'\]>]<CR>:nohl<CR>a
 
-" GUI font (NordFont)
-"set guifont=DejaVu\ Sans\ Mono\ 16
+" Term GUI colors
+set termguicolors
 
 " Encoding for display icons
 set encoding=UTF-8
+
+" GUI font (NordFont)
+"set guifont=DejaVu\ Sans\ Mono\ 16
 
 " ==========================================
 " PLUGINS
@@ -451,12 +454,13 @@ set background=dark
 colorscheme abyss
 
 " Airline for Vim
-let g:airline_section_c = '🎸 %F'
+let g:airline_section_c = '🐛 %F 🐣'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+"let g:airline_theme = 'catppuccin_mocha'
 
 " unicode symbols
 let g:airline_left_sep = '»'
