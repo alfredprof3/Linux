@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "71b922d6388b5c97",
+            "id": "28853a690b8f9719",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -184,25 +184,25 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "71b922d6388b5c97",
+  "active": "28853a690b8f9719",
   "lastOpenFiles": [
-    "Daily Notes.md",
+    "Abyss Color Theme.md",
+    "Vimrc (dot file).md",
     "README.md",
-    "Untitled.md",
+    "Daily Notes.md",
     "FFMPEG.md",
     "Catppuccin.md",
-    "Abyss Color Theme.md",
     "Vim plugins.md",
+    "X server (graphic interface).md",
+    "Vim.md",
+    "Git.md",
     "Github Sync (Obsidian plugin).md",
     "Xterm.md",
-    "X server (graphic interface).md",
     "Custom scripts-commands.md",
     "Aircrack-ng.md",
     "Termux.md",
     "Command execution inside shell script file.md",
     "Browser-sync.md",
-    "Vimrc (dot file).md",
-    "Vim.md",
     "Ufw debian.md",
     "SSH.md",
     "Sources list.md",
