@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Vimrc (dot file).md",
+                "file": "Github Sync (Obsidian plugin).md",
                 "mode": "preview",
                 "source": false
               }
@@ -85,7 +85,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "Vimrc (dot file).md",
+            "file": "Github Sync (Obsidian plugin).md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
         "state": {
           "type": "outgoing-link",
           "state": {
-            "file": "Vimrc (dot file).md",
+            "file": "Github Sync (Obsidian plugin).md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           }
@@ -114,7 +114,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "Vimrc (dot file).md"
+            "file": "Github Sync (Obsidian plugin).md"
           }
         }
       }
@@ -137,6 +137,7 @@
   },
   "active": "0e203e5e812a1d79",
   "lastOpenFiles": [
+    "Vimrc (dot file).md",
     "Termux.md"
   ]
 }
