@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Github Sync (Obsidian plugin).md",
-                "mode": "preview",
+                "file": "Monday-26-Aug-2024.md",
+                "mode": "source",
                 "source": false
               }
             }
@@ -85,7 +85,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "Github Sync (Obsidian plugin).md",
+            "file": "Monday-26-Aug-2024.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
         "state": {
           "type": "outgoing-link",
           "state": {
-            "file": "Github Sync (Obsidian plugin).md",
+            "file": "Monday-26-Aug-2024.md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           }
@@ -114,7 +114,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "Github Sync (Obsidian plugin).md"
+            "file": "Monday-26-Aug-2024.md"
           }
         }
       }
@@ -137,7 +137,18 @@
   },
   "active": "0e203e5e812a1d79",
   "lastOpenFiles": [
-    "Vimrc (dot file).md",
-    "Termux.md"
+    "ls command.md",
+    "Monday-26-Aug-2024.md",
+    "X server (graphic interface).md",
+    "Xterm.md",
+    "Catppuccin.md",
+    "Aircrack-ng.md",
+    "Abyss Color Theme.md",
+    "Shell scripting.md",
+    "Sources list.md",
+    "Vim.md",
+    "Termux.md",
+    "Github Sync (Obsidian plugin).md",
+    "Vimrc (dot file).md"
   ]
 }
