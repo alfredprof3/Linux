@@ -14,7 +14,17 @@
 	- nvm
 	- node
 	- ffmpeg
-	- 
+	- python3-pip
+	- vim-gtk3
+	- make
+	- cmake
+	- cmatrix
+	- build-essential
+	- breeze-cursor
+	- volantes cursor
+	- bibata-cursor
+	- git
+	- inkscape
 ## 29-12-2024, Sunday
 - Links
 	- [Pop_OS Guide](https://pop-os.github.io/docs/getting-started/getting-started.html)
