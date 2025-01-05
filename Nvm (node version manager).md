@@ -16,6 +16,6 @@ After installing Node Version Manager, just close the terminal and launch it bac
 
 # Install Node
 
-`$ nvm install node`
-
 This will install NodeJS in the latest version.
+
+`$ nvm install node`
