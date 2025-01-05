@@ -2,7 +2,13 @@
 
 # Install
 
-`$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash`
+```bash
+# Option 1
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+
+# Option 2
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+```
 
 After installing Node Version Manager, just close the terminal and launch it back again. Now you can check the version of NVM typing:
 
