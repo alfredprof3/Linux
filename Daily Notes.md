@@ -1,3 +1,18 @@
+## 04-01-2025, Saturday
+- Installed programs
+	- snap
+	- librewolf
+	- microsoft edge
+	- obsidian
+	- notion
+	- appyflowy
+	- inkscape
+	- nordpass
+	- flathub / flapak
+	- nvm
+	- node
+	- ffmpeg
+	- 
 ## 29-12-2024, Sunday
 - Links
 	- [Pop_OS Guide](https://pop-os.github.io/docs/getting-started/getting-started.html)
