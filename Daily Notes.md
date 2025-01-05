@@ -1,3 +1,5 @@
+## 05-01-2025, Sunday
+- entry
 ## 04-01-2025, Saturday
 - Installed programs
 	- snap
