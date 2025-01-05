@@ -35,8 +35,7 @@
               "title": "Dconf file Gnome Terminal"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -199,11 +198,11 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "324d62dbecb90574",
+  "active": "71b922d6388b5c97",
   "lastOpenFiles": [
-    "Untitled.md",
     "Dconf file Gnome Terminal.md",
     "Debian 12 Bookworm.md",
+    "Untitled.md",
     "Abyss Color Theme.md",
     "Daily Notes.md",
     "Vimrc (dot file).md",
