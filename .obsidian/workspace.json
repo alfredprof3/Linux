@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "71b922d6388b5c97",
+            "id": "0e784b8dc7280ac3",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -19,6 +19,7 @@
               },
               "icon": "lucide-file",
               "title": "Debian 12 Bookworm"
+<<<<<<< HEAD
             }
           },
           {
@@ -33,6 +34,8 @@
               },
               "icon": "lucide-file",
               "title": "Dconf file Gnome Terminal"
+=======
+>>>>>>> 1f49f34d2003eb41fef0712a89676e9b6c239da4
             }
           }
         ],
@@ -199,10 +202,18 @@
       "github-sync:Sync with Remote": false
     }
   },
+<<<<<<< HEAD
   "active": "324d62dbecb90574",
+=======
+  "active": "0e784b8dc7280ac3",
+>>>>>>> 1f49f34d2003eb41fef0712a89676e9b6c239da4
   "lastOpenFiles": [
+    "Untitled.md",
     "Debian 12 Bookworm.md",
+<<<<<<< HEAD
     "Dconf file Gnome Terminal.md",
+=======
+>>>>>>> 1f49f34d2003eb41fef0712a89676e9b6c239da4
     "Abyss Color Theme.md",
     "Daily Notes.md",
     "Vimrc (dot file).md",
