@@ -8,21 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "71b922d6388b5c97",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Debian 12 Bookworm.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Debian 12 Bookworm"
-            }
-          },
-          {
-            "id": "324d62dbecb90574",
+            "id": "0e784b8dc7280ac3",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -198,10 +184,10 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "71b922d6388b5c97",
+  "active": "0e784b8dc7280ac3",
   "lastOpenFiles": [
-    "Dconf file Gnome Terminal.md",
     "Debian 12 Bookworm.md",
+    "Dconf file Gnome Terminal.md",
     "Untitled.md",
     "Abyss Color Theme.md",
     "Daily Notes.md",
