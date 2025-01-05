@@ -14,3 +14,6 @@ The command listed below show us the installed packages performed by the user.
 
 `$ comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz | sed -n 's/^Package: //p' | sort -u)`
 
+# Disable feedback password from terminal
+
+Disable or hide the asterisks password in the terminal

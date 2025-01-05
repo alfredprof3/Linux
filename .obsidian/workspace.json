@@ -186,8 +186,9 @@
   },
   "active": "71b922d6388b5c97",
   "lastOpenFiles": [
-    "Debian 12 Bookworm.md",
+    "Vim.md",
     "Daily Notes.md",
+    "Debian 12 Bookworm.md",
     "Dconf file Gnome Terminal.md",
     "Custom scripts-commands.md",
     "Command execution inside shell script file.md",
@@ -204,7 +205,6 @@
     "Aircrack-ng.md",
     "Termux.md",
     "Browser-sync.md",
-    "Vim.md",
     "Ufw debian.md",
     "SSH.md",
     "Sources list.md",

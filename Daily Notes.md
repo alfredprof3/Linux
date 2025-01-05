@@ -1,5 +1,6 @@
 ## 05-01-2025, Sunday
-- entry
+- https://superuser.com/questions/59418/how-to-type-special-characters-in-linux
+- https://askubuntu.com/questions/1407203/i-dont-have-the-and-symbols-on-my-keyboard-how-to-assign-a-shortcut-to
 ## 04-01-2025, Saturday
 - Installed programs
 	- snap
