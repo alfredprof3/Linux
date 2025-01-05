@@ -2,5 +2,6 @@
   "alwaysUpdateLinks": true,
   "showUnsupportedFiles": true,
   "uriCallbacks": true,
-  "trashOption": "none"
+  "trashOption": "none",
+  "useMarkdownLinks": false
 }
