@@ -10,6 +10,7 @@ Exporting Gnome Terminal Profile
 
 3. The Gnome Terminal Profile is exported with the name `alfredxuser.dconf` 
 
+## Zorin Gnome Terminal Profile
 [/]
 background-color='rgb(0,12,24)'
 bold-color-same-as-fg=true
@@ -22,6 +23,8 @@ palette=['rgb(0,0,0)', 'rgb(255,153,0)', 'rgb(95,191,249)', 'rgb(255,238,187)', 
 use-system-font=false
 use-theme-colors=false
 visible-name='AlfredXuser'
+
+## Debian Gnome Terminal Profile
 
 [:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
 background-color='rgb(0,12,24)'
