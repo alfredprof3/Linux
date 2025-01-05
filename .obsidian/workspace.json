@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "feedba",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -184,7 +184,7 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "71b922d6388b5c97",
+  "active": "d8786a7c6377f83c",
   "lastOpenFiles": [
     "Debian 12 Bookworm.md",
     "Github Sync (Obsidian plugin).md",
