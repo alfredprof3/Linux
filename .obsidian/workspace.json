@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Markdown.md",
+                "file": "Debian 12 Bookworm.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Markdown"
+              "title": "Debian 12 Bookworm"
             }
           }
         ]
@@ -186,8 +186,8 @@
   },
   "active": "71b922d6388b5c97",
   "lastOpenFiles": [
-    "Untitled.md",
     "Markdown.md",
+    "Untitled.md",
     "Daily Notes.md",
     "Debian 12 Bookworm.md",
     "Vim.md",
