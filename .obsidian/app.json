@@ -3,5 +3,5 @@
   "showUnsupportedFiles": true,
   "uriCallbacks": true,
   "trashOption": "none",
-  "useMarkdownLinks": false
+  "useMarkdownLinks": true
 }
