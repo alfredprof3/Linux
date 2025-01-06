@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Debian 12 Bookworm.md",
+                "file": "Dconf Gnome Terminal.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Debian 12 Bookworm"
+              "title": "Dconf Gnome Terminal"
             }
           }
         ]
@@ -197,8 +197,8 @@
   },
   "active": "71b922d6388b5c97",
   "lastOpenFiles": [
-    "Dconf Gnome Terminal.md",
     "Debian 12 Bookworm.md",
+    "Dconf Gnome Terminal.md",
     "Dconf.md",
     "'Dconf.md",
     "FFMPEG.md",
