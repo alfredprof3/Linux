@@ -6,7 +6,7 @@ This will perform a very lightweight desktop system and environment.
 
 # Gnome Terminal
 
-Terminal emulator for Gnome desktop environment. Terminal customization colors and fonts placed in `.dconf` [[Dconf Gnome Terminal]]
+Terminal emulator for Gnome desktop environment. Terminal customization colors and fonts placed in [[Dconf Gnome Terminal|.dconf]]
 
 # List manually installed packages
 
