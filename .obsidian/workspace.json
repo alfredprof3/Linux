@@ -192,19 +192,20 @@
       "dashboard-navigator:Open dashboard navigator": false,
       "tldraw:Create new tldrawing": false,
       "single-file-daily-notes:Open daily notes": false,
-      "github-sync:Sync with Remote": false
+      "github-sync:Sync with Remote": false,
+      "homework-manager:Open homework": false
     }
   },
   "active": "71b922d6388b5c97",
   "lastOpenFiles": [
-    "Debian 12 Bookworm.md",
+    "Daily Notes.md",
     "Dconf Gnome Terminal.md",
+    "Github Sync (Obsidian plugin).md",
+    "Debian 12 Bookworm.md",
     "Dconf.md",
     "'Dconf.md",
     "FFMPEG.md",
     "[.md",
-    "Daily Notes.md",
-    "Github Sync (Obsidian plugin).md",
     "Markdown.md",
     "Untitled.md",
     "Vim.md",

@@ -4,13 +4,24 @@
 
 	`$ dconf dump /org/gnome/terminal/legacy/profiles:/
 
-2. Now export the profile with the next command, include the ID. Name the `.dconf` file.
+2. We can export the profile with this commands, include the ID. Name the `.dconf` file.
 
-	`$ dconf dump /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ > alfredxuser.dconf
+	**ID profile**
+	```bash
+	# Option 1
+	dconf dump /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ > alfredxuser.dconf
+	
+	# Option 2
+	
+	```
+
+	
+
 
 3. The Gnome Terminal Profile is exported with the name `alfredxuser.dconf` 
 
 ## Example Zorin Gnome Terminal Profile
+
 [/]
 background-color='rgb(0,12,24)'
 bold-color-same-as-fg=true
@@ -37,3 +48,5 @@ visible-name='AlfredXuser'
 
 # Importing Gnome Terminal Profile
 
+1. To import the gnome terminal profile we can do it with 2 options
+	`$ dconf reset -f /org/gnome/terminal/legacy/profiles:/
