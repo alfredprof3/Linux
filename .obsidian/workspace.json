@@ -13,12 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Debian 12 Bookworm.md",
+                "file": "Github Sync (Obsidian plugin).md",
                 "mode": "source",
+                "backlinks": true,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Debian 12 Bookworm"
+              "title": "Github Sync (Obsidian plugin)"
             }
           }
         ]
@@ -157,12 +158,22 @@
             "state": {
               "type": "sfdn-calendar",
               "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "d5de37c151feb265",
+            "type": "leaf",
+            "state": {
+              "type": "sfdn-calendar",
+              "state": {},
               "icon": "calendar-days",
               "title": "Calendar"
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "horizontal",
@@ -186,10 +197,10 @@
   },
   "active": "71b922d6388b5c97",
   "lastOpenFiles": [
+    "Debian 12 Bookworm.md",
     "Markdown.md",
     "Untitled.md",
     "Daily Notes.md",
-    "Debian 12 Bookworm.md",
     "Vim.md",
     "Dconf file Gnome Terminal.md",
     "Custom scripts-commands.md",
