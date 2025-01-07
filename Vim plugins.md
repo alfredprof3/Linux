@@ -1,5 +1,7 @@
 # Installation plugins
 
+This is a manual installation plugins for Vim 8 +
+
 ## 1. Update .vimrc
 
 First add `packloadall` to the `.vimrc` file
