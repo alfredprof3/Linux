@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Vim plugins.md",
+                "file": "Dconf Gnome Terminal.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Vim plugins"
+              "title": "Dconf Gnome Terminal"
             }
           }
         ]
@@ -198,9 +198,9 @@
   },
   "active": "71b922d6388b5c97",
   "lastOpenFiles": [
+    "Vim plugins.md",
     "Vimrc (dot file).md",
     "Vim.md",
-    "Vim plugins.md",
     "Dconf Gnome Terminal.md",
     "Daily Notes.md",
     "Github Sync (Obsidian plugin).md",
