@@ -1,5 +1,11 @@
 # Exporting Gnome Terminal Profile
 
+First, to export a Gnome Terminal Profile we need to know the ID profile in case we want to export a specific one therefore if we want to export all of them the procedure is a little bit different.
+
+We need `dconf` editor install in the system
+
+
+
 1. Check the ID profiles with the below command. Example ID [:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
 
 	`$ dconf dump /org/gnome/terminal/legacy/profiles:/
