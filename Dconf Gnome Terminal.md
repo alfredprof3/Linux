@@ -1,6 +1,6 @@
 # Exporting Gnome Terminal Profile
 
-1. First check the ID profiles with the below command. Example ID [:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+1. Check the ID profiles with the below command. Example ID [:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
 
 	`$ dconf dump /org/gnome/terminal/legacy/profiles:/
 
