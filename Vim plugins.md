@@ -38,6 +38,6 @@ nerdcommenter
 nerdtree
 vim airline
 vim devicons
-vim surround
+vim surround or vim sandwich
 vim visual multi
 [[Abyss Color Theme]]
