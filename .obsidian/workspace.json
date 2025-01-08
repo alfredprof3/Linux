@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Vim plugins.md",
+                "file": "Vimrc (dot file).md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Vim plugins"
+              "title": "Vimrc (dot file)"
             }
           }
         ]
@@ -198,8 +198,8 @@
   },
   "active": "71b922d6388b5c97",
   "lastOpenFiles": [
-    "Dconf Gnome Terminal.md",
     "Vim plugins.md",
+    "Dconf Gnome Terminal.md",
     "Vimrc (dot file).md",
     "Vim.md",
     "Daily Notes.md",
