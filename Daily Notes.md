@@ -1,5 +1,12 @@
-## 08-01-2025, Wednesday
-- entry
+## 11-01-2025, Saturday
+- https://wiki.archlinux.org/title/XDG_user_directories
+- https://www.freecodecamp.org/news/linux-chmod-chown-change-file-permissions/
+- https://www.howtogeek.com/439500/how-to-use-the-chgrp-command-on-linux/
+- https://linuxize.com/post/chgrp-command-in-linux/
+- https://www.geeksforgeeks.org/chgrp-command-in-linux-with-examples/
+- https://www.liberiangeek.net/2024/02/how-to-update-kernel-on-debian-12/
+- https://www.tecmint.com/kernel-compilation-in-debian-linux/#google_vignette
+- https://www.kingopsec.com/en/content/debian/faq/como-atualizar-o-kernel-no-debian-12-ou-lmde6
 ## 05-01-2025, Sunday
 - https://superuser.com/questions/59418/how-to-type-special-characters-in-linux
 - https://askubuntu.com/questions/1407203/i-dont-have-the-and-symbols-on-my-keyboard-how-to-assign-a-shortcut-to

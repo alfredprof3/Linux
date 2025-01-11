@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Nvm (node version manager).md",
+                "file": "Daily Notes.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Nvm (node version manager)"
+              "title": "Daily Notes"
             }
           }
         ]
@@ -208,6 +208,7 @@
   },
   "active": "71b922d6388b5c97",
   "lastOpenFiles": [
+    "Nvm (node version manager).md",
     "Daily Notes.md",
     "Xterm.md",
     "Vimrc (dot file).md",
@@ -232,7 +233,6 @@
     "Termux.md",
     "Browser-sync.md",
     "Ufw debian.md",
-    "SSH.md",
-    "Sources list.md"
+    "SSH.md"
   ]
 }
