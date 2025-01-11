@@ -7,6 +7,10 @@
 - https://www.liberiangeek.net/2024/02/how-to-update-kernel-on-debian-12/
 - https://www.tecmint.com/kernel-compilation-in-debian-linux/#google_vignette
 - https://www.kingopsec.com/en/content/debian/faq/como-atualizar-o-kernel-no-debian-12-ou-lmde6
+- https://davidzchen.com/tech/2020/07/21/importing-and-exporting-gnome-terminal-color-schemes.html
+- https://www.ubuntumint.com/export-import-gnome-terminal-profile/
+- https://gist.github.com/fdaciuk/9ec4d8afc32063a6f74a21f8308e3807
+- https://unix.stackexchange.com/questions/448811/how-to-export-a-gnome-terminal-profile#456356
 ## 05-01-2025, Sunday
 - https://superuser.com/questions/59418/how-to-type-special-characters-in-linux
 - https://askubuntu.com/questions/1407203/i-dont-have-the-and-symbols-on-my-keyboard-how-to-assign-a-shortcut-to
