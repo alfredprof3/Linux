@@ -13,6 +13,11 @@
 - https://www.ubuntumint.com/export-import-gnome-terminal-profile/
 - https://gist.github.com/fdaciuk/9ec4d8afc32063a6f74a21f8308e3807
 - https://unix.stackexchange.com/questions/448811/how-to-export-a-gnome-terminal-profile#456356
+- https://commandmasters.com/commands/xdg-settings-linux/
+- https://www.reddit.com/r/unixporn/
+- https://gitlab.com/parrotsec/project/debian-conversion-script
+- https://www.qubes-os.org/downloads/
+- https://www.whonix.org/
 ## 05-01-2025, Sunday
 - https://superuser.com/questions/59418/how-to-type-special-characters-in-linux
 - https://askubuntu.com/questions/1407203/i-dont-have-the-and-symbols-on-my-keyboard-how-to-assign-a-shortcut-to
