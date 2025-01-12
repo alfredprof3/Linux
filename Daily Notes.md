@@ -1,3 +1,5 @@
+## 12-01-2025, Sunday
+- Terminar el archivo Dconf
 ## 11-01-2025, Saturday
 - https://wiki.archlinux.org/title/XDG_user_directories
 - https://www.freecodecamp.org/news/linux-chmod-chown-change-file-permissions/

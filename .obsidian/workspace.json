@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Notes.md",
+                "file": "Debian 12 Bookworm.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Daily Notes"
+              "title": "Debian 12 Bookworm"
             }
           }
         ]
@@ -178,12 +178,22 @@
             "state": {
               "type": "sfdn-calendar",
               "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "7c8da8c1e808a758",
+            "type": "leaf",
+            "state": {
+              "type": "sfdn-calendar",
+              "state": {},
               "icon": "calendar-days",
               "title": "Calendar"
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 8
       }
     ],
     "direction": "horizontal",
@@ -206,18 +216,18 @@
       "homework-manager:Open homework": false
     }
   },
-  "active": "d8786a7c6377f83c",
+  "active": "71b922d6388b5c97",
   "lastOpenFiles": [
-    "Nvm (node version manager).md",
     "Daily Notes.md",
-    "Xterm.md",
-    "Vimrc (dot file).md",
-    "Markdown.md",
-    "Vim plugins.md",
     "Dconf Gnome Terminal.md",
-    "Vim.md",
-    "Github Sync (Obsidian plugin).md",
     "Debian 12 Bookworm.md",
+    "Vimrc (dot file).md",
+    "Vim plugins.md",
+    "Github Sync (Obsidian plugin).md",
+    "Nvm (node version manager).md",
+    "Xterm.md",
+    "Markdown.md",
+    "Vim.md",
     "Dconf.md",
     "'Dconf.md",
     "FFMPEG.md",
