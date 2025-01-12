@@ -58,3 +58,7 @@ You can create a file called `pwfeedback` and write `Defaults   pwfeedback` insi
 To disable the feedback just erase the `pwdfeedback` file located in `/etc/sudoers.d/pwfeedback` or change the name. 
 
 Also you can comment the line wrote in the `sudoers` file.
+
+# Change default web browser
+
+xdg-settings set default-web-browser microsoft-edge.desktop
