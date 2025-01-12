@@ -13,10 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Monday-26-Aug-2024.md",
+                "file": "Daily Notes.md",
                 "mode": "source",
+                "backlinks": false,
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Daily Notes"
             }
           }
         ]
@@ -35,7 +38,9 @@
           "type": "file-explorer",
           "state": {
             "sortOrder": "alphabetical"
-          }
+          },
+          "icon": "lucide-folder-closed",
+          "title": "Files"
         }
       },
       {
@@ -50,7 +55,9 @@
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical"
-          }
+          },
+          "icon": "lucide-search",
+          "title": "Search"
         }
       },
       {
@@ -61,7 +68,9 @@
           "state": {
             "sortOrder": "frequency",
             "useHierarchy": true
-          }
+          },
+          "icon": "lucide-tags",
+          "title": "Tags"
         }
       },
       {
@@ -69,7 +78,9 @@
         "type": "leaf",
         "state": {
           "type": "bookmarks",
-          "state": {}
+          "state": {},
+          "icon": "lucide-bookmark",
+          "title": "Bookmarks"
         }
       }
     ],
@@ -93,7 +104,9 @@
             "searchQuery": "",
             "backlinkCollapsed": false,
             "unlinkedCollapsed": true
-          }
+          },
+          "icon": "links-coming-in",
+          "title": "Backlinks"
         }
       },
       {
@@ -105,7 +118,9 @@
             "file": "Monday-26-Aug-2024.md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
-          }
+          },
+          "icon": "links-going-out",
+          "title": "Outgoing links"
         }
       },
       {
@@ -115,7 +130,9 @@
           "type": "outline",
           "state": {
             "file": "Monday-26-Aug-2024.md"
-          }
+          },
+          "icon": "lucide-list",
+          "title": "Outline"
         }
       }
     ],
@@ -123,6 +140,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "homework-manager:Open homework": false,
       "dashboard-navigator:Open dashboard navigator": false,
       "tldraw:Create new tldrawing": false,
       "single-file-daily-notes:Open daily notes": false,
@@ -137,8 +155,8 @@
   },
   "active": "0e203e5e812a1d79",
   "lastOpenFiles": [
-    "ls command.md",
     "Monday-26-Aug-2024.md",
+    "ls command.md",
     "X server (graphic interface).md",
     "Xterm.md",
     "Catppuccin.md",
