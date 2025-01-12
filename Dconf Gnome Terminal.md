@@ -8,7 +8,7 @@ We need `dconf` editor install in the system
 
 1. Check the ID profiles with the below command. Example ID [:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
 
-	`$ dconf dump /org/gnome/terminal/legacy/profiles:/
+	`dconf dump /org/gnome/terminal/legacy/profiles:/
 
 2. We can export the profile with this commands, include the ID. Name the `.dconf` file.
 
@@ -54,5 +54,8 @@ visible-name='AlfredXuser'
 
 # Importing Gnome Terminal Profile
 
-1. To import the gnome terminal profile we can do it with 2 options
-	`$ dconf reset -f /org/gnome/terminal/legacy/profiles:/
+1. First, reset the options
+	`dconf reset -f /org/gnome/terminal/legacy/profiles:/
+
+2. Option 1: To load and import the settings from a gnome terminal profile, type the command below
+	`dconf load /org/gnome/terminal/legacy/profiles:/ < alfredxuser.dconf` 
