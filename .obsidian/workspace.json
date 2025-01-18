@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Notes.md",
-                "mode": "source",
+                "file": "Github Sync (Obsidian plugin).md",
+                "mode": "preview",
                 "backlinks": false,
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Daily Notes"
+              "title": "Github Sync (Obsidian plugin)"
             }
           }
         ]
@@ -188,12 +188,22 @@
             "state": {
               "type": "sfdn-calendar",
               "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "56a674f71e616354",
+            "type": "leaf",
+            "state": {
+              "type": "sfdn-calendar",
+              "state": {},
               "icon": "calendar-days",
               "title": "Calendar"
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 9
       }
     ],
     "direction": "horizontal",
@@ -212,17 +222,16 @@
       "dashboard-navigator:Open dashboard navigator": false,
       "tldraw:Create new tldrawing": false,
       "single-file-daily-notes:Open daily notes": false,
-      "github-sync:Sync with Remote": false,
       "homework-manager:Open homework": false
     }
   },
   "active": "71b922d6388b5c97",
   "lastOpenFiles": [
-    "Dconf Gnome Terminal.md",
-    "Daily Notes.md",
-    "Debian 12 Bookworm.md",
-    "Vimrc (dot file).md",
     "Vim plugins.md",
+    "Daily Notes.md",
+    "Vimrc (dot file).md",
+    "Dconf Gnome Terminal.md",
+    "Debian 12 Bookworm.md",
     "Github Sync (Obsidian plugin).md",
     "Nvm (node version manager).md",
     "Xterm.md",
