@@ -1,5 +1,3 @@
-## 16-01-2025, Thursday
-- entry
 ## 12-01-2025, Sunday
 - Terminar el archivo Dconf para importar y exportar perfiles Gnome
 ## 11-01-2025, Saturday
