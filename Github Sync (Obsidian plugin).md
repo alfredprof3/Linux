@@ -29,7 +29,9 @@ For first time you need some Git configurations before pushing the commits and c
 
 	```sh
 	git remote show origin
-	# or
+	```
+	or
+	```sh
 	git remote -v
 	```
 
@@ -37,10 +39,12 @@ For first time you need some Git configurations before pushing the commits and c
 
 	```sh
 	git config --local credential.helper store
-	# or
+	```
+	or
+	```sh
 	git config --global credential.helper store
 	```
-	
+
 	You can set locally or global, just replace the flag `--local` for `--global` if you want to set it up globally.
 
 5. Make changes to the repository and manually push them with
