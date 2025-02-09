@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Notes.md",
+                "file": "Github Sync (Obsidian plugin).md",
                 "mode": "source",
-                "backlinks": false,
-                "source": false
+                "source": false,
+                "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Daily Notes"
+              "title": "Github Sync (Obsidian plugin)"
             }
           }
         ]
@@ -41,7 +41,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -198,12 +199,22 @@
             "state": {
               "type": "sfdn-calendar",
               "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "119e9a5f764fd18a",
+            "type": "leaf",
+            "state": {
+              "type": "sfdn-calendar",
+              "state": {},
               "icon": "calendar-days",
               "title": "Calendar"
             }
           }
         ],
-        "currentTab": 9
+        "currentTab": 10
       }
     ],
     "direction": "horizontal",
@@ -212,7 +223,6 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "github-sync:Sync with Remote": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -223,13 +233,15 @@
       "dashboard-navigator:Open dashboard navigator": false,
       "tldraw:Create new tldrawing": false,
       "single-file-daily-notes:Open daily notes": false,
-      "homework-manager:Open homework": false
+      "homework-manager:Open homework": false,
+      "github-sync:Sync with Remote": false
     }
   },
   "active": "71b922d6388b5c97",
   "lastOpenFiles": [
-    "README.md",
+    "Git.md",
     "Daily Notes.md",
+    "README.md",
     "Dconf Gnome Terminal.md",
     "Github Sync (Obsidian plugin).md",
     "Vim plugins.md",
@@ -252,7 +264,6 @@
     "Aircrack-ng.md",
     "Termux.md",
     "Browser-sync.md",
-    "Ufw debian.md",
-    "SSH.md"
+    "Ufw debian.md"
   ]
 }
