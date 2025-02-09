@@ -21,8 +21,24 @@
               "icon": "lucide-file",
               "title": "Vim plugins"
             }
+          },
+          {
+            "id": "a914829033c274d6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Untitled.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Untitled"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -237,10 +253,11 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "71b922d6388b5c97",
+  "active": "a914829033c274d6",
   "lastOpenFiles": [
-    "Vimrc (dot file).md",
+    "Untitled.md",
     "Vim plugins.md",
+    "Vimrc (dot file).md",
     "Vim.md",
     "Github Sync (Obsidian plugin).md",
     "Git.md",
@@ -255,7 +272,6 @@
     "'Dconf.md",
     "FFMPEG.md",
     "[.md",
-    "Untitled.md",
     "Custom scripts-commands.md",
     "Command execution inside shell script file.md",
     "Abyss Color Theme.md",

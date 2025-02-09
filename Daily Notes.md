@@ -1,3 +1,8 @@
+## 09-02-2025, Sunday
+- entry
+
+---
+# January 2025
 ## 21-01-2025, Tuesday
 - entry
 ## 12-01-2025, Sunday
