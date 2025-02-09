@@ -199,22 +199,12 @@
             "state": {
               "type": "sfdn-calendar",
               "state": {},
-              "icon": "lucide-file",
-              "title": "Plugin no longer active"
-            }
-          },
-          {
-            "id": "119e9a5f764fd18a",
-            "type": "leaf",
-            "state": {
-              "type": "sfdn-calendar",
-              "state": {},
               "icon": "calendar-days",
               "title": "Calendar"
             }
           }
         ],
-        "currentTab": 10
+        "currentTab": 9
       }
     ],
     "direction": "horizontal",
@@ -223,6 +213,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "github-sync:Sync with Remote": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -233,25 +224,23 @@
       "dashboard-navigator:Open dashboard navigator": false,
       "tldraw:Create new tldrawing": false,
       "single-file-daily-notes:Open daily notes": false,
-      "homework-manager:Open homework": false,
-      "github-sync:Sync with Remote": false
+      "homework-manager:Open homework": false
     }
   },
-  "active": "71b922d6388b5c97",
+  "active": "d8786a7c6377f83c",
   "lastOpenFiles": [
     "Untitled.md",
-    "Vim plugins.md",
-    "Vimrc (dot file).md",
-    "Vim.md",
     "Github Sync (Obsidian plugin).md",
-    "Git.md",
+    "Nvm (node version manager).md",
     "Daily Notes.md",
     "README.md",
     "Dconf Gnome Terminal.md",
+    "Vim plugins.md",
+    "Vimrc (dot file).md",
     "Debian 12 Bookworm.md",
-    "Nvm (node version manager).md",
     "Xterm.md",
     "Markdown.md",
+    "Vim.md",
     "Dconf.md",
     "'Dconf.md",
     "FFMPEG.md",
@@ -264,6 +253,7 @@
     "Aircrack-ng.md",
     "Termux.md",
     "Browser-sync.md",
-    "Ufw debian.md"
+    "Ufw debian.md",
+    "SSH.md"
   ]
 }
