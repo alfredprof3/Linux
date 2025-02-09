@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Nvm (node version manager).md",
+                "file": "Github Sync (Obsidian plugin).md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Nvm (node version manager)"
+              "title": "Github Sync (Obsidian plugin)"
             }
           }
         ]
@@ -229,6 +229,7 @@
   },
   "active": "71b922d6388b5c97",
   "lastOpenFiles": [
+    "Nvm (node version manager).md",
     "Daily Notes.md",
     "README.md",
     "Dconf Gnome Terminal.md",
@@ -236,7 +237,6 @@
     "Vim plugins.md",
     "Vimrc (dot file).md",
     "Debian 12 Bookworm.md",
-    "Nvm (node version manager).md",
     "Xterm.md",
     "Markdown.md",
     "Vim.md",
