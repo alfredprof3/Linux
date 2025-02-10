@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Github Sync (Obsidian plugin).md",
+                "file": "Command execution inside shell script file.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Github Sync (Obsidian plugin)"
+              "title": "Command execution inside shell script file"
             }
           }
         ]
@@ -227,8 +227,11 @@
       "homework-manager:Open homework": false
     }
   },
-  "active": "d8786a7c6377f83c",
+  "active": "71b922d6388b5c97",
   "lastOpenFiles": [
+    "Shell scripting.md",
+    "Command execution inside shell script file.md",
+    "Custom scripts-commands.md",
     "Untitled.md",
     "Github Sync (Obsidian plugin).md",
     "Nvm (node version manager).md",
@@ -245,15 +248,12 @@
     "'Dconf.md",
     "FFMPEG.md",
     "[.md",
-    "Custom scripts-commands.md",
-    "Command execution inside shell script file.md",
     "Abyss Color Theme.md",
     "Catppuccin.md",
     "X server (graphic interface).md",
     "Aircrack-ng.md",
     "Termux.md",
     "Browser-sync.md",
-    "Ufw debian.md",
-    "SSH.md"
+    "Ufw debian.md"
   ]
 }
