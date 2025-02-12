@@ -1,66 +1,39 @@
-.header {
-  display: flex;
-  flex-wrap: wrap-reverse;
-  gap: 15px;
-  align-items: center;
-  justify-content: left;
+.subject-box {
+  font-size: x-large !important;
+  padding-left: 0px !important;
+  background-color: tomato !important;
+  font-weight: 600 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
-.header-title {
-  width: 80%;
+
+.hidden-textbox {
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.homework-manager h1 {
   font-size: xx-large;
-  margin-bottom: none;
+  margin-top: 0;
+  margin-bottom: 0;
 }
-.header-edit-button {
-  --icon-size: $size;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 25%;
-  padding: 0px;
-  background-color: transparent;
-}
-.header-edit-button:hover {
-  background-color: var(--interactive-hover);
-}
-
-.add-subject {
-  overflow: hidden;
-  width: 35%;
-  background-color: var(--interactive-accent);
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-.add-subject:hover {
-  background-color: var(--interactive-accent-hover);
-}
-.add-subject p {
-  overflow: hidden;
-  text-align: center;
-  padding: 5px;
-  margin: 0;
-  font-size: large;
-  font-weight: bolder;
-}
-
-.subject {
-  margin-top: 20px;
-  margin-bottom: 30px;
-}
-.subject-heading {
-  display: flex;
-  flex-wrap: wrap-reverse;
-  gap: 15px;
-  align-items: center;
-  justify-content: left;
-}
-.subject-heading-name {
+.homework-manager h2 {
   font-size: x-large;
-  flex-basis: 80%;
+  margin-top: 0;
+  margin-bottom: 0;
 }
-.subject-heading-remove {
-  --icon-size: $size;
+.homework-manager h3 {
+  font-size: large;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.homework-manager .clickable-icon {
+  width: 32px;
+  height: 32px;
+}
+.homework-manager #remove-subject {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,137 +42,111 @@
   border-radius: 50%;
   background-color: var(--interactive-hover);
 }
-.subject-heading-remove:hover {
+.homework-manager #remove-subject:hover {
   background-color: red;
 }
-.subject-heading-add {
-  --icon-size: $size;
+.homework-manager #header {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+}
+.homework-manager #header #left-column {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
 }
-.subject-heading-add:hover {
-  background-color: var(--interactive-hover);
+.homework-manager #header *:not(svg) {
+  margin-right: 10px;
 }
-
-.task {
+.homework-manager #body {
+  margin-top: 30px;
+}
+.homework-manager #body *:not(svg) {
+  margin-right: 10px;
+}
+.homework-manager #body #subject {
+  margin-bottom: 30px;
+}
+.homework-manager #body #title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.homework-manager #body #task {
+  display: flex;
+  align-items: center;
   margin-top: 15px;
-  margin-bottom: 15px;
-  overflow: hidden;
 }
-.task-check {
-  float: left;
+.homework-manager #body #task div {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+.homework-manager #body #task #check {
   background-color: transparent;
   width: 25px;
   height: 25px;
-  margin-right: 15px;
   border-style: solid;
-  border-width: 2px !important;
-  border-color: var(--interactive-hover);
+  border-width: 2px;
   border-radius: 50%;
+  border-color: var(--icon-color);
+  opacity: var(--icon-opacity);
+  transition: opacity 0.15s ease-in-out;
 }
-.task-check:hover {
-  border-color: var(--interactive-accent);
+.homework-manager #body #task #check:hover {
+  opacity: var(--icon-opacity-hover);
+  border-color: var(--icon-color-hover);
 }
-.task-link {
-  width: 60%;
-  overflow: hidden;
+.homework-manager #body #task #check:active {
+  opacity: var(--icon-opacity-hover);
+  border-color: var(--icon-color-focused);
+}
+.homework-manager #body #task p {
   font-size: large;
-  word-break: break-all;
+  margin: 0;
 }
-.task-link:hover {
-  text-decoration: underline;
-}
-.task-text {
-  width: 60%;
-  overflow: hidden;
-  font-size: large;
-  word-break: break-all;
-}
-.task-date {
+.homework-manager #body #task #date {
+  color: var(--text-muted);
   font-size: small;
-  margin-left: 40px;
-  color: var(--text-faint);
 }
-
-.subject-prompt {
+.homework-manager #menu {
   display: flex;
-  flex-wrap: wrap;
-  column-gap: 15px;
+  flex-direction: column;
+}
+.homework-manager #menu .menu-item:hover {
+  background-color: var(--background-modifier-hover);
+}
+.homework-manager #subject-prompt {
+  display: flex;
   align-items: center;
-  justify-content: left;
+  margin-top: 30px;
+  gap: 10px;
 }
-.subject-prompt p {
-  flex-basis: 100%;
-  font-size: large;
-  font-weight: bold;
-}
-.subject-prompt-input {
-  flex-basis: 50%;
+.homework-manager #subject-prompt input {
   width: 50%;
 }
-.subject-prompt-confirm {
-  --icon-size: $size;
+.homework-manager #task-prompt {
+  margin-top: 15px;
+}
+.homework-manager #task-prompt #top {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 25%;
-  margin-left: 10px;
-  background-color: var(--interactive-hover);
-}
-.subject-prompt-confirm:hover {
-  background-color: var(--interactive-accent-hover);
-}
-
-.task-prompt {
-  margin-top: 10px;
-}
-.task-prompt-flextop {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
   margin-bottom: 10px;
-  align-items: center;
-  justify-content: left;
 }
-.task-prompt-flextop-input {
-  flex-basis: 50%;
+.homework-manager #task-prompt #top input {
   width: 50%;
 }
-.task-prompt-flextop-confirm {
-  --icon-size: $size;
+.homework-manager #task-prompt #bottom {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 5px;
-  margin-left: 5px;
-  background-color: var(--interactive-hover);
+  gap: 10px;
 }
-.task-prompt-flextop-confirm:hover {
-  background-color: var(--interactive-accent-hover);
+.homework-manager-hidden {
+  display: none !important;
 }
-.task-prompt-flexbottom {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  align-items: center;
-  justify-content: left;
-}
-.task-prompt-flexbottom-suggest {
-  padding: 5px 10px 5px 10px;
-  border-radius: 5px;
-  background-color: var(--interactive-hover);
-}
-.task-prompt-flexbottom-suggest:hover {
-  background-color: var(--interactive-accent-hover);
+.homework-manager-link:hover {
+  cursor: var(--cursor-link);
+  text-decoration-line: var(--link-decoration-hover);
 }
 
 /*# sourceMappingURL=styles.css.map */

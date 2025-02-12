@@ -1,8 +1,25 @@
 {
-  "Tareas": {
-    "Terminar la documentación": {
-      "page": "Dconf Gnome Terminal.md",
-      "date": ""
+  "settings": {
+    "deleteFinishedTasks": true,
+    "showTooltips": true,
+    "autoSortForTaskQuantity": true
+  },
+  "views": [
+    {
+      "name": "View 1",
+      "subjects": [
+        {
+          "name": "Tareas",
+          "tasks": [
+            {
+              "name": "Terminar la documentación",
+              "date": "",
+              "page": "Dconf Gnome Terminal.md"
+            }
+          ]
+        }
+      ],
+      "tasks": []
     }
-  }
+  ]
 }

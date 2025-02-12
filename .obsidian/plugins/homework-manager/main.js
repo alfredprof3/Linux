@@ -24,17 +24,304 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/main.ts
 var main_exports = {};
 __export(main_exports, {
-  default: () => HomeworkPlugin
+  default: () => HomeworkManagerPlugin
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian3 = require("obsidian");
+var import_obsidian7 = require("obsidian");
 
-// src/modal.ts
-var import_obsidian2 = require("obsidian");
-
-// src/suggestModal.ts
+// src/settings.ts
 var import_obsidian = require("obsidian");
-var SuggestFileModal = class extends import_obsidian.SuggestModal {
+var defaultLogo = "book";
+var SettingsTab = class extends import_obsidian.PluginSettingTab {
+  constructor(app, plugin) {
+    super(app, plugin);
+    this.plugin = plugin;
+  }
+  display() {
+    const { containerEl } = this;
+    containerEl.empty();
+    new import_obsidian.Setting(containerEl).setName("Delete finished tasks").setDesc("Deletes finished tasks instead of marking them complete.").addToggle((toggle) => {
+      toggle.setValue(this.plugin.data.settings.deleteFinishedTasks).onChange(async (val) => {
+        this.plugin.data.settings.deleteFinishedTasks = val;
+        await this.plugin.writeData();
+      });
+    });
+    new import_obsidian.Setting(containerEl).setName("Auto sort for task quantity").setDesc("Automatically sort tasks by quantity.").addToggle((toggle) => {
+      toggle.setValue(this.plugin.data.settings.autoSortForTaskQuantity).onChange(async (val) => {
+        this.plugin.data.settings.autoSortForTaskQuantity = val;
+        await this.plugin.writeData();
+      });
+    });
+    new import_obsidian.Setting(containerEl).setName("Show tooltips").setDesc("Show tooltips when hovering over buttons.").addToggle((toggle) => {
+      toggle.setValue(this.plugin.data.settings.showTooltips).onChange(async (val) => {
+        this.plugin.data.settings.showTooltips = val;
+        await this.plugin.writeData();
+      });
+    });
+  }
+};
+
+// src/data-editor.ts
+var DEFAULT_DATA = {
+  settings: {
+    deleteFinishedTasks: true,
+    showTooltips: true,
+    autoSortForTaskQuantity: true
+  },
+  views: new Array()
+};
+var Task = class {
+  constructor() {
+    this.name = "";
+    this.date = "";
+    this.page = "";
+  }
+};
+var Subject = class {
+  constructor() {
+    this.name = "";
+    this.tasks = new Array();
+  }
+};
+var View = class {
+  constructor() {
+    this.name = "";
+    this.subjects = new Array();
+    this.tasks = new Array();
+  }
+};
+var DataEditor = class {
+  constructor(plugin) {
+    this.plugin = plugin;
+  }
+  // Make sure new updates are reflected
+  formatData(data) {
+    const newData = Object.assign({}, DEFAULT_DATA);
+    newData.settings = data.settings;
+    newData.views = new Array();
+    const assign = (assignTo, object) => {
+      let filteredObject = {};
+      for (const key in object) {
+        if (key in assignTo) {
+          filteredObject[key] = object[key];
+        }
+      }
+      return Object.assign(assignTo, filteredObject);
+    };
+    for (const view of data.views) {
+      const newView = assign(new View(), view);
+      newView.subjects = new Array();
+      newView.tasks = new Array();
+      for (const task of view.tasks) {
+        const newTask = assign(new Task(), task);
+        newView.tasks.push(newTask);
+      }
+      for (const subject of view.subjects) {
+        const newSubject = assign(new Subject(), subject);
+        newSubject.tasks = new Array();
+        for (const task of subject.tasks) {
+          const newTask = assign(new Task(), task);
+          newSubject.tasks.push(newTask);
+        }
+        newView.subjects.push(newSubject);
+      }
+      newData.views.push(newView);
+    }
+    if (newData.views.length === 0) {
+      const newView = new View();
+      newView.name = "View 1";
+      newData.views.push(newView);
+    }
+    return newData;
+  }
+  // Convert legacy versions (1.0.0, 1.1.0) to new data structure
+  convertFromLegacy(data) {
+    const view = new View();
+    view.name = "View 1";
+    for (const subjectKey in data) {
+      const subject = new Subject();
+      subject.name = subjectKey;
+      const oldSubject = data[subjectKey];
+      for (const taskKey in data[subjectKey]) {
+        const task = new Task();
+        task.name = taskKey;
+        task.page = oldSubject[taskKey].page;
+        task.date = oldSubject[taskKey].date;
+        subject.tasks.push(task);
+      }
+      view.subjects.push(subject);
+    }
+    const newData = Object.assign({}, DEFAULT_DATA);
+    newData.views.push(view);
+    console.log("Found data is legacy, converting now.\n\nLegacy", data, "\n\nConverted", newData);
+    return newData;
+  }
+  async addSubject(viewIndex, subjectName) {
+    const view = this.plugin.data.views[viewIndex];
+    if (!view) {
+      return;
+    }
+    view.subjects.push({
+      "name": subjectName,
+      "tasks": []
+    });
+    await this.plugin.writeData();
+  }
+  async removeSubject(viewIndex, subjectIndex) {
+    const view = this.plugin.data.views[viewIndex];
+    if (!view.subjects[subjectIndex]) {
+      return;
+    }
+    view.subjects.splice(subjectIndex, 1);
+    await this.plugin.writeData();
+  }
+  async moveSubject(viewIndex, subjectIndex) {
+    const view = this.plugin.data.views[viewIndex];
+    if (!view.subjects[subjectIndex]) {
+      return;
+    }
+    const subject = view.subjects[subjectIndex];
+    view.subjects.splice(subjectIndex, 1);
+    view.subjects.splice(viewIndex, 0, subject);
+    await this.plugin.writeData();
+  }
+  async addTask(viewIndex, taskOptions, subjectIndex) {
+    const view = this.plugin.data.views[viewIndex];
+    if (!view) {
+      return;
+    }
+    if (subjectIndex !== void 0) {
+      const subject = view.subjects[subjectIndex];
+      if (subject) {
+        subject.tasks.push(taskOptions);
+      }
+    } else {
+      if (view.tasks) {
+        view.tasks.push(taskOptions);
+      }
+    }
+    await this.plugin.writeData();
+  }
+  async removeTask(viewIndex, taskIndex, subjectIndex) {
+    const view = this.plugin.data.views[viewIndex];
+    if (!view) {
+      return;
+    }
+    if (subjectIndex !== void 0) {
+      const subject = view.subjects[subjectIndex];
+      if (subject) {
+        subject.tasks.splice(taskIndex, 1);
+      }
+    } else {
+      if (view.tasks) {
+        view.tasks.splice(taskIndex, 1);
+      }
+    }
+    await this.plugin.writeData();
+  }
+  async moveTask(viewIndex, taskIndex, up, subjectIndex) {
+    const view = this.plugin.data.views[viewIndex];
+    if (subjectIndex !== void 0) {
+      const subject = view.subjects[subjectIndex];
+      if (subject && subject.tasks.length > 1 && (up && taskIndex > 0 || !up && taskIndex < subject.tasks.length - 1)) {
+        subject.tasks[taskIndex] = subject.tasks.splice(taskIndex + (up ? -1 : 1), 1, subject.tasks[taskIndex])[0];
+      }
+    }
+  }
+};
+
+// src/update.ts
+var import_obsidian2 = require("obsidian");
+var path = ".obsidian/plugins/homework-manager/temp";
+async function asyncisUpdated(app) {
+  let file = await app.vault.adapter.exists((0, import_obsidian2.normalizePath)(path));
+  if (file)
+    return false;
+  await app.vault.create(path, "");
+  return true;
+}
+
+// src/modals/update-modal.ts
+var import_obsidian3 = require("obsidian");
+var UpdateModal = class extends import_obsidian3.Modal {
+  constructor(app, plugin) {
+    super(app);
+    this.plugin = plugin;
+  }
+  async onOpen() {
+    const { contentEl } = this;
+    await this.plugin.fetchData();
+    contentEl.addClass("update-modal");
+    contentEl.createEl("h1", { text: "Homework Manager: v1.1.0!" });
+    contentEl.createEl("p", { text: `\u2757 This update requires the reformatting of user data. If you run into any issues or have lost any data, please create an issue on the GitHub. \u2757` });
+    contentEl.createEl("hr");
+    contentEl.createEl("li", { text: `\u{1F4C2} Views: You can switch between different views, each with its own set of tasks. This makes it easy to separate work-related to-dos from personal tasks.` });
+    contentEl.createEl("li", { text: `\u270F\uFE0F Editing tasks & subjects: Update names, due dates, and files.` });
+    contentEl.createEl("li", { text: `\u{1F500} Reordering tasks: Arrange tasks the way you like.` });
+    contentEl.createEl("li", { text: `\u{1F4CC} Auto-sorting subjects: Subjects can now automatically sort to the top based on the number of tasks they have. This feature can be enabled in the settings.` });
+    contentEl.createEl("hr");
+    contentEl.createEl("b", { text: `Big thanks to HerrChaos for implementing sorting subjects, editing tasks/subjects and reordering tasks.` });
+  }
+  onClose() {
+    const { contentEl } = this;
+    contentEl.empty();
+  }
+};
+
+// src/modals/homework-modal.ts
+var import_obsidian6 = require("obsidian");
+
+// src/modals/view-modal.ts
+var import_obsidian4 = require("obsidian");
+var ViewManagerModal = class extends import_obsidian4.Modal {
+  constructor(app, plugin) {
+    super(app);
+    this.plugin = plugin;
+  }
+  onOpen() {
+    const { contentEl } = this;
+    const title = contentEl.createEl("h1", { text: "View Manager" });
+    this.plugin.data.views.forEach((view) => {
+      const viewContainer = contentEl.createDiv("view-container");
+      viewContainer.style.display = "flex";
+      viewContainer.style.flexDirection = "row";
+      const viewTitle = viewContainer.createEl("input", { value: view.name, type: "text", cls: "hidden-textbox subject-box" });
+      viewTitle.addEventListener("change", () => {
+        view.name = viewTitle.value;
+        this.plugin.writeData();
+      });
+      const deleteButton = viewContainer.createEl("button", { cls: "delete-button hidden-textbox" });
+      (0, import_obsidian4.setIcon)(deleteButton, "trash-2");
+      deleteButton.addEventListener("click", () => {
+        this.plugin.data.views = this.plugin.data.views.filter((v) => v !== view);
+        this.plugin.writeData();
+        this.onClose();
+        this.onOpen();
+      });
+    });
+    const newViewContainer = contentEl.createEl("form");
+    const newViewer = newViewContainer.createEl("input", { type: "text", cls: "hidden-textbox subject-box", placeholder: "New View" });
+    newViewContainer.addEventListener("submit", (event) => {
+      event.preventDefault();
+      this.plugin.data.views.push({ name: newViewer.value, subjects: [], tasks: [] });
+      this.plugin.writeData();
+      this.onClose();
+      this.onOpen();
+    });
+    new import_obsidian4.Setting(contentEl).addButton((btn) => btn.setButtonText("Done").setCta().onClick(() => {
+      this.close();
+    }));
+  }
+  onClose() {
+    const { contentEl } = this;
+    this.onClosing();
+    contentEl.empty();
+  }
+};
+
+// src/modals/file-modal.ts
+var import_obsidian5 = require("obsidian");
+var SuggestFileModal = class extends import_obsidian5.SuggestModal {
   constructor(app, onSubmit) {
     super(app);
     this.onSubmit = onSubmit;
@@ -56,209 +343,454 @@ var SuggestFileModal = class extends import_obsidian.SuggestModal {
   }
 };
 
-// src/modal.ts
-var HomeworkModal = class extends import_obsidian2.Modal {
+// src/modals/homework-modal.ts
+var HomeworkModal = class extends import_obsidian6.Modal {
   constructor(app, plugin) {
     super(app);
-    const { contentEl } = this;
     this.plugin = plugin;
-    this.headingClass = contentEl.createEl("div", { cls: "header" });
-    this.loadClass = contentEl.createEl("div");
+    this.editMode = false;
+    this.creating = false;
   }
   async onOpen() {
     const { contentEl } = this;
-    await this.plugin.loadHomework();
-    this.editMode = false;
-    this.creating = false;
-    const headingText = this.headingClass.createEl("h1", { text: "Homework", cls: "header-title" });
-    const editButton = this.headingClass.createEl("div", { cls: "header-edit-button" });
-    (0, import_obsidian2.setIcon)(editButton, "pencil");
-    this.loadSubjects();
-    editButton.addEventListener("click", (click) => {
-      if (this.creating == false) {
-        this.editMode = !this.editMode;
-        this.loadSubjects();
-        if (this.editMode) {
-          (0, import_obsidian2.setIcon)(editButton, "book-open");
-        } else {
-          (0, import_obsidian2.setIcon)(editButton, "pencil");
-        }
-      } else {
-        new import_obsidian2.Notice("Please complete prompt first.");
-      }
-    });
+    await this.plugin.fetchData();
+    contentEl.addClass("homework-manager");
+    this.divHeader = contentEl.createEl("div", { attr: { "id": "header" } });
+    this.divViewSelector = contentEl.createEl("div");
+    this.divTopLevel = contentEl.createEl("div", { cls: "homework-manager-hidden" });
+    this.divBody = contentEl.createEl("div", { attr: { "id": "body" } });
+    await this.changeView(0);
   }
   onClose() {
     const { contentEl } = this;
     contentEl.empty();
   }
-  async loadSubjects() {
-    this.loadClass.empty();
+  async changeView(viewIndex) {
+    if (!this.plugin.data.views[viewIndex]) {
+      console.log("Cannot find requested view in data.");
+      viewIndex = 0;
+    }
+    await this.createHeader(viewIndex);
     if (this.editMode) {
-      const subjectsHeading = this.loadClass.createEl("div", { cls: "subjects-heading" });
-      const addSubjectButton = subjectsHeading.createEl("div", { cls: "add-subject" });
-      addSubjectButton.createEl("p", { text: "Add a subject" });
-      addSubjectButton.addEventListener("click", (click) => {
-        if (this.creating == false) {
-          let onPromptFinish = function(object) {
-            const subjectText = inputText.value.trim();
-            if (subjectText.length <= 32) {
-              if (!object.plugin.data[subjectText]) {
-                if (subjectText != "") {
-                  object.plugin.data[subjectText] = {};
-                } else {
-                  new import_obsidian2.Notice("Subject must have a name.");
-                }
-              } else {
-                new import_obsidian2.Notice("Cannot create duplicate subject.");
+      await this.createEditMode(viewIndex);
+    } else {
+      await this.createReadMode(viewIndex);
+    }
+  }
+  async createHeader(viewIndex) {
+    this.divHeader.empty();
+    this.divViewSelector.empty();
+    const headerLeft = this.divHeader.createEl("div", { attr: { "id": "left-column" } });
+    const views = this.plugin.data.views;
+    if (!this.editMode) {
+      const dropdownButton = this.createIconButton(headerLeft, void 0, "chevron-down", { message: "View options" });
+      let dropdownList = void 0;
+      dropdownButton.addEventListener("click", (click) => {
+        if (dropdownList == void 0) {
+          dropdownList = this.divViewSelector.createEl("div", { cls: "menu mod-tab-list", attr: { "id": "menu" } });
+          if (views.length > 1) {
+            views.forEach((viewOption, index) => {
+              if (index != viewIndex && dropdownList) {
+                const viewButton = this.createMenuButton(
+                  dropdownList,
+                  void 0,
+                  { icon: "layers", text: viewOption.name },
+                  { message: "Switch to view", position: "right" }
+                );
+                viewButton == null ? void 0 : viewButton.addEventListener("click", (click2) => {
+                  this.editMode = false;
+                  this.changeView(index);
+                });
               }
-            } else {
-              new import_obsidian2.Notice("Must be under 32 characters.");
+            });
+            dropdownList.createEl("div", { cls: "menu-separator" });
+          }
+          const manageButton = this.createMenuButton(
+            dropdownList,
+            void 0,
+            { icon: "pencil", text: "Manage views" },
+            { message: "Add, delete, sort, or rename your views", position: "right" }
+          );
+          manageButton == null ? void 0 : manageButton.addEventListener("click", (click2) => {
+            this.changeView(viewIndex);
+            let modalManage = new ViewManagerModal(this.app, this.plugin);
+            modalManage.onClosing = () => {
+              this.changeView(viewIndex);
+            };
+            modalManage.open();
+          });
+          dropdownList.createEl("div", { cls: "menu-separator" });
+          const taskButton = this.createMenuButton(
+            dropdownList,
+            void 0,
+            { icon: "plus", text: "Add task" },
+            { message: "Creates a task without a subject", position: "right" }
+          );
+          taskButton == null ? void 0 : taskButton.addEventListener("click", async (click2) => {
+            dropdownList == null ? void 0 : dropdownList.remove();
+            dropdownList = void 0;
+            let viewTasksDiv = this.divBody.getElementsByClassName("homework-manager-view-tasks")[0];
+            if (viewTasksDiv === void 0) {
+              viewTasksDiv = this.divTopLevel;
             }
-            object.plugin.saveHomework();
-            object.loadSubjects();
-            object.creating = false;
-            return;
-          };
-          this.creating = true;
-          const promptClass = subjectsHeading.createEl("div", { cls: "subject-prompt" });
-          promptClass.createEl("p", { text: "New subject" });
-          const inputText = promptClass.createEl("input", { type: "text", cls: "subject-prompt-input" });
-          inputText.focus();
-          inputText.addEventListener("keydown", (event) => {
-            if (event.key == "Enter") {
-              onPromptFinish(this);
+            const taskOptions = await this.createTaskPrompt(viewTasksDiv);
+            if (taskOptions) {
+              await this.plugin.dataEditor.addTask(viewIndex, taskOptions);
+              this.changeView(viewIndex);
             }
           });
-          const confirmSubject = promptClass.createEl("div", { cls: "subject-prompt-confirm" });
-          (0, import_obsidian2.setIcon)(confirmSubject, "check");
-          confirmSubject.addEventListener("click", (click2) => {
-            onPromptFinish(this);
+          const subjectButton = this.createMenuButton(
+            dropdownList,
+            void 0,
+            { icon: "copy-plus", text: "Add subject" },
+            { message: "Creates a subject in the current view", position: "right" }
+          );
+          subjectButton == null ? void 0 : subjectButton.addEventListener("click", async (click2) => {
+            dropdownList == null ? void 0 : dropdownList.remove();
+            dropdownList = void 0;
+            const subjectName = await this.createSubjectPrompt();
+            if (subjectName !== void 0) {
+              await this.plugin.dataEditor.addSubject(viewIndex, subjectName);
+              this.changeView(viewIndex);
+            }
           });
         } else {
-          new import_obsidian2.Notice("Already creating new subject.");
+          dropdownList == null ? void 0 : dropdownList.remove();
+          dropdownList = void 0;
         }
       });
     }
-    for (const subjectKey in this.plugin.data) {
-      let newSubjectClass = this.loadClass.createEl("div", { cls: "subject" });
-      let subjectHeading = newSubjectClass.createEl("div", { cls: "subject-heading" });
-      let subjectName = subjectHeading.createEl("div", { text: subjectKey, cls: "subject-heading-name" });
-      if (this.editMode) {
-        let removeSubjectButton = subjectHeading.createEl("div", { cls: "subject-heading-remove" });
-        (0, import_obsidian2.setIcon)(removeSubjectButton, "minus");
-        subjectHeading.insertBefore(removeSubjectButton, subjectName);
-        removeSubjectButton.addEventListener("click", (click) => {
-          Reflect.deleteProperty(this.plugin.data, subjectKey);
-          this.plugin.saveHomework();
-          newSubjectClass.empty();
-        });
-      } else {
-        let newTaskButton = subjectHeading.createEl("div", { cls: "subject-heading-add" });
-        (0, import_obsidian2.setIcon)(newTaskButton, "plus");
-        newTaskButton.addEventListener("click", (click) => {
-          if (this.creating == false) {
-            let onPromptFinish = function(object) {
-              const taskText = inputText.value.trim();
-              if (taskText.length <= 100) {
-                if (!object.plugin.data[subjectKey][taskText]) {
-                  if (taskText != "") {
-                    object.plugin.data[subjectKey][taskText] = {
-                      page,
-                      date: dateField.value
-                    };
-                    object.createTask(newSubjectClass, subjectKey, taskText);
-                  } else {
-                    new import_obsidian2.Notice("Must have a name.");
-                  }
-                } else {
-                  new import_obsidian2.Notice("Cannot create duplicate task.");
-                }
-              } else {
-                new import_obsidian2.Notice("Must be under 100 characters.");
-              }
-              object.plugin.saveHomework();
-              object.creating = false;
-              promptClass.empty();
-            };
-            this.creating = true;
-            let page = "";
-            const promptClass = newSubjectClass.createEl("div", { cls: "task-prompt" });
-            const flexClassTop = promptClass.createEl("div", { cls: "task-prompt-flextop" });
-            const inputText = flexClassTop.createEl("input", { type: "text", cls: "task-prompt-flextop-input" });
-            const confirmTask = flexClassTop.createEl("div", { cls: "task-prompt-flextop-confirm" });
-            (0, import_obsidian2.setIcon)(confirmTask, "check");
-            inputText.focus();
-            const flexClassBottom = promptClass.createEl("div", { cls: "task-prompt-flexbottom" });
-            const suggestButton = flexClassBottom.createEl("div", { text: "File", cls: "task-prompt-flexbottom-suggest" });
-            const dateField = flexClassBottom.createEl("input", { type: "date", cls: "task-prompt-flexbottom-date" });
-            suggestButton.addEventListener("click", (click2) => {
-              new SuggestFileModal(this.app, (result) => {
-                page = result.path;
-                suggestButton.setText(result.name);
-              }).open();
-            });
-            inputText.addEventListener("keydown", (event) => {
-              if (event.key == "Enter") {
-                onPromptFinish(this);
-              }
-            });
-            confirmTask.addEventListener("click", (click2) => {
-              onPromptFinish(this);
-            });
-          } else {
-            new import_obsidian2.Notice("Already creating task.");
-          }
-        });
-      }
-      if (!this.editMode) {
-        for (const taskKey in this.plugin.data[subjectKey]) {
-          this.createTask(newSubjectClass, subjectKey, `${taskKey}`);
-        }
-      }
-    }
+    const viewName = views[viewIndex].name;
+    headerLeft.createEl("h1", { text: viewName });
+    const editIcon = this.editMode ? "book-open" : "pencil";
+    const attributeMessage = this.editMode ? "Switch to view mode" : "Switch to edit mode\nFor editing, reordering or deleting tasks/subjects";
+    const editButton = this.createIconButton(this.divHeader, { attr: { "id": "edit-button" } }, editIcon, { message: attributeMessage });
+    editButton.addEventListener("click", (click) => {
+      this.editMode = !this.editMode;
+      this.changeView(viewIndex);
+    });
   }
-  createTask(subjectClass, subjectKey, taskName) {
-    let taskClass = subjectClass.createEl("div", { cls: "task" });
-    let taskButton = taskClass.createEl("div", { cls: "task-check" });
-    let filePath = this.plugin.data[subjectKey][taskName].page;
-    let taskText;
-    if (filePath == "") {
-      taskText = taskClass.createEl("div", { text: taskName, cls: "task-text", parent: taskButton });
-    } else {
-      taskText = taskClass.createEl("div", { text: taskName, cls: "task-link", parent: taskButton });
+  async createReadMode(viewIndex) {
+    this.divBody.empty();
+    const view = this.plugin.data.views[viewIndex];
+    const subjects = this.plugin.data.views[viewIndex].subjects;
+    const viewTasks = this.divBody.createEl("div", { cls: "homework-manager-view-tasks", attr: { "id": "subject" } });
+    view.tasks.forEach(async (task, taskIndex) => {
+      const check = this.createTask(viewTasks, task, taskIndex, viewIndex);
+      if (check !== void 0) {
+        check.addEventListener("click", async (click) => {
+          await this.plugin.dataEditor.removeTask(viewIndex, taskIndex);
+          this.changeView(viewIndex);
+        });
+      }
+    });
+    if (this.plugin.data.settings.autoSortForTaskQuantity) {
+      subjects.sort((a, b) => a.tasks.length > b.tasks.length ? -1 : 1);
     }
-    let dateValue = this.plugin.data[subjectKey][taskName].date;
-    if (dateValue != "") {
-      let date = new Date(this.plugin.data[subjectKey][taskName].date);
-      var dateArr = date.toDateString().split(" ");
-      var dateFormat = dateArr[2] + " " + dateArr[1] + " " + dateArr[3];
-      let taskDate = taskClass.createEl("div", { text: dateFormat, cls: "task-date", parent: taskText });
-      if (new Date() > date && new Date().toDateString() != date.toDateString()) {
+    subjects.forEach((subject, subjectIndex) => {
+      const subjectDiv = this.divBody.createEl("div", { attr: { "id": "subject" } });
+      const titleDiv = subjectDiv.createEl("div", { attr: { "id": "title" } });
+      titleDiv.createEl("h2", { text: subject.name });
+      const newTaskButton = this.createIconButton(
+        titleDiv,
+        void 0,
+        "plus",
+        { message: "Add new task to subject" }
+      );
+      newTaskButton.addEventListener("click", async (click) => {
+        const taskOptions = await this.createTaskPrompt(subjectDiv);
+        if (taskOptions) {
+          await this.plugin.dataEditor.addTask(viewIndex, taskOptions, subjectIndex);
+          this.changeView(viewIndex);
+        }
+      });
+      const tasks = subject.tasks;
+      tasks.forEach(async (task, taskIndex) => {
+        const check = this.createTask(subjectDiv, task, taskIndex, viewIndex, subjectIndex);
+        check.addEventListener("click", async (click) => {
+          await this.plugin.dataEditor.removeTask(viewIndex, taskIndex, subjectIndex);
+          this.changeView(viewIndex);
+        });
+      });
+    });
+  }
+  createEditMode(viewIndex) {
+    this.divBody.empty();
+    const view = this.plugin.data.views[viewIndex];
+    const subjects = this.plugin.data.views[viewIndex].subjects;
+    const viewTasks = this.divBody.createEl("div", { cls: "homework-manager-view-tasks", attr: { "id": "subject" } });
+    view.tasks.forEach(async (task, taskIndex) => {
+      this.createEditTask(viewTasks, task, taskIndex, viewIndex);
+    });
+    subjects.forEach((subject, subjectIndex) => {
+      const subjectDiv = this.divBody.createEl("div", { attr: { "id": "subject" } });
+      const titleDiv = subjectDiv.createEl("div", { attr: { "id": "title" } });
+      let removeSubjectButton = titleDiv.createEl("div", { attr: { "id": "remove-subject" } });
+      (0, import_obsidian6.setIcon)(removeSubjectButton, "minus");
+      removeSubjectButton.addEventListener("click", async (click) => {
+        await this.plugin.dataEditor.removeSubject(viewIndex, subjectIndex);
+        subjectDiv.empty();
+      });
+      let title = titleDiv.createEl("input", { cls: "hidden-textbox subject-box", type: "text", value: subject.name });
+      title.addEventListener("change", async (change) => {
+        subject.name = title.value;
+        await this.plugin.writeData();
+      });
+      const tasks = subject.tasks;
+      tasks.forEach(async (task, taskIndex) => {
+        this.createEditTask(subjectDiv, task, taskIndex, viewIndex, subjectIndex);
+      });
+    });
+  }
+  createEditTask(div, task, taskIndex, viewIndex, subjectIndex) {
+    const taskDiv = div.createEl("div", { attr: { "id": "task", "display": "flex" } });
+    const leftDiv = taskDiv.createEl("div");
+    const rightDiv = taskDiv.createEl("div");
+    leftDiv.style.display = "flex";
+    leftDiv.style.flexDirection = "row";
+    const righterDiv = leftDiv.createEl("div");
+    righterDiv.style.display = "flex";
+    righterDiv.style.flexDirection = "row";
+    let up = righterDiv.createEl("p", { text: " \u2191 " });
+    righterDiv.createEl("p", { text: "   " });
+    let down = righterDiv.createEl("p", { text: " \u2193 " });
+    up.addEventListener("click", async (click) => {
+      await this.plugin.dataEditor.moveTask(viewIndex, taskIndex, true, subjectIndex);
+      this.changeView(viewIndex);
+    });
+    down.addEventListener("click", async (click) => {
+      await this.plugin.dataEditor.moveTask(viewIndex, taskIndex, false, subjectIndex);
+      this.changeView(viewIndex);
+    });
+    const nameBox = leftDiv.createEl("input", { type: "text", value: task.name, cls: "hidden-textbox" });
+    nameBox.addEventListener("change", async (change) => {
+      task.name = nameBox.value;
+      await this.plugin.writeData();
+    });
+    const fileButton = leftDiv.createEl("button", { text: "File" });
+    const dateButton = rightDiv.createEl("input", { type: "date", value: task.date });
+    let page = "";
+    fileButton.addEventListener("click", () => {
+      new SuggestFileModal(this.app, (result) => {
+        page = result.path;
+        fileButton.setText(result.name);
+        task.page = page;
+        this.plugin.writeData();
+      }).open();
+    });
+    dateButton.addEventListener("change", async (change) => {
+      task.date = dateButton.value;
+      await this.plugin.writeData();
+    });
+  }
+  createTask(div, task, taskIndex, viewIndex, subjectIndex) {
+    const taskDiv = div.createEl("div", { attr: { "id": "task", "display": "flex" } });
+    const leftDiv = taskDiv.createEl("div");
+    const rightDiv = taskDiv.createEl("div");
+    leftDiv.style.display = "flex";
+    leftDiv.style.flexDirection = "row";
+    let interactionDiv;
+    interactionDiv = leftDiv.createEl("div", { attr: { "id": "check" } });
+    const taskName = leftDiv.createEl("p", { text: task.name });
+    if (task.page !== "") {
+      taskName.addClass("homework-manager-link");
+      if (this.plugin.data.settings.showTooltips) {
+        taskName.setAttribute("aria-label", "Go to linked file");
+        taskName.setAttribute("data-tooltip-position", "right");
+      }
+      taskName.addEventListener("click", (click) => {
+        const file = this.app.vault.getAbstractFileByPath(task.page);
+        if (file instanceof import_obsidian6.TFile) {
+          this.app.workspace.getLeaf().openFile(file);
+          this.close();
+          return;
+        }
+        new import_obsidian6.Notice("Linked file cannot be found.");
+      });
+    }
+    if (task.date.length > 0) {
+      const date = new Date(task.date);
+      let formattedDate = date.toLocaleDateString(void 0, {
+        weekday: "short",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
+      const today = new Date();
+      const yesterday = new Date();
+      yesterday.setDate(today.getDate() - 1);
+      const tomorrow = new Date();
+      tomorrow.setDate(today.getDate() + 1);
+      if (date.toDateString() == today.toDateString()) {
+        formattedDate = "Today";
+      } else if (date.toDateString() == tomorrow.toDateString()) {
+        formattedDate = "Tomorrow";
+      } else if (date.toDateString() == yesterday.toDateString()) {
+        formattedDate = "Yesterday";
+      }
+      const taskDate = rightDiv.createEl("p", { text: formattedDate, attr: { "id": "date" } });
+      if (today > date && today.toDateString() !== date.toDateString()) {
         taskDate.style.color = "var(--text-error)";
       }
     }
-    taskText.addEventListener("click", (click) => {
-      if (filePath != "") {
-        let file = this.app.vault.getAbstractFileByPath(filePath);
-        if (file instanceof import_obsidian2.TFile) {
-          this.app.workspace.getLeaf().openFile(file);
-          this.close();
-        }
+    return interactionDiv;
+  }
+  createSubjectPrompt() {
+    this.divTopLevel.empty();
+    this.divTopLevel.removeClass("homework-manager-hidden");
+    const subjectPrompt = this.divTopLevel.createEl("div", { attr: { "id": "subject-prompt" } });
+    const inputText = subjectPrompt.createEl("input", { type: "text", placeholder: "Enter subject name" });
+    inputText.focus();
+    const saveButton = this.createIconButton(subjectPrompt, void 0, "check", { message: "Confirm", position: "bottom" });
+    saveButton.addClass("homework-manager-hidden");
+    const cancelButton = this.createIconButton(subjectPrompt, void 0, "x", { message: "Cancel", position: "bottom" });
+    inputText.addEventListener("keyup", (event) => {
+      if (inputText.value.trim().length > 0) {
+        saveButton.removeClass("homework-manager-hidden");
+      } else {
+        saveButton.addClass("homework-manager-hidden");
       }
     });
-    taskButton.addEventListener("click", (click) => {
-      Reflect.deleteProperty(this.plugin.data[subjectKey], taskName);
-      this.plugin.saveHomework();
-      taskClass.empty();
+    const hideDiv = () => {
+      this.divTopLevel.empty();
+      this.divTopLevel.addClass("homework-manager-hidden");
+    };
+    return new Promise((resolve) => {
+      inputText.addEventListener("keyup", (event) => {
+        if (event.key === "Enter") {
+          if (inputText.value.trim().length > 0) {
+            hideDiv();
+            resolve(inputText.value.trim());
+          }
+        }
+      });
+      saveButton.addEventListener("click", () => {
+        hideDiv();
+        if (inputText.value.trim().length > 0) {
+          resolve(inputText.value.trim());
+        }
+        resolve(void 0);
+      });
+      cancelButton.addEventListener("click", () => {
+        hideDiv();
+        resolve(void 0);
+      });
     });
+  }
+  createTaskPrompt(subjectDiv) {
+    let topLevel = false;
+    if (subjectDiv === this.divTopLevel) {
+      topLevel = true;
+    }
+    if (topLevel) {
+      this.divTopLevel.empty();
+      this.divTopLevel.removeClass("homework-manager-hidden");
+    }
+    const taskPrompt = subjectDiv.createEl("div", { attr: { "id": "task-prompt" } });
+    const top = taskPrompt.createEl("div", { attr: { "id": "top" } });
+    const bottom = taskPrompt.createEl("div", { attr: { "id": "bottom" } });
+    const inputText = top.createEl("input", { type: "text", placeholder: "Enter task name" });
+    inputText.focus();
+    const saveButton = this.createIconButton(top, void 0, "check", { message: "Confirm", position: "bottom" });
+    saveButton.addClass("homework-manager-hidden");
+    const cancelButton = this.createIconButton(top, void 0, "x", { message: "Cancel", position: "bottom" });
+    inputText.addEventListener("keyup", (event) => {
+      if (inputText.value.trim().length > 0) {
+        saveButton.removeClass("homework-manager-hidden");
+      } else {
+        saveButton.addClass("homework-manager-hidden");
+      }
+    });
+    const fileButton = bottom.createEl("button", { text: "File" });
+    const dateButton = bottom.createEl("input", { type: "date" });
+    let page = "";
+    fileButton.addEventListener("click", () => {
+      new SuggestFileModal(this.app, (result) => {
+        page = result.path;
+        fileButton.setText(result.name);
+      }).open();
+    });
+    const getTaskOptions = () => {
+      return {
+        name: inputText.value.trim(),
+        date: dateButton.value,
+        page
+      };
+    };
+    const hideDiv = () => {
+      if (topLevel) {
+        this.divTopLevel.empty();
+        this.divTopLevel.addClass("homework-manager-hidden");
+      }
+    };
+    return new Promise((resolve) => {
+      inputText.addEventListener("keyup", (event) => {
+        const result = getTaskOptions();
+        if (event.key === "Enter") {
+          if (result.name.length > 0) {
+            hideDiv();
+            resolve(result);
+          }
+        }
+      });
+      saveButton.addEventListener("click", () => {
+        const result = getTaskOptions();
+        hideDiv();
+        if (result.name.length > 0) {
+          resolve(result);
+        }
+        taskPrompt.remove();
+        resolve(void 0);
+      });
+      cancelButton.addEventListener("click", () => {
+        hideDiv();
+        taskPrompt.remove();
+        resolve(void 0);
+      });
+    });
+  }
+  createIconButton(div, elementInfo, icon, attribute) {
+    const button = div.createEl("span", elementInfo);
+    button.addClass("clickable-icon");
+    (0, import_obsidian6.setIcon)(button, icon);
+    if ((attribute == null ? void 0 : attribute.message) && this.plugin.data.settings.showTooltips) {
+      button.setAttribute("aria-label", attribute.message);
+      if (attribute.position) {
+        button.setAttribute("data-tooltip-position", attribute.position);
+      } else {
+        button.setAttribute("data-tooltip-position", "top");
+      }
+    }
+    return button;
+  }
+  createMenuButton(div, elementInfo, item, attribute) {
+    const button = div.createEl("div", elementInfo);
+    button.addClass("menu-item");
+    if (item.icon) {
+      const buttonIcon = button.createEl("div", { cls: "menu-item-icon" });
+      (0, import_obsidian6.setIcon)(buttonIcon, item.icon);
+    }
+    if (item.text) {
+      button.createEl("div", { cls: "menu-item-title", "text": item.text });
+    }
+    if ((attribute == null ? void 0 : attribute.message) && this.plugin.data.settings.showTooltips) {
+      button.setAttribute("aria-label", attribute.message);
+      if (attribute.position) {
+        button.setAttribute("data-tooltip-position", attribute.position);
+      } else {
+        button.setAttribute("data-tooltip-position", "top");
+      }
+    }
+    return button;
   }
 };
 
 // src/main.ts
-var HomeworkPlugin = class extends import_obsidian3.Plugin {
+var HomeworkManagerPlugin = class extends import_obsidian7.Plugin {
   async onload() {
-    const ribbonToggle = this.addRibbonIcon("book", "Open homework", (evt) => {
+    await this.fetchData();
+    this.addSettingTab(new SettingsTab(this.app, this));
+    const ribbonToggle = this.addRibbonIcon(defaultLogo, "Open homework", (evt) => {
       new HomeworkModal(this.app, this).open();
     });
     ribbonToggle.addClass("my-plugin-ribbon-class");
@@ -269,14 +801,34 @@ var HomeworkPlugin = class extends import_obsidian3.Plugin {
         new HomeworkModal(this.app, this).open();
       }
     });
+    this.addCommand({
+      id: "open-update-notes",
+      name: "Open update notes",
+      callback: () => {
+        new UpdateModal(this.app, this).open();
+      }
+    });
+    if (await asyncisUpdated(this.app)) {
+      new UpdateModal(this.app, this).open();
+    }
   }
-  async loadHomework() {
-    this.data = Object.assign({}, await this.loadData());
+  async onunload() {
+    await this.writeData();
   }
-  async saveHomework() {
+  async fetchData() {
+    this.dataEditor = new DataEditor(this);
+    const foundData = Object.assign({}, await this.loadData());
+    let newData = foundData;
+    if (foundData.views === void 0) {
+      newData = this.dataEditor.convertFromLegacy(foundData);
+    }
+    newData = this.dataEditor.formatData(newData);
+    this.data = newData;
+    await this.writeData();
+  }
+  async writeData() {
     await this.saveData(this.data);
   }
 };
-
 
 /* nosourcemap */

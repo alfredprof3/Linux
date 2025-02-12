@@ -13,12 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SSH.md",
+                "file": "Vimrc (dot file).md",
                 "mode": "source",
-                "source": false
+                "source": false,
+                "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "SSH"
+              "title": "Vimrc (dot file)"
             }
           }
         ]
@@ -145,8 +146,19 @@
               "icon": "lucide-list",
               "title": "Outline of SSH"
             }
+          },
+          {
+            "id": "a6521e9e5fbbd655",
+            "type": "leaf",
+            "state": {
+              "type": "sfdn-calendar",
+              "state": {},
+              "icon": "calendar-days",
+              "title": "Calendar"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -155,18 +167,25 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "github-sync:Sync with Remote": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "obsidian42-brat:BRAT": false,
+      "dashboard-navigator:Open dashboard navigator": false,
+      "tldraw:Create new tldrawing": false,
+      "single-file-daily-notes:Open daily notes": false,
+      "homework-manager:Open homework": false,
+      "github-sync:Sync with Remote": false
     }
   },
   "active": "593367f2512fb3cb",
   "lastOpenFiles": [
+    "Vim.md",
     "Vim plugins.md",
+    "SSH.md",
     "Monday-26-Aug-2024.md",
     "Markdown.md",
     "Github Sync (Obsidian plugin).md",
