@@ -21,6 +21,7 @@ For first time you need some Git configurations before pushing the commits and c
 	To user the `--local` method, you need to get inside the directory cloned.
 
 2. Clone the repository wherever you want. File location doesn't matter.
+
 	```sh
 	git clone https://github.com/username/repo-name.git
 	```

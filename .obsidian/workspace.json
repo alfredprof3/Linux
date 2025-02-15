@@ -43,13 +43,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Github.md",
+                "file": "Github Sync.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "Github"
+              "title": "Github Sync"
             }
           },
           {
@@ -229,8 +229,8 @@
   },
   "active": "3858638805588192",
   "lastOpenFiles": [
-    "Obsidian.md",
     "Github.md",
+    "Obsidian.md",
     "Remotely Save.md",
     "Github Sync.md",
     "Git.md",

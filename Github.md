@@ -2,13 +2,13 @@ GitHub is a web-based platform that hosts Git repositories, providing developers
 
 # Usage
 
-# Creating the repository
+## Creating the repository
 
 1. To create and store your files in Github, first you need to create a [Github account](https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home)
 2. Once you have created your account and logged in, create a new repository from the "+▿" icon in the top-right side menu bar and choose "_New repository_".
 3. Give a name, description and choose "_Public or Private_" option. Once you finished, click the "_Create repository_" green button.
 
-# Uploading the files
+## Uploading the files
 
 If you have already initialize your local repository in your computer, you only need to upload your files into Github.
 
