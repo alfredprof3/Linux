@@ -31,3 +31,6 @@ Is possible to execute Linux commands like `pwd` or `ls -lah` to do this write t
 var=`pwd` # or another Linux command
 echo "Your current working directory is -> $var"
 ```
+
+> [!NOTE]
+> Is important to type the command inside ˋ ˋ

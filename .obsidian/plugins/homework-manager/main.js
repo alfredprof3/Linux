@@ -27,7 +27,7 @@ __export(main_exports, {
   default: () => HomeworkManagerPlugin
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian7 = require("obsidian");
+var import_obsidian6 = require("obsidian");
 
 // src/settings.ts
 var import_obsidian = require("obsidian");
@@ -40,13 +40,7 @@ var SettingsTab = class extends import_obsidian.PluginSettingTab {
   display() {
     const { containerEl } = this;
     containerEl.empty();
-    new import_obsidian.Setting(containerEl).setName("Delete finished tasks").setDesc("Deletes finished tasks instead of marking them complete.").addToggle((toggle) => {
-      toggle.setValue(this.plugin.data.settings.deleteFinishedTasks).onChange(async (val) => {
-        this.plugin.data.settings.deleteFinishedTasks = val;
-        await this.plugin.writeData();
-      });
-    });
-    new import_obsidian.Setting(containerEl).setName("Auto sort for task quantity").setDesc("Automatically sort tasks by quantity.").addToggle((toggle) => {
+    new import_obsidian.Setting(containerEl).setName("Auto sort for task quantity").setDesc("Automatically sort subjects by the quantity of tasks.").addToggle((toggle) => {
       toggle.setValue(this.plugin.data.settings.autoSortForTaskQuantity).onChange(async (val) => {
         this.plugin.data.settings.autoSortForTaskQuantity = val;
         await this.plugin.writeData();
@@ -62,11 +56,13 @@ var SettingsTab = class extends import_obsidian.PluginSettingTab {
 };
 
 // src/data-editor.ts
+var currentVersion = "1.1.1";
 var DEFAULT_DATA = {
   settings: {
     deleteFinishedTasks: true,
     showTooltips: true,
-    autoSortForTaskQuantity: true
+    autoSortForTaskQuantity: true,
+    version: currentVersion
   },
   views: new Array()
 };
@@ -97,7 +93,7 @@ var DataEditor = class {
   // Make sure new updates are reflected
   formatData(data) {
     const newData = Object.assign({}, DEFAULT_DATA);
-    newData.settings = data.settings;
+    newData.settings = { ...DEFAULT_DATA.settings, ...data.settings };
     newData.views = new Array();
     const assign = (assignTo, object) => {
       let filteredObject = {};
@@ -155,6 +151,16 @@ var DataEditor = class {
     newData.views.push(view);
     console.log("Found data is legacy, converting now.\n\nLegacy", data, "\n\nConverted", newData);
     return newData;
+  }
+  async checkPluginUpdated() {
+    const lastVersion = this.plugin.data.settings.version.split(".").slice(0, 2).join(".");
+    const current = currentVersion.split(".").slice(0, 2).join(".");
+    if (lastVersion == current) {
+      return false;
+    }
+    this.plugin.data.settings.version = currentVersion;
+    await this.plugin.writeData();
+    return true;
   }
   async addSubject(viewIndex, subjectName) {
     const view = this.plugin.data.views[viewIndex];
@@ -230,20 +236,9 @@ var DataEditor = class {
   }
 };
 
-// src/update.ts
-var import_obsidian2 = require("obsidian");
-var path = ".obsidian/plugins/homework-manager/temp";
-async function asyncisUpdated(app) {
-  let file = await app.vault.adapter.exists((0, import_obsidian2.normalizePath)(path));
-  if (file)
-    return false;
-  await app.vault.create(path, "");
-  return true;
-}
-
 // src/modals/update-modal.ts
-var import_obsidian3 = require("obsidian");
-var UpdateModal = class extends import_obsidian3.Modal {
+var import_obsidian2 = require("obsidian");
+var UpdateModal = class extends import_obsidian2.Modal {
   constructor(app, plugin) {
     super(app);
     this.plugin = plugin;
@@ -269,11 +264,11 @@ var UpdateModal = class extends import_obsidian3.Modal {
 };
 
 // src/modals/homework-modal.ts
-var import_obsidian6 = require("obsidian");
+var import_obsidian5 = require("obsidian");
 
 // src/modals/view-modal.ts
-var import_obsidian4 = require("obsidian");
-var ViewManagerModal = class extends import_obsidian4.Modal {
+var import_obsidian3 = require("obsidian");
+var ViewManagerModal = class extends import_obsidian3.Modal {
   constructor(app, plugin) {
     super(app);
     this.plugin = plugin;
@@ -291,7 +286,7 @@ var ViewManagerModal = class extends import_obsidian4.Modal {
         this.plugin.writeData();
       });
       const deleteButton = viewContainer.createEl("button", { cls: "delete-button hidden-textbox" });
-      (0, import_obsidian4.setIcon)(deleteButton, "trash-2");
+      (0, import_obsidian3.setIcon)(deleteButton, "trash-2");
       deleteButton.addEventListener("click", () => {
         this.plugin.data.views = this.plugin.data.views.filter((v) => v !== view);
         this.plugin.writeData();
@@ -308,7 +303,7 @@ var ViewManagerModal = class extends import_obsidian4.Modal {
       this.onClose();
       this.onOpen();
     });
-    new import_obsidian4.Setting(contentEl).addButton((btn) => btn.setButtonText("Done").setCta().onClick(() => {
+    new import_obsidian3.Setting(contentEl).addButton((btn) => btn.setButtonText("Done").setCta().onClick(() => {
       this.close();
     }));
   }
@@ -320,8 +315,8 @@ var ViewManagerModal = class extends import_obsidian4.Modal {
 };
 
 // src/modals/file-modal.ts
-var import_obsidian5 = require("obsidian");
-var SuggestFileModal = class extends import_obsidian5.SuggestModal {
+var import_obsidian4 = require("obsidian");
+var SuggestFileModal = class extends import_obsidian4.SuggestModal {
   constructor(app, onSubmit) {
     super(app);
     this.onSubmit = onSubmit;
@@ -344,7 +339,7 @@ var SuggestFileModal = class extends import_obsidian5.SuggestModal {
 };
 
 // src/modals/homework-modal.ts
-var HomeworkModal = class extends import_obsidian6.Modal {
+var HomeworkModal = class extends import_obsidian5.Modal {
   constructor(app, plugin) {
     super(app);
     this.plugin = plugin;
@@ -526,7 +521,7 @@ var HomeworkModal = class extends import_obsidian6.Modal {
       const subjectDiv = this.divBody.createEl("div", { attr: { "id": "subject" } });
       const titleDiv = subjectDiv.createEl("div", { attr: { "id": "title" } });
       let removeSubjectButton = titleDiv.createEl("div", { attr: { "id": "remove-subject" } });
-      (0, import_obsidian6.setIcon)(removeSubjectButton, "minus");
+      (0, import_obsidian5.setIcon)(removeSubjectButton, "minus");
       removeSubjectButton.addEventListener("click", async (click) => {
         await this.plugin.dataEditor.removeSubject(viewIndex, subjectIndex);
         subjectDiv.empty();
@@ -600,12 +595,12 @@ var HomeworkModal = class extends import_obsidian6.Modal {
       }
       taskName.addEventListener("click", (click) => {
         const file = this.app.vault.getAbstractFileByPath(task.page);
-        if (file instanceof import_obsidian6.TFile) {
+        if (file instanceof import_obsidian5.TFile) {
           this.app.workspace.getLeaf().openFile(file);
           this.close();
           return;
         }
-        new import_obsidian6.Notice("Linked file cannot be found.");
+        new import_obsidian5.Notice("Linked file cannot be found.");
       });
     }
     if (task.date.length > 0) {
@@ -752,7 +747,7 @@ var HomeworkModal = class extends import_obsidian6.Modal {
   createIconButton(div, elementInfo, icon, attribute) {
     const button = div.createEl("span", elementInfo);
     button.addClass("clickable-icon");
-    (0, import_obsidian6.setIcon)(button, icon);
+    (0, import_obsidian5.setIcon)(button, icon);
     if ((attribute == null ? void 0 : attribute.message) && this.plugin.data.settings.showTooltips) {
       button.setAttribute("aria-label", attribute.message);
       if (attribute.position) {
@@ -768,7 +763,7 @@ var HomeworkModal = class extends import_obsidian6.Modal {
     button.addClass("menu-item");
     if (item.icon) {
       const buttonIcon = button.createEl("div", { cls: "menu-item-icon" });
-      (0, import_obsidian6.setIcon)(buttonIcon, item.icon);
+      (0, import_obsidian5.setIcon)(buttonIcon, item.icon);
     }
     if (item.text) {
       button.createEl("div", { cls: "menu-item-title", "text": item.text });
@@ -786,7 +781,7 @@ var HomeworkModal = class extends import_obsidian6.Modal {
 };
 
 // src/main.ts
-var HomeworkManagerPlugin = class extends import_obsidian7.Plugin {
+var HomeworkManagerPlugin = class extends import_obsidian6.Plugin {
   async onload() {
     await this.fetchData();
     this.addSettingTab(new SettingsTab(this.app, this));
@@ -808,7 +803,7 @@ var HomeworkManagerPlugin = class extends import_obsidian7.Plugin {
         new UpdateModal(this.app, this).open();
       }
     });
-    if (await asyncisUpdated(this.app)) {
+    if (await this.dataEditor.checkPluginUpdated()) {
       new UpdateModal(this.app, this).open();
     }
   }

@@ -961,10 +961,10 @@ var require_shared_store = __commonJS({
     var SHARED = "__core-js_shared__";
     var store = module2.exports = globalThis2[SHARED] || defineGlobalProperty(SHARED, {});
     (store.versions || (store.versions = [])).push({
-      version: "3.39.0",
+      version: "3.40.0",
       mode: IS_PURE ? "pure" : "global",
-      copyright: "\xA9 2014-2024 Denis Pushkarev (zloirock.ru)",
-      license: "https://github.com/zloirock/core-js/blob/v3.39.0/LICENSE",
+      copyright: "\xA9 2014-2025 Denis Pushkarev (zloirock.ru)",
+      license: "https://github.com/zloirock/core-js/blob/v3.40.0/LICENSE",
       source: "https://github.com/zloirock/core-js"
     });
   }
@@ -3952,7 +3952,7 @@ var require_react_development = __commonJS({
           }
           return dispatcher.useContext(Context2);
         }
-        function useState55(initialState2) {
+        function useState54(initialState2) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useState(initialState2);
         }
@@ -4006,7 +4006,7 @@ var require_react_development = __commonJS({
           var dispatcher = resolveDispatcher();
           return dispatcher.useId();
         }
-        function useSyncExternalStore4(subscribe, getSnapshot2, getServerSnapshot) {
+        function useSyncExternalStore5(subscribe, getSnapshot2, getServerSnapshot) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useSyncExternalStore(subscribe, getSnapshot2, getServerSnapshot);
         }
@@ -4755,8 +4755,8 @@ var require_react_development = __commonJS({
         exports.useMemo = useMemo39;
         exports.useReducer = useReducer2;
         exports.useRef = useRef71;
-        exports.useState = useState55;
-        exports.useSyncExternalStore = useSyncExternalStore4;
+        exports.useState = useState54;
+        exports.useSyncExternalStore = useSyncExternalStore5;
         exports.useTransition = useTransition;
         exports.version = ReactVersion;
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") {
@@ -21997,8 +21997,8 @@ var require_react_dom_development = __commonJS({
             } else if (isSuspenseInstancePending(suspenseInstance)) {
               workInProgress2.flags |= DidCapture;
               workInProgress2.child = current2.child;
-              var retry = retryDehydratedSuspenseBoundary.bind(null, current2);
-              registerSuspenseInstanceRetry(suspenseInstance, retry);
+              var retry2 = retryDehydratedSuspenseBoundary.bind(null, current2);
+              registerSuspenseInstanceRetry(suspenseInstance, retry2);
               return null;
             } else {
               reenterHydrationStateFromDehydratedSuspenseInstance(workInProgress2, suspenseInstance, suspenseState.treeContext);
@@ -24291,7 +24291,7 @@ var require_react_dom_development = __commonJS({
               retryCache = finishedWork.stateNode = new PossiblyWeakSet();
             }
             wakeables.forEach(function(wakeable) {
-              var retry = resolveRetryWakeable.bind(null, finishedWork, wakeable);
+              var retry2 = resolveRetryWakeable.bind(null, finishedWork, wakeable);
               if (!retryCache.has(wakeable)) {
                 retryCache.add(wakeable);
                 {
@@ -24303,7 +24303,7 @@ var require_react_dom_development = __commonJS({
                     }
                   }
                 }
-                wakeable.then(retry, retry);
+                wakeable.then(retry2, retry2);
               }
             });
           }
@@ -28774,10 +28774,10 @@ var require_use_sync_external_store_shim_development = __commonJS({
           return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y;
         }
         var objectIs = typeof Object.is === "function" ? Object.is : is;
-        var useState55 = React77.useState, useEffect65 = React77.useEffect, useLayoutEffect18 = React77.useLayoutEffect, useDebugValue3 = React77.useDebugValue;
+        var useState54 = React77.useState, useEffect65 = React77.useEffect, useLayoutEffect18 = React77.useLayoutEffect, useDebugValue3 = React77.useDebugValue;
         var didWarnOld18Alpha = false;
         var didWarnUncachedGetSnapshot = false;
-        function useSyncExternalStore4(subscribe, getSnapshot2, getServerSnapshot) {
+        function useSyncExternalStore5(subscribe, getSnapshot2, getServerSnapshot) {
           {
             if (!didWarnOld18Alpha) {
               if (React77.startTransition !== void 0) {
@@ -28796,7 +28796,7 @@ var require_use_sync_external_store_shim_development = __commonJS({
               }
             }
           }
-          var _useState = useState55({
+          var _useState = useState54({
             inst: {
               value,
               getSnapshot: getSnapshot2
@@ -28844,7 +28844,7 @@ var require_use_sync_external_store_shim_development = __commonJS({
         }
         var canUseDOM = !!(typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined");
         var isServerEnvironment = !canUseDOM;
-        var shim = isServerEnvironment ? useSyncExternalStore$1 : useSyncExternalStore4;
+        var shim = isServerEnvironment ? useSyncExternalStore$1 : useSyncExternalStore5;
         var useSyncExternalStore$2 = React77.useSyncExternalStore !== void 0 ? React77.useSyncExternalStore : shim;
         exports.useSyncExternalStore = useSyncExternalStore$2;
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") {
@@ -28883,7 +28883,7 @@ var require_with_selector_development = __commonJS({
           return x === y && (x !== 0 || 1 / x === 1 / y) || x !== x && y !== y;
         }
         var objectIs = typeof Object.is === "function" ? Object.is : is;
-        var useSyncExternalStore4 = shim.useSyncExternalStore;
+        var useSyncExternalStore5 = shim.useSyncExternalStore;
         var useRef71 = React77.useRef, useEffect65 = React77.useEffect, useMemo39 = React77.useMemo, useDebugValue3 = React77.useDebugValue;
         function useSyncExternalStoreWithSelector2(subscribe, getSnapshot2, getServerSnapshot, selector, isEqual3) {
           var instRef = useRef71(null);
@@ -28940,7 +28940,7 @@ var require_with_selector_development = __commonJS({
             };
             return [getSnapshotWithSelector, getServerSnapshotWithSelector];
           }, [getSnapshot2, getServerSnapshot, selector, isEqual3]), getSelection = _useMemo[0], getServerSelection = _useMemo[1];
-          var value = useSyncExternalStore4(subscribe, getSelection, getServerSelection);
+          var value = useSyncExternalStore5(subscribe, getSelection, getServerSelection);
           useEffect65(function() {
             inst3.hasValue = true;
             inst3.value = value;
@@ -28987,7 +28987,7 @@ var VIEW_TYPE_TLDRAW_READ_ONLY = "tldraw-read-only";
 var VIEW_TYPE_MARKDOWN = "markdown";
 var VIEW_TYPES = [VIEW_TYPE_MARKDOWN, VIEW_TYPE_TLDRAW, VIEW_TYPE_TLDRAW_FILE, VIEW_TYPE_TLDRAW_READ_ONLY];
 var PANE_TARGETS = ["new-window", "new-tab", "current-tab", "split-tab"];
-var TLDRAW_VERSION = "3.6.0";
+var TLDRAW_VERSION = "3.7.2";
 var FILE_EXTENSION = ".md";
 var FRONTMATTER_KEY = "tldraw-file";
 var TLDATA_DELIMITER_START = "!!!_START_OF_TLDRAW_DATA__DO_NOT_CHANGE_THIS_PHRASE_!!!";
@@ -29179,6 +29179,65 @@ function entry(map, key, defaultValue) {
 var import_lodash = __toESM(require_lodash(), 1);
 var import_lodash2 = __toESM(require_lodash2(), 1);
 
+// node_modules/@tldraw/utils/dist-esm/lib/function.mjs
+function omitFromStackTrace(fn) {
+  const wrappedFn = (...args) => {
+    try {
+      return fn(...args);
+    } catch (error) {
+      if (error instanceof Error && Error.captureStackTrace) {
+        Error.captureStackTrace(error, wrappedFn);
+      }
+      throw error;
+    }
+  };
+  return wrappedFn;
+}
+var noop = () => {
+};
+
+// node_modules/@tldraw/utils/dist-esm/lib/control.mjs
+var Result = {
+  ok(value) {
+    return { ok: true, value };
+  },
+  err(error) {
+    return { ok: false, error };
+  }
+};
+function exhaustiveSwitchError(value, property) {
+  const debugValue = property && value && typeof value === "object" && property in value ? value[property] : value;
+  throw new Error(`Unknown switch case ${debugValue}`);
+}
+var assert = omitFromStackTrace(
+  (value, message) => {
+    if (!value) {
+      throw new Error(message || "Assertion Error");
+    }
+  }
+);
+var assertExists = omitFromStackTrace((value, message) => {
+  if (value == null) {
+    throw new Error(message != null ? message : "value must be defined");
+  }
+  return value;
+});
+function promiseWithResolve() {
+  let resolve;
+  let reject;
+  const promise = new Promise((res, rej) => {
+    resolve = res;
+    reject = rej;
+  });
+  return Object.assign(promise, {
+    resolve,
+    reject
+  });
+}
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 // node_modules/@tldraw/utils/dist-esm/lib/perf.mjs
 var PERFORMANCE_COLORS = {
   Good: "#40C057",
@@ -29262,6 +29321,18 @@ function minBy(arr, fn) {
   }
   return min3;
 }
+function maxBy(arr, fn) {
+  let max2;
+  let maxVal = -Infinity;
+  for (const item of arr) {
+    const val = fn(item);
+    if (val > maxVal) {
+      max2 = item;
+      maxVal = val;
+    }
+  }
+  return max2;
+}
 function areArraysShallowEqual(arr1, arr2) {
   if (arr1 === arr2) return true;
   if (arr1.length !== arr2.length) return false;
@@ -29271,65 +29342,6 @@ function areArraysShallowEqual(arr1, arr2) {
     }
   }
   return true;
-}
-
-// node_modules/@tldraw/utils/dist-esm/lib/function.mjs
-function omitFromStackTrace(fn) {
-  const wrappedFn = (...args) => {
-    try {
-      return fn(...args);
-    } catch (error) {
-      if (error instanceof Error && Error.captureStackTrace) {
-        Error.captureStackTrace(error, wrappedFn);
-      }
-      throw error;
-    }
-  };
-  return wrappedFn;
-}
-var noop = () => {
-};
-
-// node_modules/@tldraw/utils/dist-esm/lib/control.mjs
-var Result = {
-  ok(value) {
-    return { ok: true, value };
-  },
-  err(error) {
-    return { ok: false, error };
-  }
-};
-function exhaustiveSwitchError(value, property) {
-  const debugValue = property && value && typeof value === "object" && property in value ? value[property] : value;
-  throw new Error(`Unknown switch case ${debugValue}`);
-}
-var assert = omitFromStackTrace(
-  (value, message) => {
-    if (!value) {
-      throw new Error(message || "Assertion Error");
-    }
-  }
-);
-var assertExists = omitFromStackTrace((value, message) => {
-  if (value == null) {
-    throw new Error(message != null ? message : "value must be defined");
-  }
-  return value;
-});
-function promiseWithResolve() {
-  let resolve;
-  let reject;
-  const promise = new Promise((res, rej) => {
-    resolve = res;
-    reject = rej;
-  });
-  return Object.assign(promise, {
-    resolve,
-    reject
-  });
-}
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 // node_modules/@tldraw/utils/dist-esm/lib/bind.mjs
@@ -31015,7 +31027,7 @@ var STRUCTURED_CLONE_OBJECT_PROTOTYPE = Object.getPrototypeOf(structuredClone({}
 // node_modules/@tldraw/utils/dist-esm/index.mjs
 registerTldrawLibraryVersion(
   "@tldraw/utils",
-  "3.6.0",
+  "3.7.2",
   "esm"
 );
 
@@ -31928,7 +31940,7 @@ if (actualApiVersion !== currentApiVersion) {
 }
 registerTldrawLibraryVersion(
   "@tldraw/state",
-  "3.6.0",
+  "3.7.2",
   "esm"
 );
 
@@ -31937,7 +31949,7 @@ var import_react2 = __toESM(require_react(), 1);
 
 // node_modules/@tldraw/state-react/dist-esm/lib/useStateTracking.mjs
 var import_react = __toESM(require_react(), 1);
-function useStateTracking(name, render) {
+function useStateTracking(name, render, deps = []) {
   const renderRef = import_react.default.useRef(render);
   renderRef.current = render;
   const [scheduler, subscribe, getSnapshot2] = import_react.default.useMemo(() => {
@@ -31964,7 +31976,7 @@ function useStateTracking(name, render) {
     );
     const getSnapshot22 = () => scheduler2.scheduleCount;
     return [scheduler2, subscribe2, getSnapshot22];
-  }, [name]);
+  }, [name, ...deps]);
   import_react.default.useSyncExternalStore(subscribe, getSnapshot2, getSnapshot2);
   import_react.default.useEffect(() => {
     scheduler.attach();
@@ -32092,9 +32104,471 @@ function useValue() {
 // node_modules/@tldraw/state-react/dist-esm/index.mjs
 registerTldrawLibraryVersion(
   "@tldraw/state-react",
-  "3.6.0",
+  "3.7.2",
   "esm"
 );
+
+// node_modules/idb/build/wrap-idb-value.js
+var instanceOfAny = (object2, constructors) => constructors.some((c) => object2 instanceof c);
+var idbProxyableTypes;
+var cursorAdvanceMethods;
+function getIdbProxyableTypes() {
+  return idbProxyableTypes || (idbProxyableTypes = [
+    IDBDatabase,
+    IDBObjectStore,
+    IDBIndex,
+    IDBCursor,
+    IDBTransaction
+  ]);
+}
+function getCursorAdvanceMethods() {
+  return cursorAdvanceMethods || (cursorAdvanceMethods = [
+    IDBCursor.prototype.advance,
+    IDBCursor.prototype.continue,
+    IDBCursor.prototype.continuePrimaryKey
+  ]);
+}
+var cursorRequestMap = /* @__PURE__ */ new WeakMap();
+var transactionDoneMap = /* @__PURE__ */ new WeakMap();
+var transactionStoreNamesMap = /* @__PURE__ */ new WeakMap();
+var transformCache = /* @__PURE__ */ new WeakMap();
+var reverseTransformCache = /* @__PURE__ */ new WeakMap();
+function promisifyRequest(request) {
+  const promise = new Promise((resolve, reject) => {
+    const unlisten = () => {
+      request.removeEventListener("success", success);
+      request.removeEventListener("error", error);
+    };
+    const success = () => {
+      resolve(wrap(request.result));
+      unlisten();
+    };
+    const error = () => {
+      reject(request.error);
+      unlisten();
+    };
+    request.addEventListener("success", success);
+    request.addEventListener("error", error);
+  });
+  promise.then((value) => {
+    if (value instanceof IDBCursor) {
+      cursorRequestMap.set(value, request);
+    }
+  }).catch(() => {
+  });
+  reverseTransformCache.set(promise, request);
+  return promise;
+}
+function cacheDonePromiseForTransaction(tx) {
+  if (transactionDoneMap.has(tx))
+    return;
+  const done = new Promise((resolve, reject) => {
+    const unlisten = () => {
+      tx.removeEventListener("complete", complete);
+      tx.removeEventListener("error", error);
+      tx.removeEventListener("abort", error);
+    };
+    const complete = () => {
+      resolve();
+      unlisten();
+    };
+    const error = () => {
+      reject(tx.error || new DOMException("AbortError", "AbortError"));
+      unlisten();
+    };
+    tx.addEventListener("complete", complete);
+    tx.addEventListener("error", error);
+    tx.addEventListener("abort", error);
+  });
+  transactionDoneMap.set(tx, done);
+}
+var idbProxyTraps = {
+  get(target, prop, receiver) {
+    if (target instanceof IDBTransaction) {
+      if (prop === "done")
+        return transactionDoneMap.get(target);
+      if (prop === "objectStoreNames") {
+        return target.objectStoreNames || transactionStoreNamesMap.get(target);
+      }
+      if (prop === "store") {
+        return receiver.objectStoreNames[1] ? void 0 : receiver.objectStore(receiver.objectStoreNames[0]);
+      }
+    }
+    return wrap(target[prop]);
+  },
+  set(target, prop, value) {
+    target[prop] = value;
+    return true;
+  },
+  has(target, prop) {
+    if (target instanceof IDBTransaction && (prop === "done" || prop === "store")) {
+      return true;
+    }
+    return prop in target;
+  }
+};
+function replaceTraps(callback) {
+  idbProxyTraps = callback(idbProxyTraps);
+}
+function wrapFunction(func) {
+  if (func === IDBDatabase.prototype.transaction && !("objectStoreNames" in IDBTransaction.prototype)) {
+    return function(storeNames, ...args) {
+      const tx = func.call(unwrap(this), storeNames, ...args);
+      transactionStoreNamesMap.set(tx, storeNames.sort ? storeNames.sort() : [storeNames]);
+      return wrap(tx);
+    };
+  }
+  if (getCursorAdvanceMethods().includes(func)) {
+    return function(...args) {
+      func.apply(unwrap(this), args);
+      return wrap(cursorRequestMap.get(this));
+    };
+  }
+  return function(...args) {
+    return wrap(func.apply(unwrap(this), args));
+  };
+}
+function transformCachableValue(value) {
+  if (typeof value === "function")
+    return wrapFunction(value);
+  if (value instanceof IDBTransaction)
+    cacheDonePromiseForTransaction(value);
+  if (instanceOfAny(value, getIdbProxyableTypes()))
+    return new Proxy(value, idbProxyTraps);
+  return value;
+}
+function wrap(value) {
+  if (value instanceof IDBRequest)
+    return promisifyRequest(value);
+  if (transformCache.has(value))
+    return transformCache.get(value);
+  const newValue = transformCachableValue(value);
+  if (newValue !== value) {
+    transformCache.set(value, newValue);
+    reverseTransformCache.set(newValue, value);
+  }
+  return newValue;
+}
+var unwrap = (value) => reverseTransformCache.get(value);
+
+// node_modules/idb/build/index.js
+function openDB(name, version2, { blocked, upgrade, blocking, terminated } = {}) {
+  const request = indexedDB.open(name, version2);
+  const openPromise = wrap(request);
+  if (upgrade) {
+    request.addEventListener("upgradeneeded", (event) => {
+      upgrade(wrap(request.result), event.oldVersion, event.newVersion, wrap(request.transaction), event);
+    });
+  }
+  if (blocked) {
+    request.addEventListener("blocked", (event) => blocked(
+      // Casting due to https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1405
+      event.oldVersion,
+      event.newVersion,
+      event
+    ));
+  }
+  openPromise.then((db) => {
+    if (terminated)
+      db.addEventListener("close", () => terminated());
+    if (blocking) {
+      db.addEventListener("versionchange", (event) => blocking(event.oldVersion, event.newVersion, event));
+    }
+  }).catch(() => {
+  });
+  return openPromise;
+}
+function deleteDB(name, { blocked } = {}) {
+  const request = indexedDB.deleteDatabase(name);
+  if (blocked) {
+    request.addEventListener("blocked", (event) => blocked(
+      // Casting due to https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1405
+      event.oldVersion,
+      event
+    ));
+  }
+  return wrap(request).then(() => void 0);
+}
+var readMethods = ["get", "getKey", "getAll", "getAllKeys", "count"];
+var writeMethods = ["put", "add", "delete", "clear"];
+var cachedMethods = /* @__PURE__ */ new Map();
+function getMethod(target, prop) {
+  if (!(target instanceof IDBDatabase && !(prop in target) && typeof prop === "string")) {
+    return;
+  }
+  if (cachedMethods.get(prop))
+    return cachedMethods.get(prop);
+  const targetFuncName = prop.replace(/FromIndex$/, "");
+  const useIndex = prop !== targetFuncName;
+  const isWrite = writeMethods.includes(targetFuncName);
+  if (
+    // Bail if the target doesn't exist on the target. Eg, getAll isn't in Edge.
+    !(targetFuncName in (useIndex ? IDBIndex : IDBObjectStore).prototype) || !(isWrite || readMethods.includes(targetFuncName))
+  ) {
+    return;
+  }
+  const method = async function(storeName, ...args) {
+    const tx = this.transaction(storeName, isWrite ? "readwrite" : "readonly");
+    let target2 = tx.store;
+    if (useIndex)
+      target2 = target2.index(args.shift());
+    return (await Promise.all([
+      target2[targetFuncName](...args),
+      isWrite && tx.done
+    ]))[0];
+  };
+  cachedMethods.set(prop, method);
+  return method;
+}
+replaceTraps((oldTraps) => ({
+  ...oldTraps,
+  get: (target, prop, receiver) => getMethod(target, prop) || oldTraps.get(target, prop, receiver),
+  has: (target, prop) => !!getMethod(target, prop) || oldTraps.has(target, prop)
+}));
+
+// node_modules/@tldraw/editor/dist-esm/lib/utils/sync/LocalIndexedDb.mjs
+var STORE_PREFIX = "TLDRAW_DOCUMENT_v2";
+var LEGACY_ASSET_STORE_PREFIX = "TLDRAW_ASSET_STORE_v1";
+var dbNameIndexKey = "TLDRAW_DB_NAME_INDEX_v2";
+var Table = {
+  Records: "records",
+  Schema: "schema",
+  SessionState: "session_state",
+  Assets: "assets"
+};
+async function openLocalDb(persistenceKey) {
+  const storeId = STORE_PREFIX + persistenceKey;
+  addDbName(storeId);
+  return await openDB(storeId, 4, {
+    upgrade(database) {
+      if (!database.objectStoreNames.contains(Table.Records)) {
+        database.createObjectStore(Table.Records);
+      }
+      if (!database.objectStoreNames.contains(Table.Schema)) {
+        database.createObjectStore(Table.Schema);
+      }
+      if (!database.objectStoreNames.contains(Table.SessionState)) {
+        database.createObjectStore(Table.SessionState);
+      }
+      if (!database.objectStoreNames.contains(Table.Assets)) {
+        database.createObjectStore(Table.Assets);
+      }
+    }
+  });
+}
+async function migrateLegacyAssetDbIfNeeded(persistenceKey) {
+  const databases = window.indexedDB.databases ? (await window.indexedDB.databases()).map((db) => db.name) : getAllIndexDbNames();
+  const oldStoreId = LEGACY_ASSET_STORE_PREFIX + persistenceKey;
+  const existing = databases.find((dbName) => dbName === oldStoreId);
+  if (!existing) return;
+  const oldAssetDb = await openDB(oldStoreId, 1, {
+    upgrade(database) {
+      if (!database.objectStoreNames.contains("assets")) {
+        database.createObjectStore("assets");
+      }
+    }
+  });
+  if (!oldAssetDb.objectStoreNames.contains("assets")) return;
+  const oldTx = oldAssetDb.transaction(["assets"], "readonly");
+  const oldAssetStore = oldTx.objectStore("assets");
+  const oldAssetsKeys = await oldAssetStore.getAllKeys();
+  const oldAssets = await Promise.all(
+    oldAssetsKeys.map(async (key) => [key, await oldAssetStore.get(key)])
+  );
+  await oldTx.done;
+  const newDb = await openLocalDb(persistenceKey);
+  const newTx = newDb.transaction([Table.Assets], "readwrite");
+  const newAssetTable = newTx.objectStore(Table.Assets);
+  for (const [key, value] of oldAssets) {
+    newAssetTable.put(value, key);
+  }
+  await newTx.done;
+  oldAssetDb.close();
+  newDb.close();
+  await deleteDB(oldStoreId);
+}
+var _LocalIndexedDb = class _LocalIndexedDb {
+  constructor(persistenceKey) {
+    __publicField(this, "getDbPromise");
+    __publicField(this, "isClosed", false);
+    __publicField(this, "pendingTransactionSet", /* @__PURE__ */ new Set());
+    _LocalIndexedDb.connectedInstances.add(this);
+    this.getDbPromise = (async () => {
+      await migrateLegacyAssetDbIfNeeded(persistenceKey);
+      return await openLocalDb(persistenceKey);
+    })();
+  }
+  getDb() {
+    return this.getDbPromise;
+  }
+  /**
+   * Wait for any pending transactions to be completed. Useful for tests.
+   *
+   * @internal
+   */
+  pending() {
+    return Promise.allSettled([this.getDbPromise, ...this.pendingTransactionSet]).then(noop);
+  }
+  async close() {
+    if (this.isClosed) return;
+    this.isClosed = true;
+    await this.pending();
+    (await this.getDb()).close();
+    _LocalIndexedDb.connectedInstances.delete(this);
+  }
+  tx(mode, names, cb) {
+    const txPromise = (async () => {
+      assert(!this.isClosed, "db is closed");
+      const db = await this.getDb();
+      const tx = db.transaction(names, mode);
+      const done = tx.done.catch((e) => {
+        if (!this.isClosed) {
+          throw e;
+        }
+      });
+      try {
+        return await cb(tx);
+      } finally {
+        if (!this.isClosed) {
+          await done;
+        } else {
+          tx.abort();
+        }
+      }
+    })();
+    this.pendingTransactionSet.add(txPromise);
+    txPromise.finally(() => this.pendingTransactionSet.delete(txPromise));
+    return txPromise;
+  }
+  async load({ sessionId } = {}) {
+    return await this.tx(
+      "readonly",
+      [Table.Records, Table.Schema, Table.SessionState],
+      async (tx) => {
+        var _a5, _b2;
+        const recordsStore = tx.objectStore(Table.Records);
+        const schemaStore = tx.objectStore(Table.Schema);
+        const sessionStateStore = tx.objectStore(Table.SessionState);
+        let sessionStateSnapshot = sessionId ? (_a5 = await sessionStateStore.get(sessionId)) == null ? void 0 : _a5.snapshot : null;
+        if (!sessionStateSnapshot) {
+          const all = await sessionStateStore.getAll();
+          sessionStateSnapshot = (_b2 = all.sort((a, b) => a.updatedAt - b.updatedAt).pop()) == null ? void 0 : _b2.snapshot;
+        }
+        const result = {
+          records: await recordsStore.getAll(),
+          schema: await schemaStore.get(Table.Schema),
+          sessionStateSnapshot
+        };
+        return result;
+      }
+    );
+  }
+  async storeChanges({
+    schema,
+    changes,
+    sessionId,
+    sessionStateSnapshot
+  }) {
+    await this.tx("readwrite", [Table.Records, Table.Schema, Table.SessionState], async (tx) => {
+      const recordsStore = tx.objectStore(Table.Records);
+      const schemaStore = tx.objectStore(Table.Schema);
+      const sessionStateStore = tx.objectStore(Table.SessionState);
+      for (const [id, record] of Object.entries(changes.added)) {
+        await recordsStore.put(record, id);
+      }
+      for (const [_prev, updated] of Object.values(changes.updated)) {
+        await recordsStore.put(updated, updated.id);
+      }
+      for (const id of Object.keys(changes.removed)) {
+        await recordsStore.delete(id);
+      }
+      schemaStore.put(schema.serialize(), Table.Schema);
+      if (sessionStateSnapshot && sessionId) {
+        sessionStateStore.put(
+          {
+            snapshot: sessionStateSnapshot,
+            updatedAt: Date.now(),
+            id: sessionId
+          },
+          sessionId
+        );
+      } else if (sessionStateSnapshot || sessionId) {
+        console.error("sessionStateSnapshot and instanceId must be provided together");
+      }
+    });
+  }
+  async storeSnapshot({
+    schema,
+    snapshot,
+    sessionId,
+    sessionStateSnapshot
+  }) {
+    await this.tx("readwrite", [Table.Records, Table.Schema, Table.SessionState], async (tx) => {
+      const recordsStore = tx.objectStore(Table.Records);
+      const schemaStore = tx.objectStore(Table.Schema);
+      const sessionStateStore = tx.objectStore(Table.SessionState);
+      await recordsStore.clear();
+      for (const [id, record] of Object.entries(snapshot)) {
+        await recordsStore.put(record, id);
+      }
+      schemaStore.put(schema.serialize(), Table.Schema);
+      if (sessionStateSnapshot && sessionId) {
+        sessionStateStore.put(
+          {
+            snapshot: sessionStateSnapshot,
+            updatedAt: Date.now(),
+            id: sessionId
+          },
+          sessionId
+        );
+      } else if (sessionStateSnapshot || sessionId) {
+        console.error("sessionStateSnapshot and instanceId must be provided together");
+      }
+    });
+  }
+  async pruneSessions() {
+    await this.tx("readwrite", [Table.SessionState], async (tx) => {
+      const sessionStateStore = tx.objectStore(Table.SessionState);
+      const all = (await sessionStateStore.getAll()).sort((a, b) => a.updatedAt - b.updatedAt);
+      if (all.length < 10) {
+        await tx.done;
+        return;
+      }
+      const toDelete = all.slice(0, all.length - 10);
+      for (const { id } of toDelete) {
+        await sessionStateStore.delete(id);
+      }
+    });
+  }
+  async getAsset(assetId) {
+    return await this.tx("readonly", [Table.Assets], async (tx) => {
+      const assetsStore = tx.objectStore(Table.Assets);
+      return await assetsStore.get(assetId);
+    });
+  }
+  async storeAsset(assetId, blob) {
+    await this.tx("readwrite", [Table.Assets], async (tx) => {
+      const assetsStore = tx.objectStore(Table.Assets);
+      await assetsStore.put(blob, assetId);
+    });
+  }
+};
+/** @internal */
+__publicField(_LocalIndexedDb, "connectedInstances", /* @__PURE__ */ new Set());
+var LocalIndexedDb = _LocalIndexedDb;
+function getAllIndexDbNames() {
+  var _a5;
+  const result = (_a5 = JSON.parse(getFromLocalStorage(dbNameIndexKey) || "[]")) != null ? _a5 : [];
+  if (!Array.isArray(result)) {
+    return [];
+  }
+  return result;
+}
+function addDbName(name) {
+  const all = new Set(getAllIndexDbNames());
+  all.add(name);
+  setInLocalStorage(dbNameIndexKey, JSON.stringify([...all]));
+}
 
 // node_modules/@tldraw/store/dist-esm/lib/IncrementalSetConstructor.mjs
 var IncrementalSetConstructor = class {
@@ -32747,15 +33221,22 @@ var StoreQueries = class {
    */
   records(typeName, queryCreator = () => ({}), name = "records:" + typeName + (queryCreator ? ":" + queryCreator.toString() : "")) {
     const ids = this.ids(typeName, queryCreator, "ids:" + name);
-    return computed(name, () => {
-      return [...ids.get()].map((id) => {
-        const atom2 = this.atoms.get()[id];
-        if (!atom2) {
-          throw new Error("no atom found for record id: " + id);
-        }
-        return atom2.get();
-      });
-    });
+    return computed(
+      name,
+      () => {
+        const atoms = this.atoms.get();
+        return [...ids.get()].map((id) => {
+          const atom2 = atoms[id];
+          if (!atom2) {
+            throw new Error("no atom found for record id: " + id);
+          }
+          return atom2.get();
+        });
+      },
+      {
+        isEqual: areArraysShallowEqual
+      }
+    );
   }
   /**
    * Create a derivation that will return the ids of all records of the given type.
@@ -33670,10 +34151,11 @@ var Store = class {
         scope: (_b2 = filters == null ? void 0 : filters.scope) != null ? _b2 : "all"
       }
     };
-    this.listeners.add(listener);
     if (!this.historyReactor.scheduler.isActivelyListening) {
       this.historyReactor.start();
+      this.historyReactor.scheduler.execute();
     }
+    this.listeners.add(listener);
     return () => {
       this.listeners.delete(listener);
       if (this.listeners.size === 0) {
@@ -33756,7 +34238,7 @@ var Store = class {
    *
    * @param name - The name of the derivation cache.
    * @param derive - A function used to derive the value of the cache.
-   * @param isEqual - A function that determins equality between two records.
+   * @param isEqual - A function that determines equality between two records.
    * @public
    */
   createComputedCache(name, derive, isEqual3) {
@@ -34307,7 +34789,7 @@ var StoreSchema = class _StoreSchema {
 // node_modules/@tldraw/store/dist-esm/index.mjs
 registerTldrawLibraryVersion(
   "@tldraw/store",
-  "3.6.0",
+  "3.7.2",
   "esm"
 );
 
@@ -35036,7 +35518,7 @@ function or(v1, v2) {
 // node_modules/@tldraw/validate/dist-esm/index.mjs
 registerTldrawLibraryVersion(
   "@tldraw/validate",
-  "3.6.0",
+  "3.7.2",
   "esm"
 );
 
@@ -36788,21 +37270,21 @@ var instancePresenceValidator = validation_exports.model(
     id: idValidator("instance_presence"),
     userId: validation_exports.string,
     userName: validation_exports.string,
-    lastActivityTimestamp: validation_exports.number,
+    lastActivityTimestamp: validation_exports.number.nullable(),
     followingUserId: validation_exports.string.nullable(),
     cursor: validation_exports.object({
       x: validation_exports.number,
       y: validation_exports.number,
       type: cursorTypeValidator,
       rotation: validation_exports.number
-    }),
+    }).nullable(),
     color: validation_exports.string,
     camera: validation_exports.object({
       x: validation_exports.number,
       y: validation_exports.number,
       z: validation_exports.number
-    }),
-    screenBounds: boxModelValidator,
+    }).nullable(),
+    screenBounds: boxModelValidator.nullable(),
     selectedShapeIds: validation_exports.arrayOf(idValidator("shape")),
     currentPageId: idValidator("page"),
     brush: boxModelValidator.nullable(),
@@ -36816,7 +37298,8 @@ var instancePresenceVersions = createMigrationIds("com.tldraw.instance_presence"
   RemoveInstanceId: 2,
   AddChatMessage: 3,
   AddMeta: 4,
-  RenameSelectedShapeIds: 5
+  RenameSelectedShapeIds: 5,
+  NullableCameraCursor: 6
 });
 var instancePresenceMigrations = createRecordMigrationSequence({
   sequenceId: "com.tldraw.instance_presence",
@@ -36852,6 +37335,25 @@ var instancePresenceMigrations = createRecordMigrationSequence({
       id: instancePresenceVersions.RenameSelectedShapeIds,
       up: (_record) => {
       }
+    },
+    {
+      id: instancePresenceVersions.NullableCameraCursor,
+      up: (_record) => {
+      },
+      down: (record) => {
+        if (record.camera === null) {
+          record.camera = { x: 0, y: 0, z: 1 };
+        }
+        if (record.lastActivityTimestamp === null) {
+          record.lastActivityTimestamp = 0;
+        }
+        if (record.cursor === null) {
+          record.cursor = { type: "default", x: 0, y: 0, rotation: 0 };
+        }
+        if (record.screenBounds === null) {
+          record.screenBounds = { x: 0, y: 0, w: 1, h: 1 };
+        }
+      }
     }
   ]
 });
@@ -36862,26 +37364,12 @@ var InstancePresenceRecordType = createRecordType(
     scope: "presence"
   }
 ).withDefaultProperties(() => ({
-  lastActivityTimestamp: 0,
+  lastActivityTimestamp: null,
   followingUserId: null,
   color: "#FF0000",
-  camera: {
-    x: 0,
-    y: 0,
-    z: 1
-  },
-  cursor: {
-    x: 0,
-    y: 0,
-    type: "default",
-    rotation: 0
-  },
-  screenBounds: {
-    x: 0,
-    y: 0,
-    w: 1,
-    h: 1
-  },
+  camera: null,
+  cursor: null,
+  screenBounds: null,
   selectedShapeIds: [],
   brush: null,
   scribbles: [],
@@ -38301,7 +38789,7 @@ var storeMigrations = createMigrationSequence({
     {
       id: Versions12.AddInstancePresenceType,
       scope: "store",
-      up(_store) {
+      up(_store2) {
       }
     },
     {
@@ -38490,7 +38978,7 @@ function getSupportedLocale(locale) {
 // node_modules/@tldraw/tlschema/dist-esm/index.mjs
 registerTldrawLibraryVersion(
   "@tldraw/tlschema",
-  "3.6.0",
+  "3.7.2",
   "esm"
 );
 
@@ -38500,11 +38988,11 @@ var import_react45 = __toESM(require_react(), 1);
 var import_classnames11 = __toESM(require_classnames(), 1);
 
 // node_modules/@tldraw/editor/dist-esm/version.mjs
-var version = "3.6.0";
+var version = "3.7.2";
 var publishDates = {
   major: "2024-09-13T14:36:29.063Z",
-  minor: "2024-12-04T15:00:05.881Z",
-  patch: "2024-12-04T15:00:05.881Z"
+  minor: "2025-01-07T15:59:09.453Z",
+  patch: "2025-01-16T12:44:39.524Z"
 };
 
 // node_modules/@tldraw/editor/dist-esm/lib/components/ErrorBoundary.mjs
@@ -42877,6 +43365,7 @@ var Collaborator = track(function Collaborator2({
   const zoomLevel = editor.getZoomLevel();
   const viewportPageBounds = editor.getViewportPageBounds();
   const { userId, chatMessage, brush, scribbles, selectedShapeIds, userName, cursor, color } = latestPresence;
+  if (!cursor) return null;
   const isCursorInViewport = !(cursor.x < viewportPageBounds.minX - 12 / zoomLevel || cursor.y < viewportPageBounds.minY - 16 / zoomLevel || cursor.x > viewportPageBounds.maxX - 12 / zoomLevel || cursor.y > viewportPageBounds.maxY - 16 / zoomLevel);
   return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(import_jsx_runtime8.Fragment, { children: [
     brush && CollaboratorBrush ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
@@ -42938,7 +43427,7 @@ function getStateFromElapsedTime(editor, elapsed) {
   return elapsed > editor.options.collaboratorInactiveTimeoutMs ? "inactive" : elapsed > editor.options.collaboratorIdleTimeoutMs ? "idle" : "active";
 }
 function useCollaboratorState(editor, latestPresence) {
-  var _a5;
+  var _a5, _b2;
   const rLastActivityTimestamp = (0, import_react21.useRef)((_a5 = latestPresence == null ? void 0 : latestPresence.lastActivityTimestamp) != null ? _a5 : -1);
   const [state, setState] = (0, import_react21.useState)(
     () => getStateFromElapsedTime(editor, Date.now() - rLastActivityTimestamp.current)
@@ -42950,7 +43439,7 @@ function useCollaboratorState(editor, latestPresence) {
     return () => clearInterval(interval);
   }, [editor]);
   if (latestPresence) {
-    rLastActivityTimestamp.current = latestPresence.lastActivityTimestamp;
+    rLastActivityTimestamp.current = (_b2 = latestPresence.lastActivityTimestamp) != null ? _b2 : Infinity;
   }
   return state;
 }
@@ -43163,10 +43652,11 @@ var InnerShape = (0, import_react23.memo)(
         // always fetch the latest shape from the store even if the props/meta have not changed, to avoid
         // calling the render method with stale data.
         util.component(util.editor.store.unsafeGetWithoutCapture(shape.id))
-      )
+      ),
+      [util, shape.id]
     );
   },
-  (prev, next) => prev.shape.props === next.shape.props && prev.shape.meta === next.shape.meta
+  (prev, next) => prev.shape.props === next.shape.props && prev.shape.meta === next.shape.meta && prev.util === next.util
 );
 var InnerShapeBackground = (0, import_react23.memo)(
   function InnerShapeBackground2({
@@ -43182,10 +43672,11 @@ var InnerShapeBackground = (0, import_react23.memo)(
           // calling the render method with stale data.
           (_a5 = util.backgroundComponent) == null ? void 0 : _a5.call(util, util.editor.store.unsafeGetWithoutCapture(shape.id))
         );
-      }
+      },
+      [util, shape.id]
     );
   },
-  (prev, next) => prev.shape.props === next.shape.props && prev.shape.meta === next.shape.meta
+  (prev, next) => prev.shape.props === next.shape.props && prev.shape.meta === next.shape.meta && prev.util === next.util
 );
 
 // node_modules/@tldraw/editor/dist-esm/lib/components/default-components/DefaultCanvas.mjs
@@ -43810,7 +44301,7 @@ function DefaultSelectionForeground({ bounds, rotation }) {
     x: -expandOutlineBy,
     y: -expandOutlineBy
   });
-  bounds = bounds.clone().expandBy(expandOutlineBy).zeroFix();
+  bounds = expandOutlineBy instanceof Box ? bounds.clone().expand(expandOutlineBy).zeroFix() : bounds.clone().expandBy(expandOutlineBy).zeroFix();
   return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
     "svg",
     {
@@ -45861,7 +46352,7 @@ _init = __decoratorStart2(null);
 __decorateElement2(_init, 1, "onFontFamilyValue", _onFontFamilyValue_dec, FontEmbedder);
 __decoratorMetadata2(_init, FontEmbedder);
 async function getCurrentDocumentFontFaces() {
-  var _a5;
+  var _a5, _b2, _c;
   const fontFaces = [];
   for (const styleSheet of document.styleSheets) {
     let cssRules;
@@ -45874,7 +46365,8 @@ async function getCurrentDocumentFontFaces() {
         if (rule instanceof CSSFontFaceRule) {
           fontFaces.push(parseCssFontFaces(rule.cssText, (_a5 = styleSheet.href) != null ? _a5 : document.baseURI));
         } else if (rule instanceof CSSImportRule) {
-          fontFaces.push(fetchCssFontFaces(rule.href));
+          const absoluteUrl = new URL(rule.href, (_c = (_b2 = rule.parentStyleSheet) == null ? void 0 : _b2.href) != null ? _c : document.baseURI);
+          fontFaces.push(fetchCssFontFaces(absoluteUrl.href));
         }
       }
     } else if (styleSheet.href) {
@@ -49674,23 +50166,16 @@ var textAlignmentsForLtr = {
 var spaceCharacterRegex = /\s/;
 var TextManager = class {
   constructor(editor) {
-    __publicField(this, "baseElm");
+    __publicField(this, "baseElem");
     this.editor = editor;
-    const container = this.editor.getContainer();
-    const elm = document.createElement("div");
-    elm.classList.add("tl-text");
-    elm.classList.add("tl-text-measure");
-    elm.tabIndex = -1;
-    container.appendChild(elm);
-    this.baseElm = elm;
-    editor.disposables.add(() => {
-      elm.remove();
-    });
+    this.baseElem = document.createElement("div");
+    this.baseElem.classList.add("tl-text");
+    this.baseElem.classList.add("tl-text-measure");
+    this.baseElem.tabIndex = -1;
   }
   measureText(textToMeasure, opts) {
-    var _a5;
-    const elm = (_a5 = this.baseElm) == null ? void 0 : _a5.cloneNode();
-    this.baseElm.insertAdjacentElement("afterend", elm);
+    const elm = this.baseElem.cloneNode();
+    this.editor.getContainer().appendChild(elm);
     elm.setAttribute("dir", "auto");
     elm.style.setProperty("unicode-bidi", "plaintext");
     elm.style.setProperty("font-family", opts.fontFamily);
@@ -49794,10 +50279,9 @@ var TextManager = class {
    * algorithm of the current browser in e.g. an SVG export.
    */
   measureTextSpans(textToMeasure, opts) {
-    var _a5;
     if (textToMeasure === "") return [];
-    const elm = (_a5 = this.baseElm) == null ? void 0 : _a5.cloneNode();
-    this.baseElm.insertAdjacentElement("afterend", elm);
+    const elm = this.baseElem.cloneNode();
+    this.editor.getContainer().appendChild(elm);
     const elementWidth = Math.ceil(opts.width - opts.padding * 2);
     elm.setAttribute("dir", "auto");
     elm.style.setProperty("unicode-bidi", "plaintext");
@@ -52001,6 +52485,7 @@ var Editor = class extends (_a2 = import_eventemitter3.default, _getIsShapeHidde
     if (!followingUserId) return null;
     const leaderPresence = this.getCollaborators().find((c) => c.userId === followingUserId);
     if (!leaderPresence) return null;
+    if (!leaderPresence.camera || !leaderPresence.screenBounds) return null;
     const { w: lw, h: lh } = leaderPresence.screenBounds;
     const { x: lx, y: ly, z: lz2 } = leaderPresence.camera;
     const theirViewport = new Box(-lx, -ly, lw / lz2, lh / lz2);
@@ -52698,6 +53183,8 @@ var Editor = class extends (_a2 = import_eventemitter3.default, _getIsShapeHidde
   zoomToUser(userId, opts = { animation: { duration: 500 } }) {
     const presence = this.getCollaborators().find((c) => c.userId === userId);
     if (!presence) return this;
+    const cursor = presence.cursor;
+    if (!cursor) return this;
     this.run(() => {
       if (this.getInstanceState().followingUserId !== null) {
         this.stopFollowingUser();
@@ -52709,7 +53196,7 @@ var Editor = class extends (_a2 = import_eventemitter3.default, _getIsShapeHidde
       if (opts && opts.animation && !isOnSamePage) {
         opts.animation = void 0;
       }
-      this.centerOnPoint(presence.cursor, opts);
+      this.centerOnPoint(cursor, opts);
       const { highlightedUserIds } = this.getInstanceState();
       this.updateInstanceState({ highlightedUserIds: [...highlightedUserIds, userId] });
       this.timers.setTimeout(() => {
@@ -52869,7 +53356,13 @@ var Editor = class extends (_a2 = import_eventemitter3.default, _getIsShapeHidde
     if (!allPresenceRecords.length) return EMPTY_ARRAY;
     const userIds = [...new Set(allPresenceRecords.map((c) => c.userId))].sort();
     return userIds.map((id) => {
-      const latestPresence = allPresenceRecords.filter((c) => c.userId === id).sort((a, b) => b.lastActivityTimestamp - a.lastActivityTimestamp)[0];
+      const latestPresence = maxBy(
+        allPresenceRecords.filter((c) => c.userId === id),
+        (p) => {
+          var _a5;
+          return (_a5 = p.lastActivityTimestamp) != null ? _a5 : 0;
+        }
+      );
       return latestPresence;
     });
   }
@@ -53083,7 +53576,7 @@ var Editor = class extends (_a2 = import_eventemitter3.default, _getIsShapeHidde
     return this.store.query.records("page");
   }
   getPages() {
-    return this._getAllPagesQuery().get().sort(sortByIndex);
+    return Array.from(this._getAllPagesQuery().get()).sort(sortByIndex);
   }
   /**
    * The current page.
@@ -53424,8 +53917,8 @@ var Editor = class extends (_a2 = import_eventemitter3.default, _getIsShapeHidde
    * Upload an asset to the store's asset service, returning a URL that can be used to resolve the
    * asset.
    */
-  async uploadAsset(asset, file) {
-    return await this.store.props.assets.upload(asset, file);
+  async uploadAsset(asset, file, abortSignal) {
+    return await this.store.props.assets.upload(asset, file, abortSignal);
   }
   _getShapeGeometryCache() {
     return this.store.createComputedCache(
@@ -57553,10 +58046,8 @@ function applyPartialToRecordWithProps(prev, partial) {
     if (k === "props" || k === "meta") {
       next[k] = { ...prev[k] };
       for (const [nextKey, nextValue] of Object.entries(v)) {
-        if (nextValue !== void 0) {
-          ;
-          next[k][nextKey] = nextValue;
-        }
+        ;
+        next[k][nextKey] = nextValue;
       }
       continue;
     }
@@ -57789,468 +58280,6 @@ function utilsToMap(utils) {
       }
     ])
   );
-}
-
-// node_modules/idb/build/wrap-idb-value.js
-var instanceOfAny = (object2, constructors) => constructors.some((c) => object2 instanceof c);
-var idbProxyableTypes;
-var cursorAdvanceMethods;
-function getIdbProxyableTypes() {
-  return idbProxyableTypes || (idbProxyableTypes = [
-    IDBDatabase,
-    IDBObjectStore,
-    IDBIndex,
-    IDBCursor,
-    IDBTransaction
-  ]);
-}
-function getCursorAdvanceMethods() {
-  return cursorAdvanceMethods || (cursorAdvanceMethods = [
-    IDBCursor.prototype.advance,
-    IDBCursor.prototype.continue,
-    IDBCursor.prototype.continuePrimaryKey
-  ]);
-}
-var cursorRequestMap = /* @__PURE__ */ new WeakMap();
-var transactionDoneMap = /* @__PURE__ */ new WeakMap();
-var transactionStoreNamesMap = /* @__PURE__ */ new WeakMap();
-var transformCache = /* @__PURE__ */ new WeakMap();
-var reverseTransformCache = /* @__PURE__ */ new WeakMap();
-function promisifyRequest(request) {
-  const promise = new Promise((resolve, reject) => {
-    const unlisten = () => {
-      request.removeEventListener("success", success);
-      request.removeEventListener("error", error);
-    };
-    const success = () => {
-      resolve(wrap(request.result));
-      unlisten();
-    };
-    const error = () => {
-      reject(request.error);
-      unlisten();
-    };
-    request.addEventListener("success", success);
-    request.addEventListener("error", error);
-  });
-  promise.then((value) => {
-    if (value instanceof IDBCursor) {
-      cursorRequestMap.set(value, request);
-    }
-  }).catch(() => {
-  });
-  reverseTransformCache.set(promise, request);
-  return promise;
-}
-function cacheDonePromiseForTransaction(tx) {
-  if (transactionDoneMap.has(tx))
-    return;
-  const done = new Promise((resolve, reject) => {
-    const unlisten = () => {
-      tx.removeEventListener("complete", complete);
-      tx.removeEventListener("error", error);
-      tx.removeEventListener("abort", error);
-    };
-    const complete = () => {
-      resolve();
-      unlisten();
-    };
-    const error = () => {
-      reject(tx.error || new DOMException("AbortError", "AbortError"));
-      unlisten();
-    };
-    tx.addEventListener("complete", complete);
-    tx.addEventListener("error", error);
-    tx.addEventListener("abort", error);
-  });
-  transactionDoneMap.set(tx, done);
-}
-var idbProxyTraps = {
-  get(target, prop, receiver) {
-    if (target instanceof IDBTransaction) {
-      if (prop === "done")
-        return transactionDoneMap.get(target);
-      if (prop === "objectStoreNames") {
-        return target.objectStoreNames || transactionStoreNamesMap.get(target);
-      }
-      if (prop === "store") {
-        return receiver.objectStoreNames[1] ? void 0 : receiver.objectStore(receiver.objectStoreNames[0]);
-      }
-    }
-    return wrap(target[prop]);
-  },
-  set(target, prop, value) {
-    target[prop] = value;
-    return true;
-  },
-  has(target, prop) {
-    if (target instanceof IDBTransaction && (prop === "done" || prop === "store")) {
-      return true;
-    }
-    return prop in target;
-  }
-};
-function replaceTraps(callback) {
-  idbProxyTraps = callback(idbProxyTraps);
-}
-function wrapFunction(func) {
-  if (func === IDBDatabase.prototype.transaction && !("objectStoreNames" in IDBTransaction.prototype)) {
-    return function(storeNames, ...args) {
-      const tx = func.call(unwrap(this), storeNames, ...args);
-      transactionStoreNamesMap.set(tx, storeNames.sort ? storeNames.sort() : [storeNames]);
-      return wrap(tx);
-    };
-  }
-  if (getCursorAdvanceMethods().includes(func)) {
-    return function(...args) {
-      func.apply(unwrap(this), args);
-      return wrap(cursorRequestMap.get(this));
-    };
-  }
-  return function(...args) {
-    return wrap(func.apply(unwrap(this), args));
-  };
-}
-function transformCachableValue(value) {
-  if (typeof value === "function")
-    return wrapFunction(value);
-  if (value instanceof IDBTransaction)
-    cacheDonePromiseForTransaction(value);
-  if (instanceOfAny(value, getIdbProxyableTypes()))
-    return new Proxy(value, idbProxyTraps);
-  return value;
-}
-function wrap(value) {
-  if (value instanceof IDBRequest)
-    return promisifyRequest(value);
-  if (transformCache.has(value))
-    return transformCache.get(value);
-  const newValue = transformCachableValue(value);
-  if (newValue !== value) {
-    transformCache.set(value, newValue);
-    reverseTransformCache.set(newValue, value);
-  }
-  return newValue;
-}
-var unwrap = (value) => reverseTransformCache.get(value);
-
-// node_modules/idb/build/index.js
-function openDB(name, version2, { blocked, upgrade, blocking, terminated } = {}) {
-  const request = indexedDB.open(name, version2);
-  const openPromise = wrap(request);
-  if (upgrade) {
-    request.addEventListener("upgradeneeded", (event) => {
-      upgrade(wrap(request.result), event.oldVersion, event.newVersion, wrap(request.transaction), event);
-    });
-  }
-  if (blocked) {
-    request.addEventListener("blocked", (event) => blocked(
-      // Casting due to https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1405
-      event.oldVersion,
-      event.newVersion,
-      event
-    ));
-  }
-  openPromise.then((db) => {
-    if (terminated)
-      db.addEventListener("close", () => terminated());
-    if (blocking) {
-      db.addEventListener("versionchange", (event) => blocking(event.oldVersion, event.newVersion, event));
-    }
-  }).catch(() => {
-  });
-  return openPromise;
-}
-function deleteDB(name, { blocked } = {}) {
-  const request = indexedDB.deleteDatabase(name);
-  if (blocked) {
-    request.addEventListener("blocked", (event) => blocked(
-      // Casting due to https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1405
-      event.oldVersion,
-      event
-    ));
-  }
-  return wrap(request).then(() => void 0);
-}
-var readMethods = ["get", "getKey", "getAll", "getAllKeys", "count"];
-var writeMethods = ["put", "add", "delete", "clear"];
-var cachedMethods = /* @__PURE__ */ new Map();
-function getMethod(target, prop) {
-  if (!(target instanceof IDBDatabase && !(prop in target) && typeof prop === "string")) {
-    return;
-  }
-  if (cachedMethods.get(prop))
-    return cachedMethods.get(prop);
-  const targetFuncName = prop.replace(/FromIndex$/, "");
-  const useIndex = prop !== targetFuncName;
-  const isWrite = writeMethods.includes(targetFuncName);
-  if (
-    // Bail if the target doesn't exist on the target. Eg, getAll isn't in Edge.
-    !(targetFuncName in (useIndex ? IDBIndex : IDBObjectStore).prototype) || !(isWrite || readMethods.includes(targetFuncName))
-  ) {
-    return;
-  }
-  const method = async function(storeName, ...args) {
-    const tx = this.transaction(storeName, isWrite ? "readwrite" : "readonly");
-    let target2 = tx.store;
-    if (useIndex)
-      target2 = target2.index(args.shift());
-    return (await Promise.all([
-      target2[targetFuncName](...args),
-      isWrite && tx.done
-    ]))[0];
-  };
-  cachedMethods.set(prop, method);
-  return method;
-}
-replaceTraps((oldTraps) => ({
-  ...oldTraps,
-  get: (target, prop, receiver) => getMethod(target, prop) || oldTraps.get(target, prop, receiver),
-  has: (target, prop) => !!getMethod(target, prop) || oldTraps.has(target, prop)
-}));
-
-// node_modules/@tldraw/editor/dist-esm/lib/utils/sync/LocalIndexedDb.mjs
-var STORE_PREFIX = "TLDRAW_DOCUMENT_v2";
-var LEGACY_ASSET_STORE_PREFIX = "TLDRAW_ASSET_STORE_v1";
-var dbNameIndexKey = "TLDRAW_DB_NAME_INDEX_v2";
-var Table = {
-  Records: "records",
-  Schema: "schema",
-  SessionState: "session_state",
-  Assets: "assets"
-};
-async function openLocalDb(persistenceKey) {
-  const storeId = STORE_PREFIX + persistenceKey;
-  addDbName(storeId);
-  return await openDB(storeId, 4, {
-    upgrade(database) {
-      if (!database.objectStoreNames.contains(Table.Records)) {
-        database.createObjectStore(Table.Records);
-      }
-      if (!database.objectStoreNames.contains(Table.Schema)) {
-        database.createObjectStore(Table.Schema);
-      }
-      if (!database.objectStoreNames.contains(Table.SessionState)) {
-        database.createObjectStore(Table.SessionState);
-      }
-      if (!database.objectStoreNames.contains(Table.Assets)) {
-        database.createObjectStore(Table.Assets);
-      }
-    }
-  });
-}
-async function migrateLegacyAssetDbIfNeeded(persistenceKey) {
-  const databases = window.indexedDB.databases ? (await window.indexedDB.databases()).map((db) => db.name) : getAllIndexDbNames();
-  const oldStoreId = LEGACY_ASSET_STORE_PREFIX + persistenceKey;
-  const existing = databases.find((dbName) => dbName === oldStoreId);
-  if (!existing) return;
-  const oldAssetDb = await openDB(oldStoreId, 1, {
-    upgrade(database) {
-      if (!database.objectStoreNames.contains("assets")) {
-        database.createObjectStore("assets");
-      }
-    }
-  });
-  if (!oldAssetDb.objectStoreNames.contains("assets")) return;
-  const oldTx = oldAssetDb.transaction(["assets"], "readonly");
-  const oldAssetStore = oldTx.objectStore("assets");
-  const oldAssetsKeys = await oldAssetStore.getAllKeys();
-  const oldAssets = await Promise.all(
-    oldAssetsKeys.map(async (key) => [key, await oldAssetStore.get(key)])
-  );
-  await oldTx.done;
-  const newDb = await openLocalDb(persistenceKey);
-  const newTx = newDb.transaction([Table.Assets], "readwrite");
-  const newAssetTable = newTx.objectStore(Table.Assets);
-  for (const [key, value] of oldAssets) {
-    newAssetTable.put(value, key);
-  }
-  await newTx.done;
-  oldAssetDb.close();
-  newDb.close();
-  await deleteDB(oldStoreId);
-}
-var _LocalIndexedDb = class _LocalIndexedDb {
-  constructor(persistenceKey) {
-    __publicField(this, "getDbPromise");
-    __publicField(this, "isClosed", false);
-    __publicField(this, "pendingTransactionSet", /* @__PURE__ */ new Set());
-    _LocalIndexedDb.connectedInstances.add(this);
-    this.getDbPromise = (async () => {
-      await migrateLegacyAssetDbIfNeeded(persistenceKey);
-      return await openLocalDb(persistenceKey);
-    })();
-  }
-  getDb() {
-    return this.getDbPromise;
-  }
-  /**
-   * Wait for any pending transactions to be completed. Useful for tests.
-   *
-   * @internal
-   */
-  pending() {
-    return Promise.allSettled([this.getDbPromise, ...this.pendingTransactionSet]).then(noop);
-  }
-  async close() {
-    if (this.isClosed) return;
-    this.isClosed = true;
-    await this.pending();
-    (await this.getDb()).close();
-    _LocalIndexedDb.connectedInstances.delete(this);
-  }
-  tx(mode, names, cb) {
-    const txPromise = (async () => {
-      assert(!this.isClosed, "db is closed");
-      const db = await this.getDb();
-      const tx = db.transaction(names, mode);
-      const done = tx.done.catch((e) => {
-        if (!this.isClosed) {
-          throw e;
-        }
-      });
-      try {
-        return await cb(tx);
-      } finally {
-        if (!this.isClosed) {
-          await done;
-        } else {
-          tx.abort();
-        }
-      }
-    })();
-    this.pendingTransactionSet.add(txPromise);
-    txPromise.finally(() => this.pendingTransactionSet.delete(txPromise));
-    return txPromise;
-  }
-  async load({ sessionId } = {}) {
-    return await this.tx(
-      "readonly",
-      [Table.Records, Table.Schema, Table.SessionState],
-      async (tx) => {
-        var _a5, _b2;
-        const recordsStore = tx.objectStore(Table.Records);
-        const schemaStore = tx.objectStore(Table.Schema);
-        const sessionStateStore = tx.objectStore(Table.SessionState);
-        let sessionStateSnapshot = sessionId ? (_a5 = await sessionStateStore.get(sessionId)) == null ? void 0 : _a5.snapshot : null;
-        if (!sessionStateSnapshot) {
-          const all = await sessionStateStore.getAll();
-          sessionStateSnapshot = (_b2 = all.sort((a, b) => a.updatedAt - b.updatedAt).pop()) == null ? void 0 : _b2.snapshot;
-        }
-        const result = {
-          records: await recordsStore.getAll(),
-          schema: await schemaStore.get(Table.Schema),
-          sessionStateSnapshot
-        };
-        return result;
-      }
-    );
-  }
-  async storeChanges({
-    schema,
-    changes,
-    sessionId,
-    sessionStateSnapshot
-  }) {
-    await this.tx("readwrite", [Table.Records, Table.Schema, Table.SessionState], async (tx) => {
-      const recordsStore = tx.objectStore(Table.Records);
-      const schemaStore = tx.objectStore(Table.Schema);
-      const sessionStateStore = tx.objectStore(Table.SessionState);
-      for (const [id, record] of Object.entries(changes.added)) {
-        await recordsStore.put(record, id);
-      }
-      for (const [_prev, updated] of Object.values(changes.updated)) {
-        await recordsStore.put(updated, updated.id);
-      }
-      for (const id of Object.keys(changes.removed)) {
-        await recordsStore.delete(id);
-      }
-      schemaStore.put(schema.serialize(), Table.Schema);
-      if (sessionStateSnapshot && sessionId) {
-        sessionStateStore.put(
-          {
-            snapshot: sessionStateSnapshot,
-            updatedAt: Date.now(),
-            id: sessionId
-          },
-          sessionId
-        );
-      } else if (sessionStateSnapshot || sessionId) {
-        console.error("sessionStateSnapshot and instanceId must be provided together");
-      }
-    });
-  }
-  async storeSnapshot({
-    schema,
-    snapshot,
-    sessionId,
-    sessionStateSnapshot
-  }) {
-    await this.tx("readwrite", [Table.Records, Table.Schema, Table.SessionState], async (tx) => {
-      const recordsStore = tx.objectStore(Table.Records);
-      const schemaStore = tx.objectStore(Table.Schema);
-      const sessionStateStore = tx.objectStore(Table.SessionState);
-      await recordsStore.clear();
-      for (const [id, record] of Object.entries(snapshot)) {
-        await recordsStore.put(record, id);
-      }
-      schemaStore.put(schema.serialize(), Table.Schema);
-      if (sessionStateSnapshot && sessionId) {
-        sessionStateStore.put(
-          {
-            snapshot: sessionStateSnapshot,
-            updatedAt: Date.now(),
-            id: sessionId
-          },
-          sessionId
-        );
-      } else if (sessionStateSnapshot || sessionId) {
-        console.error("sessionStateSnapshot and instanceId must be provided together");
-      }
-    });
-  }
-  async pruneSessions() {
-    await this.tx("readwrite", [Table.SessionState], async (tx) => {
-      const sessionStateStore = tx.objectStore(Table.SessionState);
-      const all = (await sessionStateStore.getAll()).sort((a, b) => a.updatedAt - b.updatedAt);
-      if (all.length < 10) {
-        await tx.done;
-        return;
-      }
-      const toDelete = all.slice(0, all.length - 10);
-      for (const { id } of toDelete) {
-        await sessionStateStore.delete(id);
-      }
-    });
-  }
-  async getAsset(assetId) {
-    return await this.tx("readonly", [Table.Assets], async (tx) => {
-      const assetsStore = tx.objectStore(Table.Assets);
-      return await assetsStore.get(assetId);
-    });
-  }
-  async storeAsset(assetId, blob) {
-    await this.tx("readwrite", [Table.Assets], async (tx) => {
-      const assetsStore = tx.objectStore(Table.Assets);
-      await assetsStore.put(blob, assetId);
-    });
-  }
-};
-/** @internal */
-__publicField(_LocalIndexedDb, "connectedInstances", /* @__PURE__ */ new Set());
-var LocalIndexedDb = _LocalIndexedDb;
-function getAllIndexDbNames() {
-  var _a5;
-  const result = (_a5 = JSON.parse(getFromLocalStorage(dbNameIndexKey) || "[]")) != null ? _a5 : [];
-  if (!Array.isArray(result)) {
-    return [];
-  }
-  return result;
-}
-function addDbName(name) {
-  const all = new Set(getAllIndexDbNames());
-  all.add(name);
-  setInLocalStorage(dbNameIndexKey, JSON.stringify([...all]));
 }
 
 // node_modules/@tldraw/editor/dist-esm/lib/utils/sync/alerts.mjs
@@ -59181,7 +59210,8 @@ function TldrawEditorWithOwnStore(props) {
     persistenceKey,
     sessionId,
     user,
-    assets
+    assets,
+    migrations
   } = props;
   const syncedStore = useLocalStore({
     shapeUtils,
@@ -59191,7 +59221,8 @@ function TldrawEditorWithOwnStore(props) {
     sessionId,
     defaultName,
     snapshot,
-    assets
+    assets,
+    migrations
   });
   return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(TldrawEditorWithLoadingStore, { ...props, store: syncedStore, user });
 }
@@ -59381,7 +59412,7 @@ function TldrawEditorWithReadyStore({
       fallback: ErrorFallback,
       onError: (error) => editor.annotateError(error, { origin: "react.tldraw", willCrashApp: true }),
       children: crashingError ? /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(Crash, { crashingError }) : /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(EditorProvider, { editor, children: /* @__PURE__ */ (0, import_jsx_runtime36.jsxs)(Layout, { onMount, children: [
-        children != null ? children : Canvas ? /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(Canvas, {}) : null,
+        children != null ? children : Canvas ? /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(Canvas, {}, editor.contextId) : null,
         /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(Watermark, {})
       ] }) })
     })
@@ -60308,9 +60339,26 @@ function openWindow(url, target = "_blank") {
 // node_modules/@tldraw/editor/dist-esm/index.mjs
 registerTldrawLibraryVersion(
   "@tldraw/editor",
-  "3.6.0",
+  "3.7.2",
   "esm"
 );
+
+// node_modules/tldraw/dist-esm/lib/shapes/shared/usePrefersReducedMotion.mjs
+var import_react49 = __toESM(require_react(), 1);
+function usePrefersReducedMotion() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = (0, import_react49.useState)(false);
+  (0, import_react49.useEffect)(() => {
+    if (typeof window === "undefined" || !("matchMedia" in window)) return;
+    const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const handler = () => {
+      setPrefersReducedMotion(mql.matches);
+    };
+    handler();
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
+  return prefersReducedMotion;
+}
 
 // node_modules/tldraw/dist-esm/lib/ui/components/ColorSchemeMenu.mjs
 var import_jsx_runtime79 = __toESM(require_jsx_runtime(), 1);
@@ -60564,7 +60612,7 @@ function dispatchDiscreteCustomEvent(target, event) {
 var React44 = __toESM(require_react(), 1);
 
 // node_modules/@radix-ui/react-collection/dist/index.mjs
-var import_react49 = __toESM(require_react(), 1);
+var import_react50 = __toESM(require_react(), 1);
 
 // node_modules/@radix-ui/react-collection/node_modules/@radix-ui/react-context/dist/index.mjs
 var React17 = __toESM(require_react(), 1);
@@ -60638,13 +60686,13 @@ function createCollection(name) {
   );
   const CollectionProvider = (props) => {
     const { scope, children } = props;
-    const ref = import_react49.default.useRef(null);
-    const itemMap = import_react49.default.useRef(/* @__PURE__ */ new Map()).current;
+    const ref = import_react50.default.useRef(null);
+    const itemMap = import_react50.default.useRef(/* @__PURE__ */ new Map()).current;
     return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(CollectionProviderImpl, { scope, itemMap, collectionRef: ref, children });
   };
   CollectionProvider.displayName = PROVIDER_NAME2;
   const COLLECTION_SLOT_NAME = name + "CollectionSlot";
-  const CollectionSlot = import_react49.default.forwardRef(
+  const CollectionSlot = import_react50.default.forwardRef(
     (props, forwardedRef) => {
       const { scope, children } = props;
       const context = useCollectionContext(COLLECTION_SLOT_NAME, scope);
@@ -60655,13 +60703,13 @@ function createCollection(name) {
   CollectionSlot.displayName = COLLECTION_SLOT_NAME;
   const ITEM_SLOT_NAME = name + "CollectionItemSlot";
   const ITEM_DATA_ATTR = "data-radix-collection-item";
-  const CollectionItemSlot = import_react49.default.forwardRef(
+  const CollectionItemSlot = import_react50.default.forwardRef(
     (props, forwardedRef) => {
       const { scope, children, ...itemData } = props;
-      const ref = import_react49.default.useRef(null);
+      const ref = import_react50.default.useRef(null);
       const composedRefs = useComposedRefs(forwardedRef, ref);
       const context = useCollectionContext(ITEM_SLOT_NAME, scope);
-      import_react49.default.useEffect(() => {
+      import_react50.default.useEffect(() => {
         context.itemMap.set(ref, { ref, ...itemData });
         return () => void context.itemMap.delete(ref);
       });
@@ -60671,7 +60719,7 @@ function createCollection(name) {
   CollectionItemSlot.displayName = ITEM_SLOT_NAME;
   function useCollection5(scope) {
     const context = useCollectionContext(name + "CollectionConsumer", scope);
-    const getItems = import_react49.default.useCallback(() => {
+    const getItems = import_react50.default.useCallback(() => {
       const collectionNode = context.collectionRef.current;
       if (!collectionNode) return [];
       const orderedNodes = Array.from(collectionNode.querySelectorAll(`[${ITEM_DATA_ATTR}]`));
@@ -62756,9 +62804,9 @@ var computePosition2 = (reference, floating, options) => {
 
 // node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.mjs
 var React27 = __toESM(require_react(), 1);
-var import_react50 = __toESM(require_react(), 1);
+var import_react51 = __toESM(require_react(), 1);
 var ReactDOM2 = __toESM(require_react_dom(), 1);
-var index = typeof document !== "undefined" ? import_react50.useLayoutEffect : import_react50.useEffect;
+var index = typeof document !== "undefined" ? import_react51.useLayoutEffect : import_react51.useEffect;
 function deepEqual(a, b) {
   if (a === b) {
     return true;
@@ -64059,9 +64107,9 @@ function assignRef(ref, value) {
 }
 
 // node_modules/use-callback-ref/dist/es2015/useRef.js
-var import_react51 = __toESM(require_react());
+var import_react52 = __toESM(require_react());
 function useCallbackRef2(initialValue, callback) {
-  var ref = (0, import_react51.useState)(function() {
+  var ref = (0, import_react52.useState)(function() {
     return {
       // value
       value: initialValue,
@@ -66214,7 +66262,7 @@ function fitFrameToContent(editor, id, opts = {}) {
 
 // node_modules/tldraw/dist-esm/lib/ui/components/EditLinkDialog.mjs
 var import_jsx_runtime65 = __toESM(require_jsx_runtime(), 1);
-var import_react54 = __toESM(require_react(), 1);
+var import_react55 = __toESM(require_react(), 1);
 
 // node_modules/tldraw/dist-esm/lib/ui/hooks/useTranslation/useTranslation.mjs
 var import_jsx_runtime57 = __toESM(require_jsx_runtime(), 1);
@@ -66222,13 +66270,13 @@ var React47 = __toESM(require_react(), 1);
 
 // node_modules/tldraw/dist-esm/lib/ui/context/asset-urls.mjs
 var import_jsx_runtime56 = __toESM(require_jsx_runtime(), 1);
-var import_react52 = __toESM(require_react(), 1);
-var AssetUrlsContext = (0, import_react52.createContext)(null);
+var import_react53 = __toESM(require_react(), 1);
+var AssetUrlsContext = (0, import_react53.createContext)(null);
 function AssetUrlsProvider({
   assetUrls,
   children
 }) {
-  (0, import_react52.useEffect)(() => {
+  (0, import_react53.useEffect)(() => {
     for (const src of Object.values(assetUrls.icons)) {
       const image = Image();
       image.src = src;
@@ -66243,7 +66291,7 @@ function AssetUrlsProvider({
   return /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(AssetUrlsContext.Provider, { value: assetUrls, children });
 }
 function useAssetUrls() {
-  const assetUrls = (0, import_react52.useContext)(AssetUrlsContext);
+  const assetUrls = (0, import_react53.useContext)(AssetUrlsContext);
   if (!assetUrls) {
     throw new Error("useAssetUrls must be used within an AssetUrlsProvider");
   }
@@ -67105,8 +67153,8 @@ var import_jsx_runtime62 = __toESM(require_jsx_runtime(), 1);
 // node_modules/tldraw/dist-esm/lib/ui/components/primitives/TldrawUiIcon.mjs
 var import_jsx_runtime61 = __toESM(require_jsx_runtime(), 1);
 var import_classnames14 = __toESM(require_classnames(), 1);
-var import_react53 = __toESM(require_react(), 1);
-var TldrawUiIcon = (0, import_react53.memo)(function TldrawUiIcon2({
+var import_react54 = __toESM(require_react(), 1);
+var TldrawUiIcon = (0, import_react54.memo)(function TldrawUiIcon2({
   small,
   invertIcon,
   icon,
@@ -67117,8 +67165,8 @@ var TldrawUiIcon = (0, import_react53.memo)(function TldrawUiIcon2({
   var _a5;
   const assetUrls = useAssetUrls();
   const asset = (_a5 = assetUrls.icons[icon]) != null ? _a5 : assetUrls.icons["question-mark-circle"];
-  const ref = (0, import_react53.useRef)(null);
-  (0, import_react53.useLayoutEffect)(() => {
+  const ref = (0, import_react54.useRef)(null);
+  (0, import_react54.useLayoutEffect)(() => {
     if (!asset) {
       console.error(`Icon not found: ${icon}. Add it to the assetUrls.icons object.`);
     }
@@ -67347,15 +67395,15 @@ var EditLinkDialogInner = track(function EditLinkDialogInner2({
 }) {
   const editor = useEditor();
   const msg2 = useTranslation();
-  const rInput = (0, import_react54.useRef)(null);
-  (0, import_react54.useEffect)(() => {
+  const rInput = (0, import_react55.useRef)(null);
+  (0, import_react55.useEffect)(() => {
     editor.timers.requestAnimationFrame(() => {
       var _a5;
       return (_a5 = rInput.current) == null ? void 0 : _a5.focus();
     });
   }, [editor]);
-  const rInitialValue = (0, import_react54.useRef)(selectedShape.props.url);
-  const [urlInputState, setUrlInputState] = (0, import_react54.useState)(() => {
+  const rInitialValue = (0, import_react55.useRef)(selectedShape.props.url);
+  const [urlInputState, setUrlInputState] = (0, import_react55.useState)(() => {
     const urlValidResult = validateUrl(selectedShape.props.url);
     const initialValue = urlValidResult.isValid === true ? urlValidResult.hasProtocol ? selectedShape.props.url : "https://" + selectedShape.props.url : "https://";
     return {
@@ -67364,7 +67412,7 @@ var EditLinkDialogInner = track(function EditLinkDialogInner2({
       valid: true
     };
   });
-  const handleChange = (0, import_react54.useCallback)((rawValue) => {
+  const handleChange = (0, import_react55.useCallback)((rawValue) => {
     const fixedRawValue = rawValue.replace(/https?:\/\/(https?:\/\/)/, (_match, arg1) => {
       return arg1;
     });
@@ -67376,7 +67424,7 @@ var EditLinkDialogInner = track(function EditLinkDialogInner2({
       valid: urlValidResult.isValid
     });
   }, []);
-  const handleClear = (0, import_react54.useCallback)(() => {
+  const handleClear = (0, import_react55.useCallback)(() => {
     const onlySelectedShape = editor.getOnlySelectedShape();
     if (!onlySelectedShape) return;
     editor.updateShapes([
@@ -67384,7 +67432,7 @@ var EditLinkDialogInner = track(function EditLinkDialogInner2({
     ]);
     onClose();
   }, [editor, onClose]);
-  const handleComplete = (0, import_react54.useCallback)(() => {
+  const handleComplete = (0, import_react55.useCallback)(() => {
     const onlySelectedShape = editor.getOnlySelectedShape();
     if (!onlySelectedShape) return;
     if (onlySelectedShape && "url" in onlySelectedShape.props) {
@@ -67400,7 +67448,7 @@ var EditLinkDialogInner = track(function EditLinkDialogInner2({
     }
     onClose();
   }, [editor, onClose, urlInputState]);
-  const handleCancel = (0, import_react54.useCallback)(() => {
+  const handleCancel = (0, import_react55.useCallback)(() => {
     onClose();
   }, [onClose]);
   if (!selectedShape) {
@@ -67447,7 +67495,7 @@ var EditLinkDialogInner = track(function EditLinkDialogInner2({
 
 // node_modules/tldraw/dist-esm/lib/ui/components/EmbedDialog.mjs
 var import_jsx_runtime66 = __toESM(require_jsx_runtime(), 1);
-var import_react55 = __toESM(require_react(), 1);
+var import_react56 = __toESM(require_react(), 1);
 
 // node_modules/tldraw/dist-esm/lib/defaultEmbedDefinitions.mjs
 var TLDRAW_APP_RE2 = /(^\/r\/[^/]+\/?$)/;
@@ -67517,8 +67565,10 @@ var DEFAULT_EMBED_DEFINITIONS = [
       "allow-presentation": true
     },
     toEmbedUrl: (url) => {
-      if (url.includes("/maps/")) {
-        const match = url.match(/@(.*),(.*),(.*)z/);
+      if (url.includes("/maps/embed?")) {
+        return url;
+      } else if (url.includes("/maps/")) {
+        const match = url.match(/@(.*?),(.*?),(.*?)z/);
         let result;
         if (match) {
           const [, lat, lng, z] = match;
@@ -67773,9 +67823,17 @@ var DEFAULT_EMBED_DEFINITIONS = [
     width: 720,
     height: 500,
     doesResize: true,
+    // Security warning:
+    // Gists allow adding .json extensions to the URL which return JSONP.
+    // Furthermore, the JSONP can include callbacks that execute arbitrary JavaScript.
+    // It _is_ sandboxed by the iframe but we still want to disable it nonetheless.
+    // We restrict the id to only allow hexdecimal characters to prevent this.
+    // Read more:
+    //   https://github.com/bhaveshk90/Content-Security-Policy-CSP-Bypass-Techniques
+    //   https://github.com/renniepak/CSPBypass
     toEmbedUrl: (url) => {
       const urlObj = safeParseUrl(url);
-      if (urlObj && urlObj.pathname.match(/\/([^/]+)\/([^/]+)/)) {
+      if (urlObj && urlObj.pathname.match(/\/([^/]+)\/([0-9a-f]+)$/)) {
         if (!url.split("/").pop()) return;
         return url;
       }
@@ -67783,7 +67841,7 @@ var DEFAULT_EMBED_DEFINITIONS = [
     },
     fromEmbedUrl: (url) => {
       const urlObj = safeParseUrl(url);
-      if (urlObj && urlObj.pathname.match(/\/([^/]+)\/([^/]+)/)) {
+      if (urlObj && urlObj.pathname.match(/\/([^/]+)\/([0-9a-f]+)$/)) {
         if (!url.split("/").pop()) return;
         return url;
       }
@@ -68045,11 +68103,11 @@ var EmbedDialog = track(function EmbedDialog2({ onClose }) {
   const editor = useEditor();
   const msg2 = useTranslation();
   const assetUrls = useAssetUrls();
-  const [embedDefinition, setEmbedDefinition] = (0, import_react55.useState)(null);
-  const [url, setUrl] = (0, import_react55.useState)("");
-  const [embedInfoForUrl, setEmbedInfoForUrl] = (0, import_react55.useState)(null);
-  const [showError, setShowError] = (0, import_react55.useState)(false);
-  const rShowErrorTimeout = (0, import_react55.useRef)(-1);
+  const [embedDefinition, setEmbedDefinition] = (0, import_react56.useState)(null);
+  const [url, setUrl] = (0, import_react56.useState)("");
+  const [embedInfoForUrl, setEmbedInfoForUrl] = (0, import_react56.useState)(null);
+  const [showError, setShowError] = (0, import_react56.useState)(false);
+  const rShowErrorTimeout = (0, import_react56.useRef)(-1);
   const definitions = useGetEmbedDefinitions();
   const getEmbedDefinition = useGetEmbedDefinition();
   return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(import_jsx_runtime66.Fragment, { children: [
@@ -68150,7 +68208,7 @@ var EmbedDialog = track(function EmbedDialog2({ onClose }) {
 });
 
 // node_modules/tldraw/dist-esm/lib/ui/hooks/useFlatten.mjs
-var import_react56 = __toESM(require_react(), 1);
+var import_react57 = __toESM(require_react(), 1);
 async function flattenShapesToImages(editor, shapeIds, flattenImageBoundsExpand) {
   const shapes = compact(
     shapeIds.map((id) => {
@@ -68304,7 +68362,7 @@ function useCollaborationStatus() {
 }
 
 // node_modules/tldraw/dist-esm/lib/ui/overrides.mjs
-var import_react65 = __toESM(require_react(), 1);
+var import_react66 = __toESM(require_react(), 1);
 
 // node_modules/tldraw/dist-esm/lib/ui/constants.mjs
 var PORTRAIT_BREAKPOINTS = [0, 389, 436, 476, 580, 640, 840, 1023];
@@ -68322,8 +68380,8 @@ var PORTRAIT_BREAKPOINT = /* @__PURE__ */ ((PORTRAIT_BREAKPOINT2) => {
 
 // node_modules/tldraw/dist-esm/lib/ui/context/breakpoints.mjs
 var import_jsx_runtime67 = __toESM(require_jsx_runtime(), 1);
-var import_react57 = __toESM(require_react(), 1);
-var BreakpointContext = import_react57.default.createContext(null);
+var import_react58 = __toESM(require_react(), 1);
+var BreakpointContext = import_react58.default.createContext(null);
 function BreakPointProvider({ forceMobile = false, children }) {
   const editor = useMaybeEditor();
   const breakpoint = useValue(
@@ -68344,7 +68402,7 @@ function BreakPointProvider({ forceMobile = false, children }) {
   return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(BreakpointContext.Provider, { value: breakpoint, children });
 }
 function useBreakpoint() {
-  const breakpoint = (0, import_react57.useContext)(BreakpointContext);
+  const breakpoint = (0, import_react58.useContext)(BreakpointContext);
   if (breakpoint === null) {
     throw new Error("useBreakpoint must be used inside of the <BreakpointProvider /> component");
   }
@@ -68353,12 +68411,12 @@ function useBreakpoint() {
 
 // node_modules/tldraw/dist-esm/lib/ui/context/dialogs.mjs
 var import_jsx_runtime68 = __toESM(require_jsx_runtime(), 1);
-var import_react58 = __toESM(require_react(), 1);
-var DialogsContext = (0, import_react58.createContext)(null);
+var import_react59 = __toESM(require_react(), 1);
+var DialogsContext = (0, import_react59.createContext)(null);
 function TldrawUiDialogsProvider({ context, children }) {
   const trackEvent = useUiEvents();
   const dialogs = useAtom("dialogs", []);
-  const content = (0, import_react58.useMemo)(() => {
+  const content = (0, import_react59.useMemo)(() => {
     return {
       dialogs,
       addDialog(dialog) {
@@ -68398,7 +68456,7 @@ function TldrawUiDialogsProvider({ context, children }) {
   return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DialogsContext.Provider, { value: content, children });
 }
 function useDialogs() {
-  const ctx = (0, import_react58.useContext)(DialogsContext);
+  const ctx = (0, import_react59.useContext)(DialogsContext);
   if (!ctx) {
     throw new Error("useDialogs must be used within a DialogsProvider");
   }
@@ -69062,11 +69120,11 @@ var Action = ToastAction;
 var Close = ToastClose;
 
 // node_modules/tldraw/dist-esm/lib/ui/context/toasts.mjs
-var import_react59 = __toESM(require_react(), 1);
-var ToastsContext = (0, import_react59.createContext)(null);
+var import_react60 = __toESM(require_react(), 1);
+var ToastsContext = (0, import_react60.createContext)(null);
 function TldrawUiToastsProvider({ children }) {
   const toasts = useAtom("toasts", []);
-  const current = (0, import_react59.useMemo)(() => {
+  const current = (0, import_react60.useMemo)(() => {
     return {
       toasts,
       addToast(toast) {
@@ -69087,7 +69145,7 @@ function TldrawUiToastsProvider({ children }) {
   return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(ToastProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(ToastsContext.Provider, { value: current, children }) });
 }
 function useToasts() {
-  const ctx = (0, import_react59.useContext)(ToastsContext);
+  const ctx = (0, import_react60.useContext)(ToastsContext);
   if (!ctx) {
     throw new Error("useToasts must be used within a ToastsProvider");
   }
@@ -69096,7 +69154,7 @@ function useToasts() {
 
 // node_modules/tldraw/dist-esm/lib/ui/hooks/useClipboardEvents.mjs
 var import_lz_string = __toESM(require_lz_string(), 1);
-var import_react60 = __toESM(require_react(), 1);
+var import_react61 = __toESM(require_react(), 1);
 
 // node_modules/tldraw/dist-esm/lib/utils/clipboard.mjs
 var TLDRAW_CUSTOM_PNG_MIME_TYPE = "web image/vnd.tldraw+png";
@@ -69709,7 +69767,12 @@ var handlePasteFromEventClipboardData = async (editor, clipboardData, point) => 
   }
   handleClipboardThings(editor, things, point);
 };
-var handlePasteFromClipboardApi = async (editor, clipboardItems, point) => {
+var handlePasteFromClipboardApi = async ({
+  editor,
+  clipboardItems,
+  point,
+  fallbackFiles
+}) => {
   const things = [];
   for (const item of clipboardItems) {
     for (const type of expectedPasteFileMimeTypes) {
@@ -69749,6 +69812,12 @@ var handlePasteFromClipboardApi = async (editor, clipboardItems, point) => {
         })()
       });
     }
+  }
+  if (fallbackFiles && things.length === 1 && things[0].type === "text") {
+    things.pop();
+    things.push(
+      ...fallbackFiles.map((f) => ({ type: "file", source: Promise.resolve(f) }))
+    );
   }
   return await handleClipboardThings(editor, things, point);
 };
@@ -69867,6 +69936,16 @@ async function handleClipboardThings(editor, things, point) {
         return;
       }
     }
+    if (result.type === "text" && result.subtype === "text" && result.data.startsWith("<iframe ")) {
+      const rootNode = new DOMParser().parseFromString(result.data, "text/html");
+      const bodyNode = rootNode.querySelector("body");
+      const isSingleIframe = bodyNode && Array.from(bodyNode.children).filter((el) => el.nodeType === 1).length === 1 && bodyNode.firstElementChild && bodyNode.firstElementChild.tagName === "IFRAME" && bodyNode.firstElementChild.hasAttribute("src") && bodyNode.firstElementChild.getAttribute("src") !== "";
+      if (isSingleIframe) {
+        const src = bodyNode.firstElementChild.getAttribute("src");
+        handleText(editor, src, point, results);
+        return;
+      }
+    }
   }
   for (const result of results) {
     if (result.type === "text" && result.subtype === "url") {
@@ -69929,7 +70008,7 @@ var handleNativeOrMenuCopy = async (editor) => {
 function useMenuClipboardEvents() {
   const editor = useEditor();
   const trackEvent = useUiEvents();
-  const copy = (0, import_react60.useCallback)(
+  const copy = (0, import_react61.useCallback)(
     async function onCopy(source) {
       if (editor.getSelectedShapeIds().length === 0) return;
       await handleNativeOrMenuCopy(editor);
@@ -69937,7 +70016,7 @@ function useMenuClipboardEvents() {
     },
     [editor, trackEvent]
   );
-  const cut = (0, import_react60.useCallback)(
+  const cut = (0, import_react61.useCallback)(
     async function onCut(source) {
       if (editor.getSelectedShapeIds().length === 0) return;
       await handleNativeOrMenuCopy(editor);
@@ -69946,11 +70025,11 @@ function useMenuClipboardEvents() {
     },
     [editor, trackEvent]
   );
-  const paste = (0, import_react60.useCallback)(
+  const paste = (0, import_react61.useCallback)(
     async function onPaste(data, source, point) {
       if (editor.getEditingShapeId() !== null) return;
       if (Array.isArray(data) && data[0] instanceof ClipboardItem) {
-        handlePasteFromClipboardApi(editor, data, point);
+        handlePasteFromClipboardApi({ editor, clipboardItems: data, point });
         trackEvent("paste", { source: "menu" });
       } else {
         navigator.clipboard.read().then((clipboardItems) => {
@@ -69973,7 +70052,7 @@ function useNativeClipboardEvents() {
   const appIsFocused = useValue("editor.isFocused", () => editor.getInstanceState().isFocused, [
     editor
   ]);
-  (0, import_react60.useEffect)(() => {
+  (0, import_react61.useEffect)(() => {
     if (!appIsFocused) return;
     const copy = async (e) => {
       if (editor.getSelectedShapeIds().length === 0 || editor.getEditingShapeId() !== null || areShortcutsDisabled2(editor)) {
@@ -70002,7 +70081,7 @@ function useNativeClipboardEvents() {
       }
     };
     const paste = (e) => {
-      var _a5;
+      var _a5, _b2;
       if (disablingMiddleClickPaste) {
         stopEventPropagation(e);
         return;
@@ -70019,10 +70098,11 @@ function useNativeClipboardEvents() {
         }
       };
       if ((_a5 = navigator.clipboard) == null ? void 0 : _a5.read) {
+        const fallbackFiles = Array.from(((_b2 = e.clipboardData) == null ? void 0 : _b2.files) || []);
         navigator.clipboard.read().then(
           (clipboardItems) => {
             if (Array.isArray(clipboardItems) && clipboardItems[0] instanceof ClipboardItem) {
-              handlePasteFromClipboardApi(editor, clipboardItems, point);
+              handlePasteFromClipboardApi({ editor, clipboardItems, point, fallbackFiles });
             }
           },
           () => {
@@ -70049,7 +70129,7 @@ function useNativeClipboardEvents() {
 }
 
 // node_modules/tldraw/dist-esm/lib/ui/hooks/useCopyAs.mjs
-var import_react61 = __toESM(require_react(), 1);
+var import_react62 = __toESM(require_react(), 1);
 
 // node_modules/canvas-size/dist/canvas-size.esm.js
 function _iterableToArrayLimit(arr, i) {
@@ -70615,7 +70695,7 @@ function useCopyAs() {
   const editor = useEditor();
   const { addToast } = useToasts();
   const msg2 = useTranslation();
-  return (0, import_react61.useCallback)(
+  return (0, import_react62.useCallback)(
     (ids, format2 = "svg") => {
       copyAs(editor, ids, format2).catch(() => {
         addToast({
@@ -70631,7 +70711,7 @@ function useCopyAs() {
 }
 
 // node_modules/tldraw/dist-esm/lib/ui/hooks/useExportAs.mjs
-var import_react62 = __toESM(require_react(), 1);
+var import_react63 = __toESM(require_react(), 1);
 
 // node_modules/tldraw/dist-esm/lib/utils/export/exportAs.mjs
 async function exportAs(editor, ids, format2 = "png", name, opts = {}) {
@@ -70675,7 +70755,7 @@ function useExportAs() {
   const editor = useEditor();
   const { addToast } = useToasts();
   const msg2 = useTranslation();
-  return (0, import_react62.useCallback)(
+  return (0, import_react63.useCallback)(
     (ids, format2 = "png", name) => {
       exportAs(editor, ids, format2, name, {
         scale: 1,
@@ -70695,13 +70775,13 @@ function useExportAs() {
 }
 
 // node_modules/tldraw/dist-esm/lib/ui/hooks/useInsertMedia.mjs
-var import_react63 = __toESM(require_react(), 1);
-var MimeTypeContext = import_react63.default.createContext([]);
+var import_react64 = __toESM(require_react(), 1);
+var MimeTypeContext = import_react64.default.createContext([]);
 function useInsertMedia() {
   const editor = useEditor();
-  const inputRef = (0, import_react63.useRef)();
-  const mimeTypes = useShallowArrayIdentity(import_react63.default.useContext(MimeTypeContext));
-  (0, import_react63.useEffect)(() => {
+  const inputRef = (0, import_react64.useRef)();
+  const mimeTypes = useShallowArrayIdentity(import_react64.default.useContext(MimeTypeContext));
+  (0, import_react64.useEffect)(() => {
     var _a5;
     const input = window.document.createElement("input");
     input.type = "file";
@@ -70726,19 +70806,19 @@ function useInsertMedia() {
       input.removeEventListener("change", onchange);
     };
   }, [editor, mimeTypes]);
-  return (0, import_react63.useCallback)(() => {
+  return (0, import_react64.useCallback)(() => {
     var _a5;
     (_a5 = inputRef.current) == null ? void 0 : _a5.click();
   }, [inputRef]);
 }
 
 // node_modules/tldraw/dist-esm/lib/ui/hooks/usePrint.mjs
-var import_react64 = __toESM(require_react(), 1);
+var import_react65 = __toESM(require_react(), 1);
 function usePrint() {
   const editor = useEditor();
-  const prevPrintEl = (0, import_react64.useRef)(null);
-  const prevStyleEl = (0, import_react64.useRef)(null);
-  return (0, import_react64.useCallback)(
+  const prevPrintEl = (0, import_react65.useRef)(null);
+  const prevStyleEl = (0, import_react65.useRef)(null);
+  return (0, import_react65.useCallback)(
     async function printSelectionOrPages() {
       const el = document.createElement("div");
       const style = document.createElement("style");
@@ -70946,7 +71026,7 @@ function useDefaultHelpers() {
   const getEmbedDefinition = useGetEmbedDefinition();
   const breakpoint = useBreakpoint();
   const isMobile = breakpoint < PORTRAIT_BREAKPOINT.TABLET_SM;
-  return (0, import_react65.useMemo)(
+  return (0, import_react66.useMemo)(
     () => ({
       addToast,
       removeToast,
@@ -71019,13 +71099,13 @@ function mergeOverrides(overrides, defaultHelpers) {
   };
 }
 function useShallowArrayEquality(array2) {
-  return (0, import_react65.useMemo)(() => array2, array2);
+  return (0, import_react66.useMemo)(() => array2, array2);
 }
 function useMergedTranslationOverrides(overrides) {
   const overridesArray = useShallowArrayEquality(
     overrides == null ? [] : Array.isArray(overrides) ? overrides : [overrides]
   );
-  return (0, import_react65.useMemo)(() => {
+  return (0, import_react66.useMemo)(() => {
     const mergedTranslations = {};
     for (const override of overridesArray) {
       if (override.translations) {
@@ -71046,7 +71126,7 @@ function useMergedOverrides(overrides) {
   const overridesArray = useShallowArrayEquality(
     overrides == null ? [] : Array.isArray(overrides) ? overrides : [overrides]
   );
-  return (0, import_react65.useMemo)(
+  return (0, import_react66.useMemo)(
     () => mergeOverrides(overridesArray, defaultHelpers),
     [overridesArray, defaultHelpers]
   );
@@ -72394,10 +72474,10 @@ function TldrawUiKbd({ children, visibleOnMobileLayout = false }) {
 
 // node_modules/tldraw/dist-esm/lib/ui/components/primitives/menus/TldrawUiMenuContext.mjs
 var import_jsx_runtime74 = __toESM(require_jsx_runtime(), 1);
-var import_react66 = __toESM(require_react(), 1);
-var menuContext = (0, import_react66.createContext)(null);
+var import_react67 = __toESM(require_react(), 1);
+var menuContext = (0, import_react67.createContext)(null);
 function useTldrawUiMenuContext() {
-  const context = (0, import_react66.useContext)(menuContext);
+  const context = (0, import_react67.useContext)(menuContext);
   if (!context) {
     throw new Error("useTldrawUiMenuContext must be used within a TldrawUiMenuContextProvider");
   }
@@ -72498,10 +72578,10 @@ var import_jsx_runtime76 = __toESM(require_jsx_runtime(), 1);
 var import_classnames17 = __toESM(require_classnames(), 1);
 
 // node_modules/tldraw/dist-esm/lib/ui/hooks/useMenuIsOpen.mjs
-var import_react67 = __toESM(require_react(), 1);
+var import_react68 = __toESM(require_react(), 1);
 function useMenuIsOpen(id, cb) {
   const editor = useMaybeEditor();
-  const onChange = (0, import_react67.useCallback)(
+  const onChange = (0, import_react68.useCallback)(
     (isOpen) => {
       if (isOpen) {
         editor == null ? void 0 : editor.complete();
@@ -72511,7 +72591,7 @@ function useMenuIsOpen(id, cb) {
     [editor, cb]
   );
   const trackEvent = useUiEvents();
-  const onEvent = (0, import_react67.useCallback)(
+  const onEvent = (0, import_react68.useCallback)(
     (eventName) => {
       trackEvent(eventName, { source: "unknown", id });
     },
@@ -72766,11 +72846,11 @@ function ColorSchemeMenu() {
 
 // node_modules/tldraw/dist-esm/lib/ui/components/Dialogs.mjs
 var import_jsx_runtime80 = __toESM(require_jsx_runtime(), 1);
-var import_react68 = __toESM(require_react(), 1);
+var import_react69 = __toESM(require_react(), 1);
 var TldrawUiDialog = ({ id, component: ModalContent, onClose }) => {
   const { removeDialog } = useDialogs();
   const container = useContainer();
-  const handleOpenChange = (0, import_react68.useCallback)(
+  const handleOpenChange = (0, import_react69.useCallback)(
     (isOpen) => {
       if (!isOpen) {
         if (onClose) {
@@ -72797,7 +72877,7 @@ var TldrawUiDialog = ({ id, component: ModalContent, onClose }) => {
     }
   ) }) });
 };
-var TldrawUiDialogs = (0, import_react68.memo)(function TldrawUiDialogs2() {
+var TldrawUiDialogs = (0, import_react69.memo)(function TldrawUiDialogs2() {
   const { dialogs } = useDialogs();
   const dialogsArray = useValue("dialogs", () => dialogs.get(), [dialogs]);
   return dialogsArray.map((dialog) => /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(TldrawUiDialog, { ...dialog }, dialog.id));
@@ -72805,7 +72885,7 @@ var TldrawUiDialogs = (0, import_react68.memo)(function TldrawUiDialogs2() {
 
 // node_modules/tldraw/dist-esm/lib/ui/components/Toasts.mjs
 var import_jsx_runtime81 = __toESM(require_jsx_runtime(), 1);
-var import_react69 = __toESM(require_react(), 1);
+var import_react70 = __toESM(require_react(), 1);
 var DEFAULT_TOAST_DURATION = 4e3;
 var SEVERITY_TO_ICON = {
   success: "check-circle",
@@ -72865,7 +72945,7 @@ function TldrawUiToast({ toast }) {
     }
   );
 }
-var TldrawUiToasts = (0, import_react69.memo)(function TldrawUiToasts2() {
+var TldrawUiToasts = (0, import_react70.memo)(function TldrawUiToasts2() {
   const { toasts } = useToasts();
   const toastsArray = useValue("toasts", () => toasts.get(), []);
   return /* @__PURE__ */ (0, import_jsx_runtime81.jsxs)(import_jsx_runtime81.Fragment, { children: [
@@ -72891,7 +72971,7 @@ var import_jsx_runtime85 = __toESM(require_jsx_runtime(), 1);
 
 // node_modules/tldraw/dist-esm/lib/ui/components/primitives/menus/TldrawUiMenuItem.mjs
 var import_jsx_runtime84 = __toESM(require_jsx_runtime(), 1);
-var import_react70 = __toESM(require_react(), 1);
+var import_react71 = __toESM(require_react(), 1);
 
 // node_modules/tldraw/dist-esm/lib/ui/components/Spinner.mjs
 var import_jsx_runtime83 = __toESM(require_jsx_runtime(), 1);
@@ -72927,7 +73007,7 @@ function TldrawUiMenuItem({
 }) {
   const { type: menuType, sourceId } = useTldrawUiMenuContext();
   const msg2 = useTranslation();
-  const [disableClicks, setDisableClicks] = (0, import_react70.useState)(false);
+  const [disableClicks, setDisableClicks] = (0, import_react71.useState)(false);
   const isReadonlyMode = useReadonly();
   if (isReadonlyMode && !readonlyOk) return null;
   const labelToUse = unwrapLabel(label, menuType);
@@ -73715,7 +73795,7 @@ var TldrawSelectionBackground = ({ bounds, rotation }) => {
 // node_modules/tldraw/dist-esm/lib/canvas/TldrawSelectionForeground.mjs
 var import_jsx_runtime92 = __toESM(require_jsx_runtime(), 1);
 var import_classnames20 = __toESM(require_classnames(), 1);
-var import_react71 = __toESM(require_react(), 1);
+var import_react72 = __toESM(require_react(), 1);
 
 // node_modules/tldraw/dist-esm/lib/canvas/TldrawCropHandles.mjs
 var import_jsx_runtime91 = __toESM(require_jsx_runtime(), 1);
@@ -73854,7 +73934,7 @@ var TldrawSelectionForeground = track(function TldrawSelectionForeground2({
   rotation
 }) {
   const editor = useEditor();
-  const rSvg = (0, import_react71.useRef)(null);
+  const rSvg = (0, import_react72.useRef)(null);
   const isReadonlyMode = useReadonly();
   const topEvents = useSelectionEvents("top");
   const rightEvents = useSelectionEvents("right");
@@ -73869,17 +73949,16 @@ var TldrawSelectionForeground = track(function TldrawSelectionForeground2({
   const onlyShape = editor.getOnlySelectedShape();
   const isLockedShape = onlyShape && editor.isShapeOrAncestorLocked(onlyShape);
   const expandOutlineBy = onlyShape ? editor.getShapeUtil(onlyShape).expandSelectionOutlinePx(onlyShape) : 0;
+  const expandedBounds = expandOutlineBy instanceof Box ? bounds.clone().expand(expandOutlineBy).zeroFix() : bounds.clone().expandBy(expandOutlineBy).zeroFix();
   useTransform(rSvg, bounds == null ? void 0 : bounds.x, bounds == null ? void 0 : bounds.y, 1, editor.getSelectionRotation(), {
-    x: -expandOutlineBy,
-    y: -expandOutlineBy
+    x: expandedBounds.x - bounds.x,
+    y: expandedBounds.y - bounds.y
   });
   if (onlyShape && editor.isShapeHidden(onlyShape)) return null;
-  if (!bounds) return null;
-  bounds = bounds.clone().expandBy(expandOutlineBy).zeroFix();
   const zoom = editor.getZoomLevel();
   const isChangingStyle = editor.getInstanceState().isChangingStyle;
-  const width = bounds.width;
-  const height = bounds.height;
+  const width = expandedBounds.width;
+  const height = expandedBounds.height;
   const size4 = 8 / zoom;
   const isTinyX = width < size4 * 2;
   const isTinyY = height < size4 * 2;
@@ -75492,7 +75571,6 @@ function registerDefaultExternalContentHandlers(editor, {
     }
     const position = point != null ? point : editor.inputs.shiftKey ? editor.inputs.currentPagePoint : editor.getViewportPageBounds().center;
     const pagePoint = new Vec(position.x, position.y);
-    const assets = [];
     const assetsToUpdate = [];
     for (const file of files) {
       if (file.size > maxAssetSize) {
@@ -75530,10 +75608,10 @@ function registerDefaultExternalContentHandlers(editor, {
       if (isImageType) {
         temporaryAssetPreview = editor.createTemporaryAssetPreview(assetId, file);
       }
-      assets.push(assetInfo);
       assetsToUpdate.push({ asset: assetInfo, file, temporaryAssetPreview });
     }
-    Promise.allSettled(
+    const assets = [];
+    await Promise.allSettled(
       assetsToUpdate.map(async (assetAndFile) => {
         try {
           const newAsset = await editor.getAssetForExternalContent({
@@ -75543,7 +75621,9 @@ function registerDefaultExternalContentHandlers(editor, {
           if (!newAsset) {
             throw Error("Could not create an asset");
           }
-          editor.updateAssets([{ ...newAsset, id: assetAndFile.asset.id }]);
+          const updated = { ...newAsset, id: assetAndFile.asset.id };
+          assets.push(updated);
+          editor.updateAssets([updated]);
         } catch (error) {
           toasts.addToast({
             title: msg2("assets.files.upload-failed"),
@@ -77443,11 +77523,11 @@ var import_jsx_runtime100 = __toESM(require_jsx_runtime(), 1);
 
 // node_modules/tldraw/dist-esm/lib/shapes/shared/ShapeFill.mjs
 var import_jsx_runtime95 = __toESM(require_jsx_runtime(), 1);
-var import_react73 = __toESM(require_react(), 1);
+var import_react74 = __toESM(require_react(), 1);
 
 // node_modules/tldraw/dist-esm/lib/shapes/shared/defaultStyleDefs.mjs
 var import_jsx_runtime94 = __toESM(require_jsx_runtime(), 1);
-var import_react72 = __toESM(require_react(), 1);
+var import_react73 = __toESM(require_react(), 1);
 
 // node_modules/tldraw/dist-esm/lib/shapes/shared/useDefaultColorTheme.mjs
 function useDefaultColorTheme() {
@@ -77584,7 +77664,7 @@ function getPatternLodForZoomLevel(zoom) {
 }
 function useGetHashPatternZoomName() {
   const id = useSharedSafeId("hash_pattern");
-  return (0, import_react72.useCallback)(
+  return (0, import_react73.useCallback)(
     (zoom, theme) => {
       const lod = getPatternLodForZoomLevel(zoom);
       return suffixSafeId(id, `${theme}_${lod}`);
@@ -77616,12 +77696,12 @@ function usePattern() {
   const maxZoom = useValue("maxZoom", () => Math.ceil(last(editor.getCameraOptions().zoomSteps)), [
     editor
   ]);
-  const [isReady, setIsReady] = (0, import_react72.useState)(false);
-  const [backgroundUrls, setBackgroundUrls] = (0, import_react72.useState)(
+  const [isReady, setIsReady] = (0, import_react73.useState)(false);
+  const [backgroundUrls, setBackgroundUrls] = (0, import_react73.useState)(
     () => getDefaultPatterns(maxZoom)
   );
   const getHashPatternZoomName = useGetHashPatternZoomName();
-  (0, import_react72.useEffect)(() => {
+  (0, import_react73.useEffect)(() => {
     if (false) {
       setIsReady(true);
       return;
@@ -77674,9 +77754,9 @@ function usePattern() {
 }
 function PatternFillDefForCanvas() {
   const editor = useEditor();
-  const containerRef = (0, import_react72.useRef)(null);
+  const containerRef = (0, import_react73.useRef)(null);
   const { defs, isReady } = usePattern();
-  (0, import_react72.useEffect)(() => {
+  (0, import_react73.useEffect)(() => {
     if (isReady && tlenv.isSafari) {
       const htmlLayer = findHtmlLayerParent(containerRef.current);
       if (htmlLayer) {
@@ -77698,7 +77778,7 @@ function findHtmlLayerParent(element) {
 }
 
 // node_modules/tldraw/dist-esm/lib/shapes/shared/ShapeFill.mjs
-var ShapeFill = import_react73.default.memo(function ShapeFill2({
+var ShapeFill = import_react74.default.memo(function ShapeFill2({
   theme,
   d,
   color,
@@ -77882,12 +77962,12 @@ function SvgTextLabel({
 
 // node_modules/tldraw/dist-esm/lib/shapes/shared/TextLabel.mjs
 var import_jsx_runtime99 = __toESM(require_jsx_runtime(), 1);
-var import_react76 = __toESM(require_react(), 1);
+var import_react77 = __toESM(require_react(), 1);
 
 // node_modules/tldraw/dist-esm/lib/shapes/text/TextArea.mjs
 var import_jsx_runtime98 = __toESM(require_jsx_runtime(), 1);
-var import_react74 = __toESM(require_react(), 1);
-var TextArea = (0, import_react74.forwardRef)(function TextArea2({
+var import_react75 = __toESM(require_react(), 1);
+var TextArea = (0, import_react75.forwardRef)(function TextArea2({
   isEditing,
   text,
   handleFocus,
@@ -77928,15 +78008,15 @@ var TextArea = (0, import_react74.forwardRef)(function TextArea2({
 });
 
 // node_modules/tldraw/dist-esm/lib/shapes/shared/useEditableText.mjs
-var import_react75 = __toESM(require_react(), 1);
+var import_react76 = __toESM(require_react(), 1);
 function useEditableText(shapeId, type, text) {
   const editor = useEditor();
-  const rInput = (0, import_react75.useRef)(null);
+  const rInput = (0, import_react76.useRef)(null);
   const isEditing = useValue("isEditing", () => editor.getEditingShapeId() === shapeId, [editor]);
   const isEditingAnything = useValue("isEditingAnything", () => !!editor.getEditingShapeId(), [
     editor
   ]);
-  (0, import_react75.useEffect)(() => {
+  (0, import_react76.useEffect)(() => {
     function selectAllIfEditing(event) {
       var _a5;
       if (event.shapeId === shapeId) {
@@ -77948,7 +78028,7 @@ function useEditableText(shapeId, type, text) {
       editor.off("select-all-text", selectAllIfEditing);
     };
   }, [editor, shapeId, isEditing]);
-  (0, import_react75.useEffect)(() => {
+  (0, import_react76.useEffect)(() => {
     var _a5, _b2, _c, _d;
     if (!isEditing) return;
     if (document.activeElement !== rInput.current) {
@@ -77962,7 +78042,7 @@ function useEditableText(shapeId, type, text) {
       (_d = rInput.current) == null ? void 0 : _d.focus();
     }
   }, [editor, isEditing]);
-  const handleKeyDown = (0, import_react75.useCallback)(
+  const handleKeyDown = (0, import_react76.useCallback)(
     (e) => {
       if (editor.getEditingShapeId() !== shapeId) return;
       switch (e.key) {
@@ -77976,7 +78056,7 @@ function useEditableText(shapeId, type, text) {
     },
     [editor, shapeId]
   );
-  const handleChange = (0, import_react75.useCallback)(
+  const handleChange = (0, import_react76.useCallback)(
     (e) => {
       if (editor.getEditingShapeId() !== shapeId) return;
       let text2 = TextHelpers.normalizeText(e.currentTarget.value);
@@ -77996,7 +78076,7 @@ function useEditableText(shapeId, type, text) {
     },
     [editor, shapeId, type]
   );
-  const handleInputPointerDown = (0, import_react75.useCallback)(
+  const handleInputPointerDown = (0, import_react76.useCallback)(
     (e) => {
       editor.dispatch({
         ...getPointerInfo(e),
@@ -78024,7 +78104,7 @@ function useEditableText(shapeId, type, text) {
 }
 
 // node_modules/tldraw/dist-esm/lib/shapes/shared/TextLabel.mjs
-var TextLabel = import_react76.default.memo(function TextLabel2({
+var TextLabel = import_react77.default.memo(function TextLabel2({
   shapeId,
   type,
   text,
@@ -78048,8 +78128,8 @@ var TextLabel = import_react76.default.memo(function TextLabel2({
     type,
     text
   );
-  const [initialText, setInitialText] = (0, import_react76.useState)(text);
-  (0, import_react76.useEffect)(() => {
+  const [initialText, setInitialText] = (0, import_react77.useState)(text);
+  (0, import_react77.useEffect)(() => {
     if (!isEditing) setInitialText(text);
   }, [isEditing, text]);
   const finalText = TextHelpers.normalizeTextForDom(text);
@@ -79218,7 +79298,7 @@ function ArrowheadCrossDef() {
 // node_modules/tldraw/dist-esm/lib/shapes/bookmark/BookmarkShapeUtil.mjs
 var import_jsx_runtime102 = __toESM(require_jsx_runtime(), 1);
 var import_classnames22 = __toESM(require_classnames(), 1);
-var import_react77 = __toESM(require_react(), 1);
+var import_react78 = __toESM(require_react(), 1);
 
 // node_modules/tldraw/dist-esm/lib/shapes/shared/HyperlinkButton.mjs
 var import_jsx_runtime101 = __toESM(require_jsx_runtime(), 1);
@@ -79355,7 +79435,7 @@ function BookmarkShapeComponent({
   const isSafariExport = !!useSvgExportContext() && tlenv.isSafari;
   const pageRotation = util.editor.getShapePageTransform(shape).rotation();
   const address = getHumanReadableAddress(shape);
-  const [isFaviconValid, setIsFaviconValid] = (0, import_react77.useState)(true);
+  const [isFaviconValid, setIsFaviconValid] = (0, import_react78.useState)(true);
   const onFaviconError = () => setIsFaviconValid(false);
   return /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(HTMLContainer, { children: /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(
     "div",
@@ -80227,13 +80307,13 @@ __publicField(_EmbedShapeUtil, "embedDefinitions", DEFAULT_EMBED_DEFINITIONS);
 var EmbedShapeUtil = _EmbedShapeUtil;
 function Gist({
   id,
-  file,
   isInteractive,
   width,
   height,
   style,
   pageRotation
 }) {
+  if (!id.match(/^[0-9a-f]+$/)) throw Error("No gist id!");
   return /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(
     "iframe",
     {
@@ -80243,7 +80323,6 @@ function Gist({
       height: toDomPrecision(height),
       frameBorder: "0",
       scrolling: "no",
-      seamless: true,
       referrerPolicy: "no-referrer-when-downgrade",
       style: {
         ...style,
@@ -80258,7 +80337,7 @@ function Gist({
 					<base target="_blank">
 				</head>
 				<body>
-					<script src=${`https://gist.github.com/${id}.js${file ? `?file=${file}` : ""}`}><\/script>
+					<script src=${`https://gist.github.com/${id}.js`}><\/script>
 					<style type="text/css">
 						* { margin: 0px; }
 						table { height: 100%; background-color: red; }
@@ -80277,7 +80356,7 @@ var import_classnames23 = __toESM(require_classnames(), 1);
 
 // node_modules/tldraw/dist-esm/lib/shapes/frame/components/FrameHeading.mjs
 var import_jsx_runtime106 = __toESM(require_jsx_runtime(), 1);
-var import_react79 = __toESM(require_react(), 1);
+var import_react80 = __toESM(require_react(), 1);
 
 // node_modules/tldraw/dist-esm/lib/shapes/frame/frameHelpers.mjs
 function getFrameHeadingSide(editor, shape) {
@@ -80350,10 +80429,10 @@ function getFrameHeadingTranslation(shape, side, isSvg) {
 
 // node_modules/tldraw/dist-esm/lib/shapes/frame/components/FrameLabelInput.mjs
 var import_jsx_runtime105 = __toESM(require_jsx_runtime(), 1);
-var import_react78 = __toESM(require_react(), 1);
-var FrameLabelInput = (0, import_react78.forwardRef)(({ id, name, isEditing }, ref) => {
+var import_react79 = __toESM(require_react(), 1);
+var FrameLabelInput = (0, import_react79.forwardRef)(({ id, name, isEditing }, ref) => {
   const editor = useEditor();
-  const handleKeyDown = (0, import_react78.useCallback)(
+  const handleKeyDown = (0, import_react79.useCallback)(
     (e) => {
       if (e.key === "Enter" && !e.nativeEvent.isComposing) {
         stopEventPropagation(e);
@@ -80363,7 +80442,7 @@ var FrameLabelInput = (0, import_react78.forwardRef)(({ id, name, isEditing }, r
     },
     [editor]
   );
-  const handleBlur = (0, import_react78.useCallback)(
+  const handleBlur = (0, import_react79.useCallback)(
     (e) => {
       const shape = editor.getShape(id);
       if (!shape) return;
@@ -80380,7 +80459,7 @@ var FrameLabelInput = (0, import_react78.forwardRef)(({ id, name, isEditing }, r
     },
     [id, editor]
   );
-  const handleChange = (0, import_react78.useCallback)(
+  const handleChange = (0, import_react79.useCallback)(
     (e) => {
       const shape = editor.getShape(id);
       if (!shape) return;
@@ -80441,9 +80520,9 @@ function FrameHeading({
     },
     [editor, id]
   );
-  const rInput = (0, import_react79.useRef)(null);
+  const rInput = (0, import_react80.useRef)(null);
   const isEditing = useIsEditing(id);
-  (0, import_react79.useEffect)(() => {
+  (0, import_react80.useEffect)(() => {
     const el = rInput.current;
     if (el && isEditing) {
       el.focus();
@@ -82141,10 +82220,10 @@ function getUnscaledLabelSize(editor, shape) {
 var import_jsx_runtime110 = __toESM(require_jsx_runtime(), 1);
 
 // node_modules/tldraw/dist-esm/lib/shapes/shared/useColorSpace.mjs
-var import_react80 = __toESM(require_react(), 1);
+var import_react81 = __toESM(require_react(), 1);
 function useColorSpace() {
-  const [supportsP3, setSupportsP3] = (0, import_react80.useState)(false);
-  (0, import_react80.useEffect)(() => {
+  const [supportsP3, setSupportsP3] = (0, import_react81.useState)(false);
+  (0, import_react81.useEffect)(() => {
     const supportsSyntax = CSS.supports("color", "color(display-p3 1 1 1)");
     const query = matchMedia("(color-gamut: p3)");
     setSupportsP3(supportsSyntax && query.matches);
@@ -82404,7 +82483,7 @@ function BrokenAssetIcon() {
 }
 
 // node_modules/tldraw/dist-esm/lib/shapes/shared/useImageOrVideoAsset.mjs
-var import_react81 = __toESM(require_react(), 1);
+var import_react82 = __toESM(require_react(), 1);
 function useImageOrVideoAsset({
   shapeId,
   assetId
@@ -82412,17 +82491,17 @@ function useImageOrVideoAsset({
   const editor = useEditor();
   const isExport = !!useSvgExportContext();
   const isReady = useDelaySvgExport();
-  const resolveAssetUrlDebounced = (0, import_react81.useMemo)(() => debounce(resolveAssetUrl, 500), []);
-  const [result, setResult] = (0, import_react81.useState)(() => {
+  const resolveAssetUrlDebounced = (0, import_react82.useMemo)(() => debounce(resolveAssetUrl, 500), []);
+  const [result, setResult] = (0, import_react82.useState)(() => {
     var _a5;
     return {
       asset: assetId ? (_a5 = editor.getAsset(assetId)) != null ? _a5 : null : null,
       url: null
     };
   });
-  const didAlreadyResolve = (0, import_react81.useRef)(false);
-  const previousUrl = (0, import_react81.useRef)(null);
-  (0, import_react81.useEffect)(() => {
+  const didAlreadyResolve = (0, import_react82.useRef)(false);
+  const previousUrl = (0, import_react82.useRef)(null);
+  (0, import_react82.useEffect)(() => {
     if (!assetId) return;
     let isCancelled = false;
     let cancelDebounceFn;
@@ -82480,23 +82559,6 @@ function resolveAssetUrl(editor, assetId, screenScale, isExport, callback) {
   }).then((url) => {
     callback(url);
   });
-}
-
-// node_modules/tldraw/dist-esm/lib/shapes/shared/usePrefersReducedMotion.mjs
-var import_react82 = __toESM(require_react(), 1);
-function usePrefersReducedMotion() {
-  const [prefersReducedMotion, setPrefersReducedMotion] = (0, import_react82.useState)(false);
-  (0, import_react82.useEffect)(() => {
-    if (typeof window === "undefined" || !("matchMedia" in window)) return;
-    const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const handler = () => {
-      setPrefersReducedMotion(mql.matches);
-    };
-    handler();
-    mql.addEventListener("change", handler);
-    return () => mql.removeEventListener("change", handler);
-  }, []);
-  return prefersReducedMotion;
 }
 
 // node_modules/tldraw/dist-esm/lib/shapes/image/ImageShapeUtil.mjs
@@ -85755,15 +85817,11 @@ var Idle12 = class extends StateNode {
           case "top_right_rotate":
           case "bottom_left_rotate":
           case "bottom_right_rotate": {
-            if (shouldEnterCropMode) {
-              this.parent.transition("crop.pointing_crop_handle", info);
-            } else {
-              if (info.accelKey) {
-                this.parent.transition("brushing", info);
-                break;
-              }
-              this.parent.transition("pointing_rotate_handle", info);
+            if (info.accelKey) {
+              this.parent.transition("brushing", info);
+              break;
             }
+            this.parent.transition("pointing_rotate_handle", info);
             break;
           }
           case "top":
@@ -90292,10 +90350,12 @@ function KeyboardShortcutsMenuItem() {
 // node_modules/tldraw/dist-esm/lib/ui/components/MainMenu/DefaultMainMenuContent.mjs
 function DefaultMainMenuContent() {
   return /* @__PURE__ */ (0, import_jsx_runtime140.jsxs)(import_jsx_runtime140.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(EditSubmenu, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(ViewSubmenu, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(ExportFileContentSubMenu, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(ExtrasGroup, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime140.jsxs)(TldrawUiMenuGroup, { id: "basic", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(EditSubmenu, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(ViewSubmenu, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(ExportFileContentSubMenu, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(ExtrasGroup, {})
+    ] }),
     /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(PreferencesGroup, {})
   ] });
 }
@@ -90362,7 +90422,7 @@ function ViewSubmenu() {
   ] }) });
 }
 function ExtrasGroup() {
-  return /* @__PURE__ */ (0, import_jsx_runtime140.jsxs)(TldrawUiMenuGroup, { id: "extras", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime140.jsxs)(import_jsx_runtime140.Fragment, { children: [
     /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(TldrawUiMenuActionItem, { actionId: "insert-embed" }),
     /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(TldrawUiMenuActionItem, { actionId: "insert-media" })
   ] });
@@ -90942,6 +91002,7 @@ var MinimapManager = class {
     let offset4 = 0;
     const zoom = this.getZoom();
     for (const { cursor } of collaborators) {
+      if (!cursor) continue;
       pie(vertices, {
         center: Vec.From(cursor),
         radius: 3 * zoom,
@@ -91762,23 +91823,33 @@ var import_react103 = __toESM(require_react(), 1);
 var import_jsx_runtime147 = __toESM(require_jsx_runtime(), 1);
 function DefaultQuickActionsContent() {
   const editor = useEditor();
-  const canUndo = useCanUndo();
-  const canRedo = useCanRedo();
-  const oneSelected = useUnlockedSelectedShapesCount(1);
   const isReadonlyMode = useReadonly();
   const isInAcceptableReadonlyState = useValue(
     "should display quick actions",
     () => editor.isInAny("select", "hand", "zoom"),
     [editor]
   );
-  const isInSelectState = useIsInSelectState();
-  const selectDependentActionsEnabled = oneSelected && isInSelectState;
   if (isReadonlyMode && !isInAcceptableReadonlyState) return;
   return /* @__PURE__ */ (0, import_jsx_runtime147.jsxs)(import_jsx_runtime147.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(TldrawUiMenuActionItem, { actionId: "undo", disabled: !canUndo }),
-    /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(TldrawUiMenuActionItem, { actionId: "redo", disabled: !canRedo }),
+    /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(UndoRedoGroup2, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(DeleteDuplicateGroup, {})
+  ] });
+}
+function DeleteDuplicateGroup() {
+  const oneSelected = useUnlockedSelectedShapesCount(1);
+  const isInSelectState = useIsInSelectState();
+  const selectDependentActionsEnabled = oneSelected && isInSelectState;
+  return /* @__PURE__ */ (0, import_jsx_runtime147.jsxs)(import_jsx_runtime147.Fragment, { children: [
     /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(TldrawUiMenuActionItem, { actionId: "delete", disabled: !selectDependentActionsEnabled }),
     /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(TldrawUiMenuActionItem, { actionId: "duplicate", disabled: !selectDependentActionsEnabled })
+  ] });
+}
+function UndoRedoGroup2() {
+  const canUndo = useCanUndo();
+  const canRedo = useCanRedo();
+  return /* @__PURE__ */ (0, import_jsx_runtime147.jsxs)(import_jsx_runtime147.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(TldrawUiMenuActionItem, { actionId: "undo", disabled: !canUndo }),
+    /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(TldrawUiMenuActionItem, { actionId: "redo", disabled: !canRedo })
   ] });
 }
 
@@ -94848,7 +94919,7 @@ var TldrawUiContent = import_react119.default.memo(function TldrawUI() {
 var import_react120 = __toESM(require_react(), 1);
 
 // node_modules/tldraw/dist-esm/lib/utils/assets/preload-font.mjs
-async function preloadFont(id, font) {
+async function preloadFont(id, font, targetDocument) {
   const {
     url,
     style = "normal",
@@ -94872,7 +94943,7 @@ async function preloadFont(id, font) {
   };
   const fontInstance = new FontFace(id, `url(${url})`, descriptors);
   await fontInstance.load();
-  document.fonts.add(fontInstance);
+  (targetDocument != null ? targetDocument : document).fonts.add(fontInstance);
   fontInstance.$$_url = url;
   fontInstance.$$_fontface = `
 @font-face {
@@ -94886,7 +94957,7 @@ async function preloadFont(id, font) {
 }
 
 // node_modules/tldraw/dist-esm/lib/ui/hooks/usePreloadAssets.mjs
-var usePreloadFont = (id, font) => {
+var usePreloadFont = (id, font, targetDocument) => {
   const [state, setState] = (0, import_react120.useState)(
     2
     /* WAITING */
@@ -94897,7 +94968,7 @@ var usePreloadFont = (id, font) => {
       2
       /* WAITING */
     );
-    preloadFont(id, font).then(() => {
+    preloadFont(id, font, targetDocument).then(() => {
       if (cancelled) return;
       setState(
         0
@@ -94914,7 +94985,7 @@ var usePreloadFont = (id, font) => {
     return () => {
       cancelled = true;
     };
-  }, [id, font]);
+  }, [id, font, targetDocument]);
   return state;
 };
 function getTypefaces(assetUrls) {
@@ -94937,13 +95008,13 @@ function getTypefaces(assetUrls) {
     }
   };
 }
-function usePreloadAssets(assetUrls) {
+function usePreloadAssets(assetUrls, targetDocument) {
   const typefaces = (0, import_react120.useMemo)(() => getTypefaces(assetUrls), [assetUrls]);
   const results = [
-    usePreloadFont("tldraw_draw", typefaces.draw),
-    usePreloadFont("tldraw_serif", typefaces.serif),
-    usePreloadFont("tldraw_sans", typefaces.sansSerif),
-    usePreloadFont("tldraw_mono", typefaces.monospace)
+    usePreloadFont("tldraw_draw", typefaces.draw, targetDocument),
+    usePreloadFont("tldraw_serif", typefaces.serif, targetDocument),
+    usePreloadFont("tldraw_sans", typefaces.sansSerif, targetDocument),
+    usePreloadFont("tldraw_mono", typefaces.monospace, targetDocument)
   ];
   return {
     // If any of the results have errored, then preloading has failed
@@ -94973,6 +95044,7 @@ function Tldraw(props) {
     bindingUtils = [],
     tools = [],
     embeds,
+    targetDocument,
     ...rest
   } = props;
   const _components = useShallowObjectIdentity(components2);
@@ -95014,7 +95086,10 @@ function Tldraw(props) {
     [_imageMimeTypes, _videoMimeTypes]
   );
   const assets = useDefaultEditorAssetsWithOverrides(rest.assetUrls);
-  const { done: preloadingComplete, error: preloadingError } = usePreloadAssets(assets);
+  const { done: preloadingComplete, error: preloadingError } = usePreloadAssets(
+    assets,
+    targetDocument
+  );
   if (preloadingError) {
     return /* @__PURE__ */ (0, import_jsx_runtime176.jsx)(ErrorScreen, { children: "Could not load assets. Please refresh the page." });
   }
@@ -95098,7 +95173,7 @@ function InsideOfEditorAndUiContext({
 var import_jsx_runtime177 = __toESM(require_jsx_runtime(), 1);
 var import_react122 = __toESM(require_react(), 1);
 var TldrawImage = (0, import_react122.memo)(function TldrawImage2(props) {
-  var _a5, _b2;
+  var _a5, _b2, _c;
   const [url, setUrl] = (0, import_react122.useState)(null);
   const [container, setContainer] = (0, import_react122.useState)(null);
   const shapeUtils = useShallowArrayIdentity((_a5 = props.shapeUtils) != null ? _a5 : []);
@@ -95113,8 +95188,12 @@ var TldrawImage = (0, import_react122.memo)(function TldrawImage2(props) {
     snapshot: props.snapshot,
     shapeUtils: shapeUtilsWithDefaults
   });
+  const targetDocument = (_c = props.targetDocument) != null ? _c : document;
   const assets = useDefaultEditorAssetsWithOverrides(props.assetUrls);
-  const { done: preloadingComplete, error: preloadingError } = usePreloadAssets(assets);
+  const { done: preloadingComplete, error: preloadingError } = usePreloadAssets(
+    assets,
+    targetDocument
+  );
   const {
     pageId,
     bounds,
@@ -95132,7 +95211,7 @@ var TldrawImage = (0, import_react122.memo)(function TldrawImage2(props) {
     if (!store) return;
     if (!preloadingComplete) return;
     let isCancelled = false;
-    const tempElm = document.createElement("div");
+    const tempElm = targetDocument.createElement("div");
     container.appendChild(tempElm);
     container.classList.add("tl-container", "tl-theme__light");
     const editor = new Editor({
@@ -95196,7 +95275,8 @@ var TldrawImage = (0, import_react122.memo)(function TldrawImage2(props) {
     preloadingComplete,
     preloadingError,
     licenseKey,
-    pixelRatio
+    pixelRatio,
+    targetDocument
   ]);
   if (preloadingError) {
     return /* @__PURE__ */ (0, import_jsx_runtime177.jsx)(ErrorScreen, { children: "Could not load assets." });
@@ -95374,7 +95454,7 @@ async function serializeTldrawJsonBlob(editor) {
 // node_modules/tldraw/dist-esm/index.mjs
 registerTldrawLibraryVersion(
   "tldraw",
-  "3.6.0",
+  "3.7.2",
   "esm"
 );
 
@@ -95518,51 +95598,6 @@ async function updateFileData(manifest, data, documentStore) {
     TLDATA_DELIMITER_END,
     stringifiedData
   );
-}
-
-// src/utils/wrap-react-root.ts
-function wrapReactRoot(tldrawContainer, createReactRoot) {
-  return new Promise((res) => {
-    tldrawContainer.createEl("iframe", {
-      attr: {
-        src: "about:blank"
-      }
-    }, async (el) => {
-      el.style.height = "100%";
-      el.style.width = "100%";
-      el.addEventListener("load", (ev) => {
-        el.contentDocument.addEventListener("keydown", (ev2) => {
-          ev2.stopPropagation();
-          const fakedEvent = new KeyboardEvent("keydown", {
-            isComposing: ev2.isComposing,
-            repeat: ev2.repeat,
-            key: ev2.key,
-            code: ev2.code,
-            ctrlKey: ev2.ctrlKey,
-            bubbles: ev2.bubbles,
-            shiftKey: ev2.shiftKey,
-            metaKey: ev2.metaKey,
-            view: ev2.win
-          });
-          el.dispatchEvent(fakedEvent);
-        });
-        const reactEntrypoint = tldrawContainer.createDiv({
-          attr: {
-            id: "react-entrypoint"
-          }
-        });
-        const styles = el.doc.head.children;
-        const head = el.contentWindow.document.head;
-        for (let i = 0; i < styles.length; i++) {
-          head.appendChild(styles[i].cloneNode(true));
-        }
-        const body = el.contentWindow.document.body;
-        body.append(reactEntrypoint);
-        reactEntrypoint.style.height = "100%";
-        res(createReactRoot(reactEntrypoint));
-      });
-    });
-  });
 }
 
 // src/components/TldrawApp.tsx
@@ -95883,7 +95918,7 @@ function uiOverrides(plugin) {
     tools(editor, tools, helpers) {
       return tools;
     },
-    actions: (editor, actions, { msg: msg2, addDialog, addToast }) => {
+    actions: (editor, actions, { msg: msg2, addDialog, addToast, paste }) => {
       const defaultDocumentName = msg2("document.default-name");
       if (!import_obsidian5.Platform.isMobile) {
         actions[SAVE_FILE_COPY_ACTION] = getSaveFileCopyAction(
@@ -95902,6 +95937,7 @@ function uiOverrides(plugin) {
         defaultDocumentName,
         trackEvent
       }));
+      actions["paste"] = pasteFromClipboardOverride(editor, { msg: msg2, paste, addToast });
       return actions;
     }
     // toolbar(editor, toolbar, { tools }) {
@@ -95946,40 +95982,167 @@ function exportAllAsOverride(editor, actions, plugin, options) {
     }
   };
 }
+function pasteFromClipboardOverride(editor, {
+  addToast,
+  msg: msg2,
+  paste
+}) {
+  const pasteClipboard = (source, items) => paste(
+    items,
+    source,
+    source === "context-menu" ? editor.inputs.currentPagePoint : void 0
+  );
+  return {
+    id: "paste",
+    label: "action.paste",
+    kbd: "$v",
+    onSelect(source) {
+      var _a5;
+      (_a5 = navigator.clipboard) == null ? void 0 : _a5.read().then((clipboardItems) => {
+        pasteClipboard(source, clipboardItems);
+      }).catch((e) => {
+        var _a6;
+        (_a6 = navigator.clipboard) == null ? void 0 : _a6.readText().then((val) => {
+          pasteClipboard(source, [
+            new ClipboardItem(
+              {
+                "text/plain": new Blob([val], { type: "text/plain" })
+              }
+            )
+          ]);
+        }).catch((ee) => {
+          console.error({ e, ee });
+          addToast({
+            title: msg2("action.paste-error-title"),
+            description: msg2("action.paste-error-description"),
+            severity: "error"
+          });
+        });
+      });
+    }
+  };
+}
 
 // src/components/TldrawApp.tsx
 var import_obsidian6 = require("obsidian");
 
 // src/hooks/useTldrawAppHook.ts
 var React70 = __toESM(require_react());
+
+// src/tldraw/monkey-patch/editor.ts
+function isLaserScribbleAndKeepDelayAfterStop(item, userSettings) {
+  var _a5;
+  return item.scribble.color === "laser" && ((_a5 = userSettings.settings.tldrawOptions) == null ? void 0 : _a5.laserKeepDelayAfterStop);
+}
+function monkeyPatchEditorInstance(editor, userSettings) {
+  editor.scribbles.stop = function stop(id) {
+    const item = this.scribbleItems.get(id);
+    if (!item) throw Error(`Scribble with id ${id} not found`);
+    if (!isLaserScribbleAndKeepDelayAfterStop(item, userSettings)) {
+      item.delayRemaining = Math.min(item.delayRemaining, 200);
+    }
+    item.scribble.state = "stopping";
+    return item;
+  };
+  editor.scribbles.tick = function tick2(elapsed) {
+    if (this.scribbleItems.size === 0) return;
+    editor.run(() => {
+      this.scribbleItems.forEach((item) => {
+        if (item.scribble.state === "starting") {
+          const { next: next2, prev: prev2 } = item;
+          if (next2 && next2 !== prev2) {
+            item.prev = next2;
+            item.scribble.points.push(next2);
+          }
+          if (item.scribble.points.length > 8) {
+            item.scribble.state = "active";
+          }
+          return;
+        }
+        if (item.delayRemaining > 0) {
+          item.delayRemaining = Math.max(0, item.delayRemaining - elapsed);
+        }
+        item.timeoutMs += elapsed;
+        if (item.timeoutMs >= 16) {
+          item.timeoutMs = 0;
+        }
+        const { delayRemaining, timeoutMs, prev, next, scribble } = item;
+        switch (scribble.state) {
+          case "active": {
+            if (next && next !== prev) {
+              item.prev = next;
+              scribble.points.push(next);
+              if (delayRemaining === 0) {
+                if (scribble.points.length > 8) {
+                  scribble.points.shift();
+                }
+              }
+            } else {
+              if (timeoutMs === 0 && !isLaserScribbleAndKeepDelayAfterStop(item, userSettings)) {
+                if (scribble.points.length > 1) {
+                  scribble.points.shift();
+                } else {
+                  item.delayRemaining = scribble.delay;
+                }
+              }
+            }
+            break;
+          }
+          case "stopping": {
+            if (item.delayRemaining === 0) {
+              if (timeoutMs === 0) {
+                if (scribble.points.length === 1) {
+                  this.scribbleItems.delete(item.id);
+                  return;
+                }
+                if (scribble.shrink) {
+                  scribble.size = Math.max(1, scribble.size * (1 - scribble.shrink));
+                }
+                scribble.points.shift();
+              }
+            }
+            break;
+          }
+          case "paused": {
+            break;
+          }
+        }
+      });
+      editor.updateInstanceState({
+        scribbles: Array.from(this.scribbleItems.values()).map(({ scribble }) => ({
+          ...scribble,
+          points: [...scribble.points]
+        })).slice(-5)
+        // limit to three as a minor sanity check
+      });
+    });
+  };
+}
+
+// src/hooks/useUserTldrawOptions.ts
+var import_react124 = __toESM(require_react());
+function useUserTldrawOptions(settingsManager) {
+  const tldrawOptions = (0, import_react124.useSyncExternalStore)(
+    settingsManager.store.subscribe,
+    settingsManager.store.get
+  );
+  return tldrawOptions;
+}
+
+// src/hooks/useTldrawAppHook.ts
 function useTldrawAppEffects({
   editor,
   initialTool,
   isReadonly,
-  settingsProvider,
+  settingsManager,
   selectNone,
   onEditorMount,
   setFocusedEditor
 }) {
-  const [settings, setSettings] = React70.useState(() => settingsProvider.getCurrent());
-  React70.useEffect(() => {
-    const removeListener = settingsProvider.listen(() => {
-      const newSettings = settingsProvider.getCurrent();
-      setSettings({
-        ...newSettings
-      });
-    });
-    return () => {
-      removeListener();
-    };
-  }, [
-    /**
-     * If the settings provider changes, then we need to recalculate the effect.
-     */
-    settingsProvider
-  ]);
+  const settings = useUserTldrawOptions(settingsManager);
   React70.useEffect(() => {
     if (!editor) return;
+    monkeyPatchEditorInstance(editor, settingsManager);
     if (selectNone) {
       editor.selectNone();
     }
@@ -95990,7 +96153,7 @@ function useTldrawAppEffects({
       snapMode,
       focusMode,
       toolSelected
-    } = settings;
+    } = settingsManager.settings;
     editor.setCurrentTool(initialTool != null ? initialTool : toolSelected);
     let darkMode = true;
     if (themeMode === "dark") darkMode = true;
@@ -96008,17 +96171,25 @@ function useTldrawAppEffects({
     });
     setFocusedEditor(editor);
     onEditorMount == null ? void 0 : onEditorMount(editor);
-  }, [editor]);
+  }, [editor, settingsManager]);
+  React70.useEffect(() => {
+    var _a5;
+    if (!editor) return;
+    const laserDelayMs = (_a5 = settings.tldrawOptions) == null ? void 0 : _a5.laserDelayMs;
+    if (laserDelayMs && !Number.isNaN(laserDelayMs)) {
+      editor.options.laserDelayMs = laserDelayMs;
+    }
+  }, [editor, settings]);
 }
 
 // src/hooks/useClickAwayListener.ts
-var import_react124 = __toESM(require_react());
+var import_react125 = __toESM(require_react());
 function useClickAwayListener({
   enableClickAwayListener,
   handler
 }) {
-  const ref = (0, import_react124.useRef)(null);
-  (0, import_react124.useEffect)(() => {
+  const ref = (0, import_react125.useRef)(null);
+  (0, import_react125.useEffect)(() => {
     var _a5, _b2;
     if (!enableClickAwayListener || !((_a5 = ref.current) == null ? void 0 : _a5.win)) return;
     const win = (_b2 = ref.current) == null ? void 0 : _b2.win;
@@ -96050,21 +96221,26 @@ function getEditorStoreProps(storeProps) {
     store: storeProps.plugin.store
   };
 }
-var TldrawApp = ({ plugin, store, options: {
-  components: otherComponents,
-  focusOnMount = true,
-  hideUi = false,
-  iconAssetUrls,
-  initialTool,
-  isReadonly = false,
-  onEditorMount,
-  onClickAwayBlur,
-  onInitialSnapshot,
-  onUiEvent: _onUiEvent,
-  selectNone = false,
-  tools,
-  uiOverrides: otherUiOverrides
-} }) => {
+var TldrawApp = ({
+  plugin,
+  store,
+  options: {
+    components: otherComponents,
+    focusOnMount = true,
+    hideUi = false,
+    iconAssetUrls,
+    initialTool,
+    isReadonly = false,
+    onEditorMount,
+    onClickAwayBlur,
+    onInitialSnapshot,
+    onUiEvent: _onUiEvent,
+    selectNone = false,
+    tools,
+    uiOverrides: otherUiOverrides
+  },
+  targetDocument: ownerDocument
+}) => {
   const assetUrls = React71.useRef({
     fonts: plugin.getFontOverrides(),
     icons: {
@@ -96116,7 +96292,7 @@ var TldrawApp = ({ plugin, store, options: {
     initialTool,
     isReadonly,
     selectNone,
-    settingsProvider: plugin.settingsProvider,
+    settingsManager: plugin.settingsManager,
     onEditorMount,
     setFocusedEditor: (editor2) => setFocusedEditor(true, editor2)
   });
@@ -96156,7 +96332,8 @@ var TldrawApp = ({ plugin, store, options: {
         components: overridesUiComponents.current,
         autoFocus: false,
         onMount: setAppState,
-        tools
+        tools,
+        targetDocument: ownerDocument
       }
     )
   );
@@ -96170,7 +96347,8 @@ var createRootAndRenderTldrawApp = (node, plugin, options = {}) => {
       {
         plugin,
         store: options.store,
-        options: (_a5 = options.app) != null ? _a5 : {}
+        options: (_a5 = options.app) != null ? _a5 : {},
+        targetDocument: node.ownerDocument
       }
     )
   );
@@ -96581,10 +96759,14 @@ var TldrawAssetsModal = class extends import_obsidian8.Modal {
 
 // src/obsidian/TldrawMixins.ts
 function TldrawLoadableMixin(Base) {
+  var _storeProps, _unregisterViewAssetsActionCallback, _unregisterOnWindowMigrated;
   class _TldrawLoadableMixin extends Base {
     constructor() {
       super(...arguments);
       this.onUnloadCallbacks = [];
+      __privateAdd(this, _storeProps);
+      __privateAdd(this, _unregisterViewAssetsActionCallback);
+      __privateAdd(this, _unregisterOnWindowMigrated);
     }
     get tldrawContainer() {
       return this.containerEl.children[1];
@@ -96594,8 +96776,13 @@ function TldrawLoadableMixin(Base) {
      * and the "View as markdown" action button.
      */
     onload() {
+      var _a5;
       super.onload();
       this.contentEl.addClass("tldraw-view-content");
+      (_a5 = __privateGet(this, _unregisterOnWindowMigrated)) == null ? void 0 : _a5.call(this);
+      __privateSet(this, _unregisterOnWindowMigrated, this.contentEl.onWindowMigrated(() => {
+        this.refreshView();
+      }));
       this.addAction(MARKDOWN_ICON_NAME, "View as markdown", () => this.viewAsMarkdownClicked());
     }
     /**
@@ -96603,8 +96790,9 @@ function TldrawLoadableMixin(Base) {
      */
     onunload() {
       var _a5;
+      (_a5 = __privateGet(this, _unregisterOnWindowMigrated)) == null ? void 0 : _a5.call(this);
       this.contentEl.removeClass("tldraw-view-content");
-      (_a5 = this.reactRoot) == null ? void 0 : _a5.unmount();
+      this.unmountReactRoot();
       super.onunload();
     }
     onUnloadFile(file) {
@@ -96636,35 +96824,49 @@ function TldrawLoadableMixin(Base) {
      * @param storeProps 
      * @returns 
      */
-    async setStore(storeProps, useIframe = false) {
-      var _a5;
-      const tldrawContainer = this.tldrawContainer;
-      (_a5 = this.reactRoot) == null ? void 0 : _a5.unmount();
-      if (!storeProps) return;
-      this.addViewAssetsAction(storeProps);
-      if (!useIframe) {
-        this.reactRoot = this.createReactRoot(tldrawContainer, storeProps);
-        return;
-      }
-      this.reactRoot = await wrapReactRoot(
-        tldrawContainer,
-        (entryPoint) => this.createReactRoot(entryPoint, storeProps)
-      );
+    async setStore(storeProps) {
+      __privateSet(this, _storeProps, storeProps);
+      this.updateViewAssetsAction();
+      this.refreshView();
     }
     viewAsMarkdownClicked() {
       this.plugin.updateViewMode(VIEW_TYPE_MARKDOWN);
     }
-    addViewAssetsAction(storeProps) {
+    updateViewAssetsAction() {
+      var _a5;
+      const storeProps = __privateGet(this, _storeProps);
+      (_a5 = __privateGet(this, _unregisterViewAssetsActionCallback)) == null ? void 0 : _a5.call(this);
+      if (!storeProps) return;
       const viewAssetsAction = this.addAction("library", "View assets", () => {
         const assetsModal = new TldrawAssetsModal(this.app, storeProps, this.file);
         assetsModal.open();
         this.registerOnUnloadFile(() => assetsModal.close());
       });
-      this.registerOnUnloadFile(() => {
+      const removeCb = () => {
         viewAssetsAction.remove();
+      };
+      this.registerOnUnloadFile(removeCb);
+      __privateSet(this, _unregisterViewAssetsActionCallback, () => {
+        console.log("unregisterViewAssetsActionCallback");
+        this.onUnloadCallbacks.remove(removeCb);
+        removeCb();
       });
     }
+    unmountReactRoot() {
+      var _a5;
+      (_a5 = this.reactRoot) == null ? void 0 : _a5.unmount();
+      this.reactRoot = void 0;
+    }
+    async refreshView() {
+      const storeProps = __privateGet(this, _storeProps);
+      this.unmountReactRoot();
+      if (!storeProps) return;
+      this.reactRoot = this.createReactRoot(this.tldrawContainer, storeProps);
+    }
   }
+  _storeProps = new WeakMap();
+  _unregisterViewAssetsActionCallback = new WeakMap();
+  _unregisterOnWindowMigrated = new WeakMap();
   return _TldrawLoadableMixin;
 }
 
@@ -97890,21 +98092,39 @@ var DEFAULT_SETTINGS = {
     showBgDots: true
   }
 };
+var _removeSettingsListener, _settingsListeners;
 var TldrawSettingsTab = class extends import_obsidian18.PluginSettingTab {
   constructor(app, plugin) {
     super(app, plugin);
+    __privateAdd(this, _removeSettingsListener);
+    __privateAdd(this, _settingsListeners, /* @__PURE__ */ new Set());
     this.plugin = plugin;
     this.fontsSettingsManager = new FontsSettingsManager(this.plugin);
     this.iconsSettingsManager = new IconsSettingsManager(this.plugin);
     this.downloadManagerModal = new DownloadManagerModal(this.app);
   }
   display() {
+    __privateSet(this, _removeSettingsListener, this.plugin.settingsManager.store.subscribe(() => {
+      __privateGet(this, _settingsListeners).forEach((e) => e());
+    }));
     const { containerEl } = this;
     containerEl.empty();
     this.fileSettings();
     this.startUpSettings();
+    this.tldrawOptions();
     this.embedsSettings();
     this.assetsSettings();
+  }
+  addSettingsListener(cb) {
+    __privateGet(this, _settingsListeners).add(cb);
+  }
+  hide() {
+    var _a5;
+    super.hide();
+    (_a5 = __privateGet(this, _removeSettingsListener)) == null ? void 0 : _a5.call(this);
+    console.log("hide", __privateGet(this, _settingsListeners).size);
+    __privateGet(this, _settingsListeners).clear();
+    console.log("hide", __privateGet(this, _settingsListeners).size);
   }
   fileSettings() {
     const { containerEl } = this;
@@ -98253,7 +98473,45 @@ var TldrawSettingsTab = class extends import_obsidian18.PluginSettingTab {
       (icon, config) => this.downloadIcon(icon, config)
     );
   }
+  tldrawOptions() {
+    this.containerEl.createEl("h1", { text: "Tldraw editor options" });
+    new import_obsidian18.Setting(this.containerEl).setName("Laser delay").setDesc(
+      `The delay for the laser tool in milliseconds.`
+    ).addText((text) => {
+      const setValue = () => {
+        var _a5, _b2;
+        text.setValue(`${(_b2 = (_a5 = this.plugin.settings.tldrawOptions) == null ? void 0 : _a5.laserDelayMs) != null ? _b2 : ""}`);
+      };
+      this.addSettingsListener(setValue);
+      setValue();
+      text.setPlaceholder(`${defaultTldrawOptions.laserDelayMs}`).onChange(async (value) => {
+        console.log("change");
+        const parsedValue = parseInt(value);
+        if (Number.isNaN(parsedValue)) return;
+        await this.plugin.settingsManager.updateLaserDelayMs(parsedValue);
+      });
+    }).addExtraButton((button) => {
+      button.setIcon("reset").setTooltip("reset").onClick(async () => await this.plugin.settingsManager.updateLaserDelayMs(void 0));
+    });
+    new import_obsidian18.Setting(this.containerEl).setName("Laser keep delay after stop").setDesc(
+      `Keep the laser delay lingering after stopping the laser tool.`
+    ).addToggle((toggle) => {
+      const setValue = () => {
+        var _a5;
+        toggle.setValue(!!((_a5 = this.plugin.settings.tldrawOptions) == null ? void 0 : _a5.laserKeepDelayAfterStop));
+      };
+      this.addSettingsListener(setValue);
+      setValue();
+      toggle.onChange(async (value) => {
+        return await this.plugin.settingsManager.updateLaserKeepDelayAfterStop(value);
+      });
+    }).addExtraButton((button) => {
+      button.setIcon("reset").setTooltip("reset").onClick(async () => await this.plugin.settingsManager.updateLaserKeepDelayAfterStop(void 0));
+    });
+  }
 };
+_removeSettingsListener = new WeakMap();
+_settingsListeners = new WeakMap();
 
 // src/components/StatusBarViewMode.tsx
 var React72 = __toESM(require_react());
@@ -98292,7 +98550,7 @@ var createStoreImpl = (createState) => {
 var createStore = (createState) => createState ? createStoreImpl(createState) : createStoreImpl;
 
 // node_modules/zustand/esm/index.mjs
-var import_react125 = __toESM(require_react(), 1);
+var import_react126 = __toESM(require_react(), 1);
 var import_with_selector = __toESM(require_with_selector(), 1);
 var import_meta2 = {};
 var { useSyncExternalStoreWithSelector } = import_with_selector.default;
@@ -98311,7 +98569,7 @@ function useStore(api, selector = api.getState, equalityFn) {
     selector,
     equalityFn
   );
-  (0, import_react125.useDebugValue)(slice);
+  (0, import_react126.useDebugValue)(slice);
   return slice;
 }
 var createImpl = (createState) => {
@@ -99009,7 +99267,7 @@ function showEmbedContextMenu(ev, {
         clientY: ev2.clientY
       }));
     }
-  }).showAtMouseEvent(ev instanceof MouseEvent ? ev : (
+  }).showAtMouseEvent(ev.instanceOf(MouseEvent) ? ev : (
     // simulate click when it ev is undefined, e.g. MouseEvent not given because it was a touch event.
     new MouseEvent("click", {
       clientX: (_a5 = ev.touches.item(0)) == null ? void 0 : _a5.clientX,
@@ -99019,10 +99277,10 @@ function showEmbedContextMenu(ev, {
 }
 
 // src/components/TldrawImageSnapshotView.tsx
-var import_react126 = __toESM(require_react());
-var TldrawImageContext = (0, import_react126.createContext)(void 0);
-var defaultNoSnapshotFallback = /* @__PURE__ */ import_react126.default.createElement(import_react126.default.Fragment, null, "No tldraw data to display");
-var PluginTldrawImageContext = (0, import_react126.createContext)(
+var import_react127 = __toESM(require_react());
+var TldrawImageContext = (0, import_react127.createContext)(void 0);
+var defaultNoSnapshotFallback = /* @__PURE__ */ import_react127.default.createElement(import_react127.default.Fragment, null, "No tldraw data to display");
+var PluginTldrawImageContext = (0, import_react127.createContext)(
   {
     fallback: defaultNoSnapshotFallback
   }
@@ -99031,7 +99289,7 @@ function PluginTldrawImage({
   props,
   snapshot
 }) {
-  return /* @__PURE__ */ import_react126.default.createElement("div", { className: "ptl-tldraw-image", ...{ ...props } }, /* @__PURE__ */ import_react126.default.createElement(TldrawImageContext.Consumer, null, (value) => !value ? /* @__PURE__ */ import_react126.default.createElement(import_react126.default.Fragment, null) : /* @__PURE__ */ import_react126.default.createElement(
+  return /* @__PURE__ */ import_react127.default.createElement("div", { className: "ptl-tldraw-image", ...{ ...props } }, /* @__PURE__ */ import_react127.default.createElement(TldrawImageContext.Consumer, null, (value) => !value ? /* @__PURE__ */ import_react127.default.createElement(import_react127.default.Fragment, null) : /* @__PURE__ */ import_react127.default.createElement(
     TldrawImage,
     {
       snapshot,
@@ -99044,8 +99302,8 @@ function PluginTldrawImageContainer({
   props,
   imagePlaceHolderStore
 }) {
-  const placeHolder = (0, import_react126.useSyncExternalStore)(imagePlaceHolderStore.syncPlaceHolder, imagePlaceHolderStore.getPlaceHolder);
-  return /* @__PURE__ */ import_react126.default.createElement("div", { className: "ptl-tldraw-image-container", ...{ ...props } }, /* @__PURE__ */ import_react126.default.createElement(PluginTldrawImageContext.Consumer, null, (value) => !placeHolder ? !snapshot ? value == null ? void 0 : value.fallback : /* @__PURE__ */ import_react126.default.createElement(PluginTldrawImage, { snapshot, props: value == null ? void 0 : value.props }) : /* @__PURE__ */ import_react126.default.createElement(
+  const placeHolder = (0, import_react127.useSyncExternalStore)(imagePlaceHolderStore.syncPlaceHolder, imagePlaceHolderStore.getPlaceHolder);
+  return /* @__PURE__ */ import_react127.default.createElement("div", { className: "ptl-tldraw-image-container", ...{ ...props } }, /* @__PURE__ */ import_react127.default.createElement(PluginTldrawImageContext.Consumer, null, (value) => !placeHolder ? !snapshot ? value == null ? void 0 : value.fallback : /* @__PURE__ */ import_react127.default.createElement(PluginTldrawImage, { snapshot, props: value == null ? void 0 : value.props }) : /* @__PURE__ */ import_react127.default.createElement(
     "div",
     {
       className: "ptl-tldraw-image ptl-tldraw-image-placeholder",
@@ -99060,9 +99318,9 @@ function TldrawImageContextProviders({
   children,
   previewStore
 }) {
-  const previewSize = (0, import_react126.useSyncExternalStore)(previewStore.onPreviewSize, previewStore.getPreviewSize);
-  const previewOptions = (0, import_react126.useSyncExternalStore)(previewStore.onPreviewOptions, previewStore.getPreviewOptions);
-  const ptlTldrawImageContextValue = (0, import_react126.useMemo)(() => ({
+  const previewSize = (0, import_react127.useSyncExternalStore)(previewStore.onPreviewSize, previewStore.getPreviewSize);
+  const previewOptions = (0, import_react127.useSyncExternalStore)(previewStore.onPreviewOptions, previewStore.getPreviewOptions);
+  const ptlTldrawImageContextValue = (0, import_react127.useMemo)(() => ({
     fallback: defaultNoSnapshotFallback,
     props: {
       style: previewSize === void 0 ? void 0 : {
@@ -99071,7 +99329,7 @@ function TldrawImageContextProviders({
       }
     }
   }), [previewSize]);
-  const tldrawImageContextValue = (0, import_react126.useMemo)(() => {
+  const tldrawImageContextValue = (0, import_react127.useMemo)(() => {
     const { bounds, ...rest } = previewOptions;
     return {
       props: {
@@ -99080,13 +99338,13 @@ function TldrawImageContextProviders({
       }
     };
   }, [previewOptions]);
-  return /* @__PURE__ */ import_react126.default.createElement(PluginTldrawImageContext.Provider, { value: ptlTldrawImageContextValue }, /* @__PURE__ */ import_react126.default.createElement(TldrawImageContext.Provider, { key: tldrawImageContextValue == null ? void 0 : tldrawImageContextValue.props.pageId, value: tldrawImageContextValue }, children));
+  return /* @__PURE__ */ import_react127.default.createElement(PluginTldrawImageContext.Provider, { value: ptlTldrawImageContextValue }, /* @__PURE__ */ import_react127.default.createElement(TldrawImageContext.Provider, { key: tldrawImageContextValue == null ? void 0 : tldrawImageContextValue.props.pageId, value: tldrawImageContextValue }, children));
 }
 function TldrawImageSnapshotView({
   previewStore
 }) {
-  const snapshot = (0, import_react126.useSyncExternalStore)(previewStore.onSnapshot, previewStore.getSnapshot);
-  return /* @__PURE__ */ import_react126.default.createElement(TldrawImageContextProviders, { previewStore }, /* @__PURE__ */ import_react126.default.createElement(
+  const snapshot = (0, import_react127.useSyncExternalStore)(previewStore.onSnapshot, previewStore.getSnapshot);
+  return /* @__PURE__ */ import_react127.default.createElement(TldrawImageContextProviders, { previewStore }, /* @__PURE__ */ import_react127.default.createElement(
     PluginTldrawImageContainer,
     {
       snapshot,
@@ -99102,7 +99360,7 @@ function TldrawImageSnapshotView({
 }
 
 // src/obsidian/components/tldraw-component.ts
-var import_react127 = __toESM(require_react());
+var import_react128 = __toESM(require_react());
 var boundsSelectorToolIconName = `tool-${BoundsSelectorTool.id}`;
 function getEditorStoreProps2(storeProps) {
   return storeProps.tldraw ? storeProps.tldraw : {
@@ -99325,9 +99583,9 @@ var _TldrawMarkdownRenderChild = class _TldrawMarkdownRenderChild extends import
       __privateMethod(this, _TldrawMarkdownRenderChild_instances, setRoot_fn).call(this, () => (0, import_client4.createRoot)(container));
     }
     (_a5 = this.root) == null ? void 0 : _a5.render(
-      __privateGet(this, _viewMode) === "image" ? (0, import_react127.createElement)(TldrawImageSnapshotView, {
+      __privateGet(this, _viewMode) === "image" ? (0, import_react128.createElement)(TldrawImageSnapshotView, {
         previewStore: __privateGet(this, _snapshotPreviewStore)
-      }) : (0, import_react127.createElement)(TldrawApp_default, __privateMethod(this, _TldrawMarkdownRenderChild_instances, setUpTldrawOptions_fn).call(this))
+      }) : (0, import_react128.createElement)(TldrawApp_default, __privateMethod(this, _TldrawMarkdownRenderChild_instances, setUpTldrawOptions_fn).call(this))
     );
   }
   setPreviewImageOptions(options) {
@@ -99482,7 +99740,8 @@ setUpTldrawOptions_fn = function() {
         if (!editor || name !== "change-page") return;
         zoomToEmbedPageBounds(editor);
       }
-    }
+    },
+    targetDocument: this.containerEl.ownerDocument
   };
 };
 /**
@@ -99794,7 +100053,7 @@ async function loadEmbedTldraw({
       return;
     }
     const { target, attributeName } = m[0];
-    if (!(target instanceof HTMLElement) || !["alt", "width", "height"].contains(attributeName)) {
+    if (!target.instanceOf(HTMLElement) || !["alt", "width", "height"].contains(attributeName)) {
       return;
     }
     component.updateEmbedValues(parseEmbedValues(target, {
@@ -100750,6 +101009,109 @@ async function getTldrawFileDestination(plugin, filename, attachTo) {
   );
 }
 
+// src/obsidian/settings/UserSettingsManager.ts
+var _plugin, _subscribers, _store, _UserSettingsManager_instances, notifyStoreSubscribers_fn;
+var UserSettingsManager = class {
+  constructor(plugin) {
+    __privateAdd(this, _UserSettingsManager_instances);
+    __privateAdd(this, _plugin);
+    __privateAdd(this, _subscribers, /* @__PURE__ */ new Set());
+    __privateAdd(this, _store, {
+      subscribe: (cb) => {
+        __privateGet(this, _subscribers).add(cb);
+        return () => __privateGet(this, _subscribers).delete(cb);
+      },
+      get: () => __privateGet(this, _plugin).settings
+    });
+    __privateSet(this, _plugin, plugin);
+  }
+  get settings() {
+    return __privateGet(this, _plugin).settings;
+  }
+  get store() {
+    return Object.assign({}, __privateGet(this, _store));
+  }
+  async loadSettings() {
+    const {
+      embeds: embedsDefault,
+      fileDestinations: fileDestinationsDefault,
+      ...restDefault
+    } = DEFAULT_SETTINGS;
+    const {
+      embeds,
+      fileDestinations,
+      tldrawOptions,
+      ...rest
+    } = await __privateGet(this, _plugin).loadData() || {};
+    const embedsMerged = Object.assign({}, embedsDefault, embeds);
+    const fileDestinationsMerged = Object.assign(
+      {},
+      fileDestinationsDefault,
+      (() => {
+        if (fileDestinations === void 0) return {};
+        const migrated = {};
+        if (rest.folder !== void 0) {
+          migrated.defaultFolder = rest.folder;
+        }
+        if (rest.assetsFolder !== void 0) {
+          migrated.assetsFolder = rest.assetsFolder;
+        }
+        if (rest.useAttachmentsFolder !== void 0 && rest.useAttachmentsFolder) {
+          migrated.destinationMethod = "attachments-folder";
+        }
+      })(),
+      fileDestinations
+    );
+    delete rest.folder;
+    delete rest.assetsFolder;
+    delete rest.useAttachmentsFolder;
+    const restMerged = Object.assign({}, restDefault, rest);
+    __privateGet(this, _plugin).settings = {
+      embeds: embedsMerged,
+      fileDestinations: fileDestinationsMerged,
+      tldrawOptions,
+      ...restMerged
+    };
+    __privateMethod(this, _UserSettingsManager_instances, notifyStoreSubscribers_fn).call(this);
+  }
+  async updateSettings(settings) {
+    __privateGet(this, _plugin).settings = Object.assign({}, settings);
+    await __privateGet(this, _plugin).saveSettings();
+    __privateMethod(this, _UserSettingsManager_instances, notifyStoreSubscribers_fn).call(this);
+  }
+  async updateLaserDelayMs(delayMs) {
+    let tldrawOptions = __privateGet(this, _plugin).settings.tldrawOptions;
+    if (delayMs === (tldrawOptions == null ? void 0 : tldrawOptions.laserDelayMs)) return;
+    if (delayMs === void 0) {
+      tldrawOptions == null ? true : delete tldrawOptions.laserDelayMs;
+    } else {
+      if (!tldrawOptions) tldrawOptions = {};
+      tldrawOptions.laserDelayMs = delayMs;
+    }
+    __privateGet(this, _plugin).settings.tldrawOptions = Object.assign({}, tldrawOptions);
+    this.updateSettings(__privateGet(this, _plugin).settings);
+  }
+  async updateLaserKeepDelayAfterStop(keepDelay) {
+    let tldrawOptions = __privateGet(this, _plugin).settings.tldrawOptions;
+    if (keepDelay === (tldrawOptions == null ? void 0 : tldrawOptions.laserKeepDelayAfterStop)) return;
+    if (keepDelay === void 0) {
+      tldrawOptions == null ? true : delete tldrawOptions.laserKeepDelayAfterStop;
+    } else {
+      if (!tldrawOptions) tldrawOptions = {};
+      tldrawOptions.laserKeepDelayAfterStop = keepDelay;
+    }
+    __privateGet(this, _plugin).settings.tldrawOptions = Object.assign({}, tldrawOptions);
+    this.updateSettings(__privateGet(this, _plugin).settings);
+  }
+};
+_plugin = new WeakMap();
+_subscribers = new WeakMap();
+_store = new WeakMap();
+_UserSettingsManager_instances = new WeakSet();
+notifyStoreSubscribers_fn = function() {
+  __privateGet(this, _subscribers).forEach((e) => e());
+};
+
 // src/main.ts
 var _TldrawPlugin_decorators, _init13, _a4;
 _TldrawPlugin_decorators = [pluginBuild];
@@ -100759,6 +101121,7 @@ var TldrawPlugin = class extends (_a4 = import_obsidian27.Plugin) {
     this.transientUpdate = false;
     // keeps track of what view mode each tab-file combo should be in:
     this.leafFileViewModes = {};
+    this.settingsManager = new UserSettingsManager(this);
     this.tldrawFileListeners = new TldrawFileListenerMap(this);
     this.tldrawFileMetadataListeners = new TldrawFileListenerMap(this);
     this.tlDataDocumentStoreManager = new TLDataDocumentStoreManager(this);
@@ -100835,14 +101198,6 @@ var TldrawPlugin = class extends (_a4 = import_obsidian27.Plugin) {
       await leaf.openFile(file);
       await this.updateViewMode(viewType, leaf);
     };
-    this.settingsProvider = {
-      getCurrent: () => this.settings,
-      listen: (callback) => {
-        console.log(`TODO: Settings listener callback not implemented.`);
-        return () => {
-        };
-      }
-    };
   }
   async onload() {
     var _a5, _b2;
@@ -100858,7 +101213,7 @@ var TldrawPlugin = class extends (_a4 = import_obsidian27.Plugin) {
       VIEW_TYPE_TLDRAW_FILE,
       (leaf) => new TldrawFileView(leaf, this)
     );
-    await this.loadSettings();
+    await this.settingsManager.loadSettings();
     this.addSettingTab(new TldrawSettingsTab(this.app, this));
     (0, import_obsidian27.addIcon)(TLDRAW_ICON_NAME, TLDRAW_ICON);
     (0, import_obsidian27.addIcon)(MARKDOWN_ICON_NAME, MARKDOWN_ICON);
@@ -101090,38 +101445,6 @@ var TldrawPlugin = class extends (_a4 = import_obsidian27.Plugin) {
         }
       }
     });
-  }
-  async loadSettings() {
-    const { embeds: embedsDefault, fileDestinations: fileDestinationsDefault, ...restDefault } = DEFAULT_SETTINGS;
-    const { embeds, fileDestinations, ...rest } = await this.loadData() || {};
-    const embedsMerged = Object.assign({}, embedsDefault, embeds);
-    const fileDestinationsMerged = Object.assign(
-      {},
-      fileDestinationsDefault,
-      (() => {
-        if (fileDestinations === void 0) return {};
-        const migrated = {};
-        if (rest.folder !== void 0) {
-          migrated.defaultFolder = rest.folder;
-        }
-        if (rest.assetsFolder !== void 0) {
-          migrated.assetsFolder = rest.assetsFolder;
-        }
-        if (rest.useAttachmentsFolder !== void 0 && rest.useAttachmentsFolder) {
-          migrated.destinationMethod = "attachments-folder";
-        }
-      })(),
-      fileDestinations
-    );
-    delete rest.folder;
-    delete rest.assetsFolder;
-    delete rest.useAttachmentsFolder;
-    const restMerged = Object.assign({}, restDefault, rest);
-    this.settings = {
-      embeds: embedsMerged,
-      fileDestinations: fileDestinationsMerged,
-      ...restMerged
-    };
   }
   async saveSettings() {
     await this.saveData(this.settings);

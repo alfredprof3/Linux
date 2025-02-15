@@ -2,12 +2,17 @@ Free and open source version control system designed to handle everything from s
 
 ## Install
 
-`$ sudo apt install git`
+1. Installing being normal user or root.
 
-or
-
-`apt install git`
-
+	**Normal user**
+	```bash
+	sudo apt install git
+	```
+	
+	**Root user**
+	```bash
+	apt install git
+	```
 
 ## Git links for cheat sheet
 

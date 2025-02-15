@@ -26,12 +26,12 @@ To enable the feedback password and see the asterisk when typing your root or su
 	
 	**Normal User**
 	```bash
-	$ sudo visudo
+	sudo visudo
 	```
 
 	**Root User**
 	```bash
-	# visudo
+	visudo
 	```
 
 2. Add `pwfeedback` at line 9. It should look like this your `sudoers` file.
