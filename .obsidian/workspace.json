@@ -8,18 +8,13 @@
         "type": "tabs",
         "children": [
           {
-            "id": "71b922d6388b5c97",
+            "id": "a229581ec43b59d2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Command execution inside shell script file.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Command execution inside shell script file"
+              "title": "New tab"
             }
           }
         ]
@@ -227,12 +222,17 @@
       "homework-manager:Open homework": false
     }
   },
-  "active": "71b922d6388b5c97",
+  "active": "d8786a7c6377f83c",
   "lastOpenFiles": [
-    "Shell scripting.md",
-    "Command execution inside shell script file.md",
-    "Custom scripts-commands.md",
     "Untitled.md",
+    "Command execution inside shell script file.md",
+    "Remotely Save.md",
+    "Obsidian.md",
+    "Github.md",
+    "Github Sync.md",
+    "Bash scripting.md",
+    "Shell scripting.md",
+    "Custom scripts-commands.md",
     "Github Sync (Obsidian plugin).md",
     "Nvm (node version manager).md",
     "Daily Notes.md",
@@ -249,11 +249,6 @@
     "FFMPEG.md",
     "[.md",
     "Abyss Color Theme.md",
-    "Catppuccin.md",
-    "X server (graphic interface).md",
-    "Aircrack-ng.md",
-    "Termux.md",
-    "Browser-sync.md",
-    "Ufw debian.md"
+    "Catppuccin.md"
   ]
 }
