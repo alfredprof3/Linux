@@ -28,5 +28,9 @@
   "anuppuccin-theme-settings@@anp-hide-borders": true,
   "anuppuccin-theme-settings@@anp-card-shadows": true,
   "anuppuccin-theme-settings@@anp-card-layout-actions": true,
-  "anuppuccin-theme-settings@@anp-card-layout-filebrowser": false
+  "anuppuccin-theme-settings@@anp-card-layout-filebrowser": false,
+  "anuppuccin-theme-settings@@anp-header-color-toggle": true,
+  "anuppuccin-theme-settings@@anp-header-margin-toggle": true,
+  "anuppuccin-theme-settings@@anp-header-divider-color-toggle": true,
+  "anuppuccin-theme-settings@@anp-header-margin-value": 24
 }

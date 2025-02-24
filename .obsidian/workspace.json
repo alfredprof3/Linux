@@ -11,10 +11,15 @@
             "id": "71b922d6388b5c97",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Git.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Git"
             }
           }
         ]
@@ -197,9 +202,19 @@
               "icon": "calendar-days",
               "title": "Calendar"
             }
+          },
+          {
+            "id": "23e51f220e68d538",
+            "type": "leaf",
+            "state": {
+              "type": "Saved Queries View",
+              "state": {},
+              "icon": "feather-mouse-pointer",
+              "title": "Saved Queries"
+            }
           }
         ],
-        "currentTab": 9
+        "currentTab": 10
       }
     ],
     "direction": "horizontal",
@@ -222,17 +237,22 @@
       "homework-manager:Open homework": false
     }
   },
-  "active": "d8786a7c6377f83c",
+  "active": "71b922d6388b5c97",
   "lastOpenFiles": [
+    "Custom scripts-commands.md",
+    "Daily Notes.md",
+    "Git.md",
+    "Abyss Color Theme.md",
+    "Bash scripting.md",
+    "Aircrack-ng.md",
+    "Monday-26-Aug-2024.md",
+    "Github Sync (Obsidian plugin).md",
     "Remotely Save.md",
     "Obsidian.md",
     "Github.md",
     "Github Sync.md",
-    "Bash scripting.md",
     "Untitled.md",
-    "Github Sync (Obsidian plugin).md",
     "Nvm (node version manager).md",
-    "Daily Notes.md",
     "README.md",
     "Dconf Gnome Terminal.md",
     "Vim plugins.md",
@@ -244,11 +264,6 @@
     "Dconf.md",
     "'Dconf.md",
     "FFMPEG.md",
-    "[.md",
-    "Custom scripts-commands.md",
-    "Command execution inside shell script file.md",
-    "Abyss Color Theme.md",
-    "Catppuccin.md",
-    "X server (graphic interface).md"
+    "[.md"
   ]
 }

@@ -4,11 +4,17 @@ Create customs scripts to execute as commands keeping them in a custom directory
 
 1. Create a directory to store scripts and commands
 
-`$ mkdir Scripts`
+```bash
+mkdir Scripts
+```
 
-2. Adding this line to **.bashrc**
+2. Open the `.bashrc` file
 
-`$ vim .bashrc`
+```bash
+vim .bashrc
+```
+
+3. Add the following code
 
 ```bash
 export PATH=$PATH":$HOME/Scripts"
