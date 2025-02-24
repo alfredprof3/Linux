@@ -33,6 +33,15 @@ vim .gitignore
 
 2. Ignore just typing the name.
 
+```bash
+Aircrack-ng.md
+```
+
+>[!info] Remember
+>The `Aircrack-ng.md` file, won't be tracked.
+
+3. Save the `.gitignore` file and commit the changes.
+
 ## Git links for cheat sheet
 
 ```embed
