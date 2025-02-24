@@ -1,5 +1,4 @@
 Free and open source version control system designed to handle everything from small to very large projects with speed and efficiency.
-
 # Install
 Installing being normal user or root.
 
@@ -12,18 +11,14 @@ sudo apt install git
 # Root user
 apt install git
 ```
-
 # Usage
 To start using Git, go inside the directory or folder and perform the command below.
 
 ```bash
 git init
 ```
-
-
 # Git ignore
 Sometimes we don't need to track specific files and folders, that's where `.gitignore` appears. This files ignore tracking files to the version history, allows us to avoid conflicts in some files.
-
 ## Ignore files and directories
 1. Create the `.gitignore` file.
 
@@ -41,7 +36,26 @@ Aircrack-ng.md
 >The `Aircrack-ng.md` file, won't be tracked.
 
 3. Save the `.gitignore` file and commit the changes.
+## Ignore files and directories including exceptions
+We can ignore a bunch of files but making some exceptions. You can perform this actions with a few lines.
 
+1. Open the `.gitignore` file.
+
+```bash
+vim .gitignore
+```
+
+2. Ignore all files except specific ones.
+
+```bash
+# Ignore all the files
+*
+
+# Except
+!Catpuccin.md
+```
+
+3. Save and commit the changes.
 ## Git links for cheat sheet
 
 ```embed
