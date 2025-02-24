@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "a229581ec43b59d2",
+            "id": "71b922d6388b5c97",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -224,15 +224,12 @@
   },
   "active": "d8786a7c6377f83c",
   "lastOpenFiles": [
-    "Untitled.md",
-    "Command execution inside shell script file.md",
     "Remotely Save.md",
     "Obsidian.md",
     "Github.md",
     "Github Sync.md",
     "Bash scripting.md",
-    "Shell scripting.md",
-    "Custom scripts-commands.md",
+    "Untitled.md",
     "Github Sync (Obsidian plugin).md",
     "Nvm (node version manager).md",
     "Daily Notes.md",
@@ -248,7 +245,10 @@
     "'Dconf.md",
     "FFMPEG.md",
     "[.md",
+    "Custom scripts-commands.md",
+    "Command execution inside shell script file.md",
     "Abyss Color Theme.md",
-    "Catppuccin.md"
+    "Catppuccin.md",
+    "X server (graphic interface).md"
   ]
 }
