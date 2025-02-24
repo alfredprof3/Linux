@@ -207,6 +207,16 @@
             "id": "23e51f220e68d538",
             "type": "leaf",
             "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          },
+          {
+            "id": "030a41778ce53d87",
+            "type": "leaf",
+            "state": {
               "type": "Saved Queries View",
               "state": {},
               "icon": "feather-mouse-pointer",
@@ -214,7 +224,7 @@
             }
           }
         ],
-        "currentTab": 10
+        "currentTab": 11
       }
     ],
     "direction": "horizontal",
@@ -231,13 +241,12 @@
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
       "obsidian42-brat:BRAT": false,
-      "dashboard-navigator:Open dashboard navigator": false,
       "tldraw:Create new tldrawing": false,
       "single-file-daily-notes:Open daily notes": false,
       "homework-manager:Open homework": false
     }
   },
-  "active": "71b922d6388b5c97",
+  "active": "030a41778ce53d87",
   "lastOpenFiles": [
     "Custom scripts-commands.md",
     "Daily Notes.md",

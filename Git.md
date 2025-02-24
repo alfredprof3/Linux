@@ -56,15 +56,26 @@ vim .gitignore
 ```
 
 3. Save and commit the changes.
-## Git links for cheat sheet
-
+# More about ignoring files
+```embed
+title: "How to Ignore Everything Except Some Files in Git"
+image: "https://www.delftstack.com/img/Git/ag-feature-image---git-ignore-everything-except.webp"
+description: "You can Git ignore everything except a few files."
+url: "https://www.delftstack.com/howto/git/git-ignore-everything-except/"
+```
+```embed
+title: "Make .gitignore ignore everything except a few files"
+image: "https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon@2.png?v=73d79a89bded"
+description: "I understand that a .gitignore file cloaks specified files from Git’s version control. How do I tell .gitignore to ignore everything except the files I’m tracking with Git? Something like: # Ignore"
+url: "https://stackoverflow.com/questions/987142/make-gitignore-ignore-everything-except-a-few-files"
+```
+# Git links for cheat sheet
 ```embed
 title: "Git Cheat Sheet – 50 Git Commands You Should Know"
 image: "https://www.freecodecamp.org/news/content/images/2021/02/git-cheat-sheet-cover.jpg"
 description: "By Fabio Pacific Git is a distributed version control system that helps developers collaborate on projects of any scale. Linus Torvalds, the developer of the Linux kernel, created Git in 2005 to help control the Linux kernel’s development. What is…"
 url: "https://www.freecodecamp.org/news/git-cheat-sheet/"
 ```
-
 ```embed
 title: "How to Fix Git ‘remote: Repository not found’ Error? - GeeksforGeeks"
 image: "https://media.geeksforgeeks.org/wp-content/uploads/20240602022405/dfhgh.jpg"
