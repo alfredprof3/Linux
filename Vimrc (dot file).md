@@ -323,6 +323,13 @@ imap <expr> <leader><tab> emmet#expandAbbrIntelligent("\<tab>")
 " ──────── CSS Complete ────────────────────
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 
+" ──────── Colorscheme ─────────────────────
+set background=dark
+" colorscheme papilio_dehaanii
+colorscheme nightfly
+" colorscheme omni
+
+
 " ──────── Section Header Formatter ────────
 function! FormatSectionHeader()
   let l:total_width = 44
@@ -380,8 +387,75 @@ endfunction
 
 nnoremap <Leader>h :call FormatSectionHeader()<CR>
 
-" ──────── Colorscheme ─────────────────────
-set background=dark
-" colorscheme papilio_dehaanii
-colorscheme nightfly
-" colorscheme omni
+
+UPDATED VERSION - JULY 3, 2026 at 15:29 HRS
+" ──────── Section Header Formatter ────────
+function! FormatSectionHeader()
+  let l:total_width = 44
+
+  " ── Detect comment style by filetype ──────────────────
+  " Format: [opening, closing] — closing is empty for single-line comments
+  let l:comment_map = {
+    \ 'vim':        ['"',  ''],
+    \ 'toml':       ['#',  ''],
+    \ 'python':     ['#',  ''],
+    \ 'bash':       ['#',  ''],
+    \ 'sh':         ['#',  ''],
+    \ 'zsh':        ['#',  ''],
+    \ 'ruby':       ['#',  ''],
+    \ 'perl':       ['#',  ''],
+    \ 'yaml':       ['#',  ''],
+    \ 'dockerfile': ['#',  ''],
+    \ 'make':       ['#',  ''],
+    \ 'r':          ['#',  ''],
+    \ 'lua':        ['--', ''],
+    \ 'sql':        ['--', ''],
+    \ 'haskell':    ['--', ''],
+    \ 'javascript': ['//', ''],
+    \ 'typescript': ['//', ''],
+    \ 'java':       ['//', ''],
+    \ 'c':          ['//', ''],
+    \ 'cpp':        ['//', ''],
+    \ 'scss':       ['//', ''],
+    \ 'sass':       ['//', ''],
+    \ 'go':         ['//', ''],
+    \ 'rust':       ['//', ''],
+    \ 'kotlin':     ['//', ''],
+    \ 'swift':      ['//', ''],
+    \ 'css':        ['/*', '*/'],
+    \ }
+
+  " Fallback to # if filetype not in map
+  let l:ft      = &filetype
+  let l:style   = get(l:comment_map, l:ft, ['#', ''])
+  let l:open    = l:style[0]
+  let l:close   = l:style[1]
+
+  " ── Build prefix ───────────────────────────────────────
+  let l:prefix      = l:open . ' ──────── '
+  let l:line        = getline('.')
+  let l:esc_open    = escape(l:open,  '/\.*$^~[]')
+  let l:esc_close   = escape(l:close, '/\.*$^~[]')
+
+  " ── Strip existing formatting using exact comment chars ─
+  let l:title = substitute(l:line, '^\s*' . l:esc_open . '\s*─*\s*', '', '')
+
+  " Strip closing marker if block comment (e.g. CSS */)
+  if len(l:close) > 0
+    let l:title = substitute(l:title, '\s*─*\s*' . l:esc_close . '\s*$', '', '')
+  endif
+
+  " Strip any remaining trailing dashes
+  let l:title = substitute(l:title, '\s*─*\s*$', '', '')
+
+  " ── Calculate and build the new header line ────────────
+  let l:suffix_close = len(l:close) > 0 ? ' ' . l:close : ''
+  let l:middle       = l:prefix . l:title . ' '
+  let l:suffix_len   = l:total_width - strdisplaywidth(l:middle) - strdisplaywidth(l:suffix_close)
+  let l:suffix_len   = l:suffix_len < 0 ? 0 : l:suffix_len
+  let l:new_line     = l:middle . repeat('─', l:suffix_len) . l:suffix_close
+
+  call setline('.', l:new_line)
+endfunction
+
+nnoremap <Leader>h :call FormatSectionHeader()<CR>
