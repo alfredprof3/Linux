@@ -324,7 +324,6 @@ imap <expr> <leader><tab> emmet#expandAbbrIntelligent("\<tab>")
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 
 " ──────── Section Header Formatter ────────
-
 function! FormatSectionHeader()
   let l:total_width = 44
 
