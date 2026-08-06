@@ -1,3 +1,4 @@
+# Git Credential Manager GCM - How to configure
 # 1. Download `git-credential-manager` from the official Github repository
 Go to the [Git Credential Manager Github Repository](https://github.com/git-ecosystem/git-credential-manager/releases/download/v2.9.1/gcm-linux-x64-2.9.1.deb) and download the `.deb` file for Debian Linux distribution.
 
