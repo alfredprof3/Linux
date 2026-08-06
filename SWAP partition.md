@@ -53,3 +53,14 @@ Use this rule of thumb based on your physical RAM:
 | 4 GB to 8 GB   | Yes (Laptop)             | Equal to RAM size (e.g., 8 GB)   |
 | 12 GB to 64 GB | No (Server/Lab)          | 4 GB to 8 GB (Just a safety net) |
 
+
+---
+
+That is an excellent hardware setup for a home lab. With a modern i5 processor, 24 GB of RAM, and a fast NVMe SSD, your system can easily handle multiple virtual machines (VMs) simultaneously using KVM and QEMU.
+Here is your tailored deployment guide for a minimal Debian setup.
+
+## The Swap Recommendation for Your Setup
+With 24 GB of RAM, you have plenty of memory, but because you are running a KVM hypervisor to host VMs, you should still create a small Swap space as a safety net.
+
+* Recommended Swap Size: 8 GB
+* Why? Virtual machines can be unpredictable with memory consumption. If you spin up 3 or 4 VMs at once and they experience a sudden workload spike, 8 GB of Swap will prevent Debian from instantly killing your active virtual machines.
