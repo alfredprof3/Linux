@@ -1,4 +1,4 @@
-# Direct Answer
+# SWAP partition
 
 Swap is a designated space on your hard drive that Linux uses as temporary memory when your physical RAM is completely full. Think of it as an "overflow valve" for your computer's short-term memory.
 # What is Swap and What Does It Do?
