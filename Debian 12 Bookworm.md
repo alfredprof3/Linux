@@ -51,6 +51,8 @@ Change default web browser
 
 ---
 
+GOOGLE AI MODE
+
 # Window Manager vs. Minimal Desktop
 
 Since your goal is a minimal, clean, and lightweight interface, you have two great paths:
