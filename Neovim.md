@@ -1,5 +1,4 @@
 # Neovim commands
 
-```nvim
-:terminal   # Enter in Terminal-mode
-```
+-- Enter in Terminal-mode
+:terminal
