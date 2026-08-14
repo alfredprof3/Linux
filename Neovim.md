@@ -1,10 +1,10 @@
 # Neovim commands
 
 Enter in Terminal-mode
-:terminal
+`:terminal`
 
 Leave Terminal-mode
-<C-\><C-N>
+`<C-\><C-N>`
 
 Leave Terminal-mode in macOS with a macOS keyboard layout, type:
 `⌃ ⌥ ?` + `⌃ N`
