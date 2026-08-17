@@ -39,11 +39,20 @@ Extracting
 `tar -xvf xuser-files.tar.xz`
 `tar -xvf xuser-files.tar.zst`
 
+- Extracting specific files
+`tar -xvf xuser-files.tar.xz .zshrc .bashrc`
+
+- Extracting specific directories
+`tar -xvf xuser-files.tar.xz .git .config`
+
 - Extracting to a different directory
 `tar -xvf xuser-files.tar -C /home/xuser/Downloads`
 
     Alternative
     `tar -xvf xuser-files.tar --directory=/home/xuser/Downloads`
+
+- Extracting specific files using wildcard
+`tar -xvf xuser-files.tar.xz --wildcards '*.json'`
 
 Listing
 ====
@@ -61,7 +70,7 @@ Listing
 `tar -tvf xuser-files.tar.zst`
 
 - Listing specific files
-`tar -tvf xuser-files.tar.xz .profile`
+`tar -tf xuser-files.tar.xz .profile`
 
 - Listing only files in a specific directory
-`tar -tf xuser-files.tar.xz '.config/'`
+`tar -tf xuser-files.tar.xz | grep '.config/'`
