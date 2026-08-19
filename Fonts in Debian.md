@@ -6,19 +6,28 @@
 $HOME/.local/share/fonts
 $hOME/.fonts
 
-- Download fonts from Nerd Fonts via curl
+Install the fonts
+====
+
+1. Download fonts from Nerd Fonts via curl.
 `curl -L -O https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.0/AdwaitaMono.zip`
 
-To refer the download website see `https://www.nerdfonts.com/font-downloads`
+- To refer the download website see `https://www.nerdfonts.com/font-downloads`
 
-- Extract the font in `$HOME/.local/share/fonts` If the directory doesn't exist, create it.
+2. Extract the font in `$HOME/.local/share/fonts` If the directory doesn't exist, create it.
 `unzip AdwaitaMono.zip`
 
-- Refresh the font cache
+3. Refresh the font cache
 `fc-cache -f -v`
 
-- Verify the installation
+4. Verify the installation
 `fc-list | grep -i Adwaita`
 
-- Cleanup, the archive file and unpacked directory are no longer necessary
+5. Cleanup, the unpacked directory are no longer necessary
 `rm -rfv AdwaitaMono.zip`
+
+Reconfigure Fonts
+====
+
+This may be needed to support bitmap fonts.
+`dpkg-reconfigure fontconfig-config`
