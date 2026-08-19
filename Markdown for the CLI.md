@@ -1,2 +1,2 @@
-# Markdown for the Terminal"
+# Markdown for the Terminal
 1. Lowdown
