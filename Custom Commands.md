@@ -58,4 +58,4 @@ chmod 755 file
 ## Creating a soft link
 This will give us the posibility to execute as a normal command.
 
-sudo ln -s /home/USER/Scripts/file /usr/bin/file
+sudo ln -s /home/$USER/Scripts/file /usr/bin/file
