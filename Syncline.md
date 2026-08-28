@@ -1,5 +1,62 @@
 # Syncline - note-taking & tasks
 
+Build Installer
+-----
+
+```bash
+#!/usr/bin/env bash
+# build_installer.sh - Generates a standalone install.sh
+
+cat << 'HEADER' > install.sh
+#!/usr/bin/env bash
+set -e
+
+echo "Installing syncline..."
+
+# Determine installation directory
+if [ "$(uname)" = "Darwin" ]; then
+    INSTALL_DIR="/usr/local/bin"
+    if [ ! -w "$INSTALL_DIR" ]; then
+        echo "macOS detected. Installing to $INSTALL_DIR requires sudo."
+        sudo mkdir -p "$INSTALL_DIR"
+        SUDO="sudo"
+    else
+        SUDO=""
+    fi
+else
+    INSTALL_DIR="${HOME}/.local/bin"
+    mkdir -p "$INSTALL_DIR"
+    SUDO=""
+fi
+
+# Extract the payload
+echo "Extracting syncline payload..."
+PAYLOAD_LINE=$(awk '/^__PAYLOAD_BELOW__/ {print NR + 1; exit 0; }' "$0")
+tail -n +$PAYLOAD_LINE "$0" | base64 --decode > /tmp/syncline.sh
+
+$SUDO cp /tmp/syncline.sh "$INSTALL_DIR/syncline"
+$SUDO chmod +x "$INSTALL_DIR/syncline"
+rm -f /tmp/syncline.sh
+
+echo "✓ syncline installed successfully to $INSTALL_DIR/syncline"
+
+if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
+    echo "⚠ Note: $INSTALL_DIR is not in your PATH."
+    echo "  Add this to your ~/.bashrc or ~/.zshrc:"
+    echo "  export PATH=\"\$PATH:$INSTALL_DIR\""
+fi
+
+exit 0
+__PAYLOAD_BELOW__
+HEADER
+
+# Append the base64 encoded payload
+base64 syncline.sh >> install.sh
+
+chmod +x install.sh
+echo "✓ Standalone install.sh generated successfully!"
+```
+
 Code
 -----
 
@@ -12,16 +69,52 @@ set -e
 DATA_DIR="$HOME/.syncline"
 REPO_DIR="$DATA_DIR/repo"
 DATA_FILE="$REPO_DIR/notes.json"
+CONFIG_FILE="$DATA_DIR/config.json"
 
-# Colors
-COLOR_RESET="\033[0m"
-COLOR_BOLD="\033[1m"
-COLOR_BLUE="\033[34m"
-COLOR_GREEN="\033[32m"
-COLOR_YELLOW="\033[33m"
-COLOR_RED="\033[31m"
-COLOR_CYAN="\033[36m"
-COLOR_GRAY="\033[90m"
+# --- THEMING ENGINE ---
+CONFIG_FILE="$DATA_DIR/config.json"
+
+get_ansi_color() {
+    case "$1" in
+        black) echo "\033[30m" ;; red) echo "\033[31m" ;; green) echo "\033[32m" ;;
+        yellow) echo "\033[33m" ;; blue) echo "\033[34m" ;; magenta) echo "\033[35m" ;;
+        cyan) echo "\033[36m" ;; white) echo "\033[37m" ;; gray|grey) echo "\033[90m" ;;
+        *) echo "\033[0m" ;;
+    esac
+}
+
+load_theme() {
+    if [ ! -f "$CONFIG_FILE" ]; then
+        mkdir -p "$DATA_DIR"
+        cat <<EOF > "$CONFIG_FILE"
+{
+  "theme": {
+    "board": "blue",
+    "task_pending": "gray",
+    "task_completed": "green",
+    "task_progress": "cyan",
+    "task_canceled": "red",
+    "note": "blue",
+    "star": "yellow",
+    "due_date": "gray",
+    "prompt": "cyan"
+  }
+}
+EOF
+    fi
+    
+    COLOR_RESET="\033[0m"
+    COLOR_BOLD="\033[1m"
+    COLOR_BLUE=$(get_ansi_color "$(jq -r '.theme.board // "blue"' "$CONFIG_FILE")")
+    COLOR_GRAY=$(get_ansi_color "$(jq -r '.theme.task_pending // "gray"' "$CONFIG_FILE")")
+    COLOR_GREEN=$(get_ansi_color "$(jq -r '.theme.task_completed // "green"' "$CONFIG_FILE")")
+    COLOR_CYAN=$(get_ansi_color "$(jq -r '.theme.task_progress // "cyan"' "$CONFIG_FILE")")
+    COLOR_RED=$(get_ansi_color "$(jq -r '.theme.task_canceled // "red"' "$CONFIG_FILE")")
+    COLOR_YELLOW=$(get_ansi_color "$(jq -r '.theme.star // "yellow"' "$CONFIG_FILE")")
+    COLOR_PROMPT=$(get_ansi_color "$(jq -r '.theme.prompt // "cyan"' "$CONFIG_FILE")")
+    COLOR_DUE=$(get_ansi_color "$(jq -r '.theme.due_date // "gray"' "$CONFIG_FILE")")
+    COLOR_NOTE=$(get_ansi_color "$(jq -r '.theme.note // "blue"' "$CONFIG_FILE")")
+}
 
 check_dependencies() {
     if ! command -v jq >/dev/null 2>&1; then
@@ -51,6 +144,7 @@ init_data() {
 ensure_data() {
     check_dependencies
     init_data
+    load_theme
 }
 
 get_next_id() {
@@ -120,21 +214,22 @@ render_list() {
         ' | while IFS='|' read -r id icon desc starred due; do
             
             # Apply colors to icons
-            local icon_colored="$icon"
+	    local icon_colored="$icon"
             case "$icon" in
                 "✓") icon_colored="${COLOR_GREEN}$icon${COLOR_RESET}" ;;
                 "▶") icon_colored="${COLOR_CYAN}$icon${COLOR_RESET}" ;;
                 "×") icon_colored="${COLOR_RED}$icon${COLOR_RESET}" ;;
                 "☐") icon_colored="${COLOR_GRAY}$icon${COLOR_RESET}" ;;
+                "📝") icon_colored="${COLOR_NOTE}$icon${COLOR_RESET}" ;;
             esac
 
             local star_txt=""
             [ "$starred" = "true" ] && star_txt=" ${COLOR_YELLOW}★${COLOR_RESET}"
             
             local due_txt=""
-            [ -n "$due" ] && [ "$due" != "null" ] && due_txt=" ${COLOR_GRAY}(Due: $due)${COLOR_RESET}"
+            [ -n "$due" ] && [ "$due" != "null" ] && due_txt=" ${COLOR_DUE}(Due: $due)${COLOR_RESET}"
             
-            echo -e "  ${COLOR_CYAN}❯${COLOR_RESET} $icon_colored ${COLOR_BOLD}$id.${COLOR_RESET} $desc$star_txt$due_txt"
+            echo -e "  ${COLOR_PROMPT}❯${COLOR_RESET} $icon_colored ${COLOR_BOLD}$id.${COLOR_RESET} $desc$star_txt$due_txt"
         done
         echo ""
     done
@@ -175,7 +270,7 @@ list_archived() {
     if [ "$count" -eq 0 ]; then echo -e "${COLOR_GRAY}No archived items found.${COLOR_RESET}"; return; fi
     echo -e "${COLOR_BOLD}${COLOR_BLUE} Archived Items ${COLOR_RESET}"
     echo "$archived_data" | jq -r '.[] | "\(.id)|\(.type)|\(.description)"' | while IFS='|' read -r id type desc; do
-        echo -e "  ${COLOR_CYAN}❯${COLOR_RESET} ${COLOR_BOLD}$id.${COLOR_RESET} $desc ${COLOR_GRAY}($type)${COLOR_RESET}"
+        echo -e "  ${COLOR_PROMPT}❯${COLOR_RESET} ${COLOR_BOLD}$id.${COLOR_RESET} $desc ${COLOR_GRAY}($type)${COLOR_RESET}"
     done
     echo -e " ${COLOR_BOLD}$count${COLOR_RESET} archived items"
 }
@@ -413,81 +508,6 @@ case "${1:-list}" in
 esac
 ```
 
-Installer
------
-
-```bash
-#!/usr/bin/env bash
-set -e
-
-echo "Installing syncline and git-credential helper..."
-
-if [ "$(uname)" = "Darwin" ]; then
-    INSTALL_DIR="/usr/local/bin"
-    if [ ! -w "$INSTALL_DIR" ]; then
-        echo "macOS detected. Installing to $INSTALL_DIR requires sudo."
-        sudo mkdir -p "$INSTALL_DIR"
-        sudo cp syncline.sh "$INSTALL_DIR/syncline"
-        sudo cp syncline-git-credential "$INSTALL_DIR/syncline-git-credential"
-        sudo chmod +x "$INSTALL_DIR/syncline" "$INSTALL_DIR/syncline-git-credential"
-        echo "✓ syncline installed successfully to $INSTALL_DIR/"
-        exit 0
-    fi
-else
-    INSTALL_DIR="${HOME}/.local/bin"
-    mkdir -p "$INSTALL_DIR"
-fi
-
-cp syncline.sh "$INSTALL_DIR/syncline"
-cp syncline-git-credential "$INSTALL_DIR/syncline-git-credential"
-chmod +x "$INSTALL_DIR/syncline" "$INSTALL_DIR/syncline-git-credential"
-
-echo "✓ syncline installed successfully to $INSTALL_DIR/"
-
-if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
-    echo "⚠ Note: $INSTALL_DIR is not in your PATH."
-    echo "  Add this to your ~/.bashrc or ~/.zshrc:"
-    echo "  export PATH=\"\$PATH:$INSTALL_DIR\""
-fi
-```
-
-Syncline-git-credential
------
-
-```
-#!/usr/bin/env bash
-# syncline-git-credential: Custom Git credential helper that reads PAT from gnome-keyring
-
-action="$1"
-
-if [ "$action" = "get" ]; then
-    # Read git's input to determine host
-    while read -r line; do
-        case "$line" in
-            host=*) host="${line#host=}" ;;
-        esac
-    done
-
-    # Only intercept github.com requests
-    if [ "$host" = "github.com" ]; then
-        # Retrieve the token from gnome-keyring using the exact attributes we stored
-        TOKEN=$(secret-tool lookup application syncline service github 2>/dev/null)
-        
-        if [ -n "$TOKEN" ]; then
-            echo "protocol=https"
-            echo "host=github.com"
-            echo "username=x-access-token"
-            echo "password=$TOKEN"
-        fi
-    fi
-elif [ "$action" = "store" ] || [ "$action" = "erase" ]; then
-    # We intentionally ignore store/erase requests from Git.
-    # This prevents Git from caching an expired token or overwriting our 
-    # manually managed 7-day rotating PAT in the keyring.
-    exit 0
-fi
-```
-
 Uninstaller
 -----
 
@@ -515,61 +535,4 @@ for path in "${PATHS_TO_CHECK[@]}"; do
 done
 
 echo "✗ syncline not found in standard paths. Already uninstalled?"
-```
-
-Build Installer
------
-
-```bash
-#!/usr/bin/env bash
-# build_installer.sh - Generates a standalone install.sh
-
-cat << 'HEADER' > install.sh
-#!/usr/bin/env bash
-set -e
-
-echo "Installing syncline..."
-
-# Determine installation directory
-if [ "$(uname)" = "Darwin" ]; then
-    INSTALL_DIR="/usr/local/bin"
-    if [ ! -w "$INSTALL_DIR" ]; then
-        echo "macOS detected. Installing to $INSTALL_DIR requires sudo."
-        sudo mkdir -p "$INSTALL_DIR"
-        SUDO="sudo"
-    else
-        SUDO=""
-    fi
-else
-    INSTALL_DIR="${HOME}/.local/bin"
-    mkdir -p "$INSTALL_DIR"
-    SUDO=""
-fi
-
-# Extract the payload
-echo "Extracting syncline payload..."
-PAYLOAD_LINE=$(awk '/^__PAYLOAD_BELOW__/ {print NR + 1; exit 0; }' "$0")
-tail -n +$PAYLOAD_LINE "$0" | base64 --decode > /tmp/syncline.sh
-
-$SUDO cp /tmp/syncline.sh "$INSTALL_DIR/syncline"
-$SUDO chmod +x "$INSTALL_DIR/syncline"
-rm -f /tmp/syncline.sh
-
-echo "✓ syncline installed successfully to $INSTALL_DIR/syncline"
-
-if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
-    echo "⚠ Note: $INSTALL_DIR is not in your PATH."
-    echo "  Add this to your ~/.bashrc or ~/.zshrc:"
-    echo "  export PATH=\"\$PATH:$INSTALL_DIR\""
-fi
-
-exit 0
-__PAYLOAD_BELOW__
-HEADER
-
-# Append the base64 encoded payload
-base64 syncline.sh >> install.sh
-
-chmod +x install.sh
-echo "✓ Standalone install.sh generated successfully!"
 ```
