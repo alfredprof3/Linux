@@ -516,3 +516,60 @@ done
 
 echo "✗ syncline not found in standard paths. Already uninstalled?"
 ```
+
+Build Installer
+-----
+
+```bash
+#!/usr/bin/env bash
+# build_installer.sh - Generates a standalone install.sh
+
+cat << 'HEADER' > install.sh
+#!/usr/bin/env bash
+set -e
+
+echo "Installing syncline..."
+
+# Determine installation directory
+if [ "$(uname)" = "Darwin" ]; then
+    INSTALL_DIR="/usr/local/bin"
+    if [ ! -w "$INSTALL_DIR" ]; then
+        echo "macOS detected. Installing to $INSTALL_DIR requires sudo."
+        sudo mkdir -p "$INSTALL_DIR"
+        SUDO="sudo"
+    else
+        SUDO=""
+    fi
+else
+    INSTALL_DIR="${HOME}/.local/bin"
+    mkdir -p "$INSTALL_DIR"
+    SUDO=""
+fi
+
+# Extract the payload
+echo "Extracting syncline payload..."
+PAYLOAD_LINE=$(awk '/^__PAYLOAD_BELOW__/ {print NR + 1; exit 0; }' "$0")
+tail -n +$PAYLOAD_LINE "$0" | base64 --decode > /tmp/syncline.sh
+
+$SUDO cp /tmp/syncline.sh "$INSTALL_DIR/syncline"
+$SUDO chmod +x "$INSTALL_DIR/syncline"
+rm -f /tmp/syncline.sh
+
+echo "✓ syncline installed successfully to $INSTALL_DIR/syncline"
+
+if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
+    echo "⚠ Note: $INSTALL_DIR is not in your PATH."
+    echo "  Add this to your ~/.bashrc or ~/.zshrc:"
+    echo "  export PATH=\"\$PATH:$INSTALL_DIR\""
+fi
+
+exit 0
+__PAYLOAD_BELOW__
+HEADER
+
+# Append the base64 encoded payload
+base64 syncline.sh >> install.sh
+
+chmod +x install.sh
+echo "✓ Standalone install.sh generated successfully!"
+```
