@@ -13,12 +13,15 @@
 # $HOME/.config/alacritty/alacritty.toml
 
 # 1. If you want to see your changes in real-time, set this property to true.
+
 general.live_config_reload = true
 
 # 2. Import modules such as themes, keybindings, etc
+
 general.import = [
     "~/.config/alacritty/themes/cyberpunk-neon.toml"
 ]
+
 
 [env]
 TERM = "xterm-256color"
