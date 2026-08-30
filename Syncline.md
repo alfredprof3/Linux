@@ -32,7 +32,7 @@ fi
 # Extract the payload
 echo "Extracting syncline payload..."
 PAYLOAD_LINE=$(awk '/^__PAYLOAD_BELOW__/ {print NR + 1; exit 0; }' "$0")
-tail -n +$PAYLOAD_LINE "$0" | base64 --decode > /tmp/syncline.sh
+tail -n +$PAYLOAD_LINE "$0" | base64 -d > /tmp/syncline.sh
 
 $SUDO cp /tmp/syncline.sh "$INSTALL_DIR/syncline"
 $SUDO chmod +x "$INSTALL_DIR/syncline"
