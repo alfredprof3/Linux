@@ -1,4 +1,4 @@
-# Syncline - note-taking & tasks
+# Syncline - notes & tasks
 
 Build Installer
 -----
