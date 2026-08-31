@@ -7,14 +7,6 @@ Build Installer
 #!/usr/bin/env bash
 # build_installer.sh - Generates a standalone install.sh
 
-set -ex
-
-if [ ! -f "syncline.sh" ]; then
-    echo "✗ ERROR: syncline.sh not found in the current directory."
-    echo "  You must have syncline.sh in the same folder as this script."
-    exit 1
-fi
-
 cat << 'HEADER' > install.sh
 #!/usr/bin/env bash
 set -e
