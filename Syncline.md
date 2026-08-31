@@ -59,7 +59,7 @@ __PAYLOAD_BELOW__
 HEADER
 
 # Append the base64 encoded payload
-base64 syncline.sh >> install.sh
+base64 < syncline.sh >> install.sh
 
 chmod +x install.sh
 echo "✓ Standalone install.sh generated successfully!"
