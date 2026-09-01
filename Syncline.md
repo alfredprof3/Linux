@@ -13,21 +13,10 @@ set -e
 
 echo "Installing syncline..."
 
-# Determine installation directory
-if [ "$(uname)" = "Darwin" ]; then
-    INSTALL_DIR="/usr/local/bin"
-    if [ ! -w "$INSTALL_DIR" ]; then
-        echo "macOS detected. Installing to $INSTALL_DIR requires sudo."
-        sudo mkdir -p "$INSTALL_DIR"
-        SUDO="sudo"
-    else
-        SUDO=""
-    fi
-else
-    INSTALL_DIR="${HOME}/.local/bin"
-    mkdir -p "$INSTALL_DIR"
-    SUDO=""
-fi
+# Determine installation directory (User-local for both macOS and Linux)
+INSTALL_DIR="${HOME}/.local/bin"
+mkdir -p "$INSTALL_DIR"
+SUDO=""
 
 # Extract the payload
 echo "Extracting syncline payload..."
