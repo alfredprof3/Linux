@@ -299,12 +299,14 @@ add_item() {
 
 list_items() {
     ensure_data; cd "$REPO_DIR"
+    auto_sync_pull
     local active_data=$(jq 'map(select(.archived != true))' "$DATA_FILE")
     render_list "$active_data"
 }
 
 list_archived() {
     ensure_data; cd "$REPO_DIR"
+    auto_sync_pull
     local archived_data=$(jq 'map(select(.archived == true))' "$DATA_FILE")
     local count=$(echo "$archived_data" | jq 'length')
     if [ "$count" -eq 0 ]; then echo -e "${COLOR_GRAY}No archived items found.${COLOR_RESET}"; return; fi
@@ -475,7 +477,6 @@ sync_items() {
 
 set_remote() {
     local url="$1"; ensure_data; cd "$REPO_DIR"
-    if [[ "$url" == git@github.com:* ]]; then url="https://github.com/${url#git@github.com:}"; url="${url%.git}"; fi
     git remote add origin "$url" 2>/dev/null || git remote set-url origin "$url"
     local helper_path=$(command -v syncline-git-credential 2>/dev/null || echo "$(dirname "$(command -v syncline)")/syncline-git-credential")
     git config credential.helper "!$helper_path"
@@ -490,6 +491,31 @@ update_token() {
     if [ -z "$NEW_TOKEN" ]; then echo -e "${COLOR_RED}✗ Token cannot be empty.${COLOR_RESET}"; exit 1; fi
     echo -n "$NEW_TOKEN" | secret-tool store --label="Syncline GitHub PAT" application syncline service github
     echo -e "${COLOR_GREEN}✓ PAT successfully updated in GNOME Keyring.${COLOR_RESET}"
+}
+
+# --- BACKGROUND AUTO-SYNC ENGINE ---
+auto_sync_push() {
+    if git remote | grep -q origin; then
+        echo -e "${COLOR_CYAN}⟳ Syncing with remote...${COLOR_RESET}"
+        local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "main")
+        if git pull --rebase -q origin "$branch" >/dev/null 2>&1 && git push -q origin "$branch" >/dev/null 2>&1; then
+            echo -e "${COLOR_GREEN}✓ Sync complete${COLOR_RESET}"
+        else
+            echo -e "${COLOR_YELLOW}⚠ Sync failed (check connection or run 'syncline sync')${COLOR_RESET}"
+        fi
+    fi
+}
+
+auto_sync_pull() {
+    if git remote | grep -q origin; then
+        echo -e "${COLOR_CYAN}⟳ Syncing with remote...${COLOR_RESET}"
+        local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "main")
+        if git pull --rebase -q origin "$branch" >/dev/null 2>&1; then
+            echo -e "${COLOR_GREEN}✓ Sync complete${COLOR_RESET}"
+        else
+            echo -e "${COLOR_YELLOW}⚠ Sync failed (check connection or run 'syncline sync')${COLOR_RESET}"
+        fi
+    fi
 }
 
 # --- COMMAND ROUTER ---
