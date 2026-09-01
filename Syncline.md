@@ -13,12 +13,58 @@ set -e
 
 echo "Installing syncline..."
 
-# Determine installation directory (User-local for both macOS and Linux)
-INSTALL_DIR="${HOME}/.local/bin"
-mkdir -p "$INSTALL_DIR"
-SUDO=""
+# Interactive Installation Scope Selection
+echo ""
+echo "Select installation scope:"
+echo "  1) Global (System-wide) - Requires sudo, installs to /usr/local/bin"
+echo "  2) Local  (User-level)  - No sudo required, installs to ~/.local/bin"
+echo ""
+read -p "Enter choice [1 or 2] (default: 2): " CHOICE
+CHOICE=${CHOICE:-2}
+
+if [ "$CHOICE" = "1" ]; then
+    INSTALL_DIR="/usr/local/bin"
+    SUDO="sudo"
+    echo "→ Global installation selected."
+    echo "  You may be prompted for your password to install to $INSTALL_DIR"
+    $SUDO mkdir -p "$INSTALL_DIR"
+elif [ "$CHOICE" = "2" ]; then
+    INSTALL_DIR="${HOME}/.local/bin"
+    SUDO=""
+    echo "→ Local installation selected."
+    mkdir -p "$INSTALL_DIR"
+    
+    PATH_UPDATED=false
+    if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
+        echo ""
+        echo "⚠ Note: $INSTALL_DIR is not in your current PATH."
+        
+        # Detect user's shell configuration file
+        case "$SHELL" in
+            */zsh) RC_FILE="$HOME/.zshrc" ;;
+            */bash) RC_FILE="$HOME/.bashrc" ;;
+            *) 
+                if [ -f "$HOME/.zshrc" ]; then RC_FILE="$HOME/.zshrc"
+                elif [ -f "$HOME/.bashrc" ]; then RC_FILE="$HOME/.bashrc"
+                else RC_FILE="$HOME/.bashrc"; fi
+                ;;
+        esac
+        
+        echo "→ Automatically adding $INSTALL_DIR to your PATH in $RC_FILE..."
+        echo "" >> "$RC_FILE"
+        echo "# Added by syncline installer" >> "$RC_FILE"
+        echo "export PATH=\"\$PATH:$INSTALL_DIR\"" >> "$RC_FILE"
+        export PATH="$PATH:$INSTALL_DIR"
+        echo "✓ Successfully updated $RC_FILE"
+        PATH_UPDATED=true
+    fi
+else
+    echo "✗ Invalid choice. Aborting."
+    exit 1
+fi
 
 # Extract the payload
+echo ""
 echo "Extracting syncline payload..."
 PAYLOAD_LINE=$(awk '/^__PAYLOAD_BELOW__/ {print NR + 1; exit 0; }' "$0")
 tail -n +$PAYLOAD_LINE "$0" | base64 -d > /tmp/syncline.sh
@@ -27,15 +73,20 @@ $SUDO cp /tmp/syncline.sh "$INSTALL_DIR/syncline"
 $SUDO chmod +x "$INSTALL_DIR/syncline"
 rm -f /tmp/syncline.sh
 
+echo ""
 echo "✓ syncline installed successfully to $INSTALL_DIR/syncline"
 
-if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
-    echo "⚠ Note: $INSTALL_DIR is not in your PATH."
-    echo "  Add this to your ~/.bashrc or ~/.zshrc:"
-    echo "  export PATH=\"\$PATH:$INSTALL_DIR\""
+if [ "$CHOICE" = "1" ]; then
+    echo "  (Global installation: available to all users)"
+else
+    echo "  (Local installation: available only to your user)"
+    if [ "$PATH_UPDATED" = true ]; then
+        echo "  ⚠ Please restart your terminal or run 'source $RC_FILE' to apply PATH changes immediately."
+    fi
 fi
 
 exit 0
+
 __PAYLOAD_BELOW__
 HEADER
 
