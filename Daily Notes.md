@@ -111,7 +111,7 @@ https://github.com/languitar/pass-git-helper
 	- [Using WPA_Supplicant to Connect to WPA2 Wi-fi from Terminal on Ubuntu 16.04 Server](https://www.linuxbabe.com/command-line/ubuntu-server-16-04-wifi-wpa-supplicant)
 	- [Connect to Wi-Fi From Terminal on Debian 11/10 with WPA Supplicant](https://www.linuxbabe.com/debian/connect-to-wi-fi-from-terminal-on-debian-wpa-supplicant)
 	- [Connect to Wi-Fi From Terminal on Ubuntu 22.04/20.04 with WPA Supplicant](https://www.linuxbabe.com/ubuntu/connect-to-wi-fi-from-terminal-on-ubuntu-18-04-19-04-with-wpa-supplicant)
-	- [How to Use Timeshift from Command Line in Linux](https://dev.to/rahedmir/how-to-use-timeshift-from-command-line-in-linux-1l9b
+	- [How to Use Timeshift from Command Line in Linux](https://dev.to/rahedmir/how-to-use-timeshift-from-command-line-in-linux-1l9b)
 ## 27-12-2024, Friday
 - https://www.madpenguin.org/how-to-set-default-browser-in-linux/
 - https://linuxconfig.org/how-to-set-browser-environment-variable-on-linux
