@@ -210,3 +210,20 @@ Si regresas a una conversación después de unas horas o días, la IA puede perd
 * **Problema:** Instalador de un solo archivo en Bash generaba un archivo vacío (0 bytes) en macOS. Era una falla silenciosa.
 * **Diagnóstico:** Al activar `set -ex`, el rastreo mostró `base64: invalid argument`.
 * **Causa Raíz:** Diferencias entre entornos UNIX. macOS usa utilidades BSD (que requieren la bandera `-i` en `base64`), mientras que Linux usa GNU. Además, el script constructor fallaba si el archivo fuente (payload) no estaba en el mismo directorio.
+
+
+
+
+/home/xuser/.local/bin/syncline-git-credential get: 1: /home/xuser/.local/bin/syncline-git-credential: not found
+Username for 'https://github.com': alfredprof3
+Password for 'https://alfredprof3@github.com':
+/home/xuser/.local/bin/syncline-git-credential store: 1: /home/xuser/.local/bin/syncline-git-credential: not found
+To https://github.com/alfredprof3/syncline-repo-1.git
+ ! [rejected]        master -> master (fetch first)
+error: falló el empuje de algunas referencias a 'https://github.com/alfredprof3/syncline-repo-1.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+✓ Remote set and initial push complete.
