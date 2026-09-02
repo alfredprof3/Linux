@@ -341,23 +341,42 @@ cancel_items() {
     echo -e "${COLOR_GREEN}✓ Toggled cancel/reactivate for items: $1${COLOR_RESET}"
 }
 
-clear_completed() {
+# Consolidate the Clear Functions
+clear_items() {
+    local target="${1:-all}"
     ensure_data; cd "$REPO_DIR"
-    local count=$(jq '[.[] | select(.completed == true)] | length' "$DATA_FILE")
-    if [ "$count" -eq 0 ]; then echo -e "${COLOR_GRAY}No completed items to clear.${COLOR_RESET}"; return; fi
-    jq 'map(select(.completed != true))' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
-    git add notes.json && git commit -q -m "chore: clear completed items" && auto_sync_push
-    echo -e "${COLOR_GREEN}✓ Cleared $count completed items${COLOR_RESET}"
-}
-
-# NEW: Clear canceled tasks
-clear_canceled() {
-    ensure_data; cd "$REPO_DIR"
-    local count=$(jq '[.[] | select(.status == "canceled")] | length' "$DATA_FILE")
-    if [ "$count" -eq 0 ]; then echo -e "${COLOR_GRAY}No canceled items to clear.${COLOR_RESET}"; return; fi
-    jq 'map(select(.status != "canceled"))' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
-    git add notes.json && git commit -q -m "chore: clear canceled items" && auto_sync_push
-    echo -e "${COLOR_GREEN}✓ Cleared $count canceled items${COLOR_RESET}"
+    
+    local count=0
+    local msg=""
+    
+    case "$target" in
+        canceled)
+            count=$(jq '[.[] | select(.status == "canceled")] | length' "$DATA_FILE")
+            if [ "$count" -eq 0 ]; then echo -e "${COLOR_GRAY}No canceled items to clear.${COLOR_RESET}"; return; fi
+            jq 'map(select(.status != "canceled"))' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
+            msg="canceled"
+            ;;
+        checked|completed)
+            count=$(jq '[.[] | select(.completed == true)] | length' "$DATA_FILE")
+            if [ "$count" -eq 0 ]; then echo -e "${COLOR_GRAY}No completed items to clear.${COLOR_RESET}"; return; fi
+            jq 'map(select(.completed != true))' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
+            msg="completed"
+            ;;
+        all|"")
+            count=$(jq '[.[] | select(.completed == true or .status == "canceled")] | length' "$DATA_FILE")
+            if [ "$count" -eq 0 ]; then echo -e "${COLOR_GRAY}No completed or canceled items to clear.${COLOR_RESET}"; return; fi
+            jq 'map(select(.completed != true and .status != "canceled"))' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
+            msg="completed and canceled"
+            ;;
+        *)
+            echo -e "${COLOR_RED}✗ Unknown clear target: $target${COLOR_RESET}"
+            echo "Usage: syncline clear [all|checked|canceled]"
+            return 1
+            ;;
+    esac
+    
+    git add notes.json && git commit -q -m "chore: clear $msg items" && auto_sync_push
+    echo -e "${COLOR_GREEN}✓ Cleared $count $msg items${COLOR_RESET}"
 }
 
 # NEW: Set priority on existing tasks
@@ -527,8 +546,7 @@ case "${1:-list}" in
     check|c)     [ -z "$2" ] && echo "Usage: syncline check <ids>" || toggle_status "$2" ;;
     start|begin|b) [ -z "$2" ] && echo "Usage: syncline start <ids>" || start_items "$2" ;;
     cancel)      [ -z "$2" ] && echo "Usage: syncline cancel <ids>" || cancel_items "$2" ;;
-    clear)       clear_completed ;;
-    clear-canceled) clear_canceled ;;
+    clear)       clear_items "$2" ;;
     priority|p)  [ -z "$3" ] && echo "Usage: syncline priority <ids> <1|2|3>" || set_priority "$2" "$3" ;;
     due)         [ -z "$3" ] && echo "Usage: syncline due <id> <YYYY-MM-DD>" || set_due "$2" "$3" ;;
     find|f)      [ -z "$2" ] && echo "Usage: syncline find <term>" || find_items "$2" ;;
@@ -553,8 +571,7 @@ case "${1:-list}" in
         echo "  syncline check <ids>                       Toggle task completion"
         echo "  syncline start <ids>                       Start/pause task"
         echo "  syncline cancel <ids>                      Cancel/reactivate task"
-        echo "  syncline clear                             Delete all completed tasks"
-        echo "  syncline clear-canceled                    Delete all canceled tasks"
+        echo "  syncline clear [checked|canceled]          Delete completed/canceled tasks (default: both)"
         echo "  syncline priority <ids> <1|2|3>            Set priority (1=normal, 2=medium, 3=high)"
         echo "  syncline due <id> <YYYY-MM-DD>             Set due date"
         echo "  syncline find <term>                       Search descriptions"
