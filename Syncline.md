@@ -336,7 +336,7 @@ start_items() {
 cancel_items() {
     local ids_json=$(expand_ids "$1")
     ensure_data; cd "$REPO_DIR"
-    jq --argjson ids "$ids_json" 'map(if .id as $i | $ids | index($i) then (if .status == "canceled" then .status = "pending" else .status = "canceled" end) else . end)' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
+    jq --argjson ids "$ids_json" 'map(if .id as $i | $ids | index($i) then (if .status == "canceled" then .status = "pending" else .status = "canceled" end | .completed = false) else . end)' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
     git add notes.json && git commit -q -m "chore: cancel/reactivate items $1" && auto_sync_push
     echo -e "${COLOR_GREEN}✓ Toggled cancel/reactivate for items: $1${COLOR_RESET}"
 }
