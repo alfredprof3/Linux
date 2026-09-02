@@ -293,7 +293,7 @@ add_item() {
          "status": "pending", "due_date": null, "created_at": $ts
        }]' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
     
-    cd "$REPO_DIR" && git add notes.json && git commit -q -m "chore: add $type #$next_id"
+    cd "$REPO_DIR" && git add notes.json && git commit -q -m "chore: add $type #$next_id" && auto_sync_push
     echo -e "${COLOR_GREEN}✓ Added $type #$next_id${COLOR_RESET}"
 }
 
@@ -321,7 +321,7 @@ toggle_status() {
     local ids_json=$(expand_ids "$1")
     ensure_data; cd "$REPO_DIR"
     jq --argjson ids "$ids_json" 'map(if .id as $i | $ids | index($i) then (if .completed then .completed = false | .status = "pending" else .completed = true | .status = "completed" end) else . end)' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
-    git add notes.json && git commit -q -m "chore: check/uncheck items $1"
+    git add notes.json && git commit -q -m "chore: check/uncheck items $1" && auto_sync_push
     echo -e "${COLOR_GREEN}✓ Toggled completion for items: $1${COLOR_RESET}"
 }
 
@@ -329,7 +329,7 @@ start_items() {
     local ids_json=$(expand_ids "$1")
     ensure_data; cd "$REPO_DIR"
     jq --argjson ids "$ids_json" 'map(if .id as $i | $ids | index($i) then (if .status == "in_progress" then .status = "pending" else .status = "in_progress" end) else . end)' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
-    git add notes.json && git commit -q -m "chore: start/pause items $1"
+    git add notes.json && git commit -q -m "chore: start/pause items $1" && auto_sync_push
     echo -e "${COLOR_GREEN}✓ Toggled start/pause for items: $1${COLOR_RESET}"
 }
 
@@ -337,7 +337,7 @@ cancel_items() {
     local ids_json=$(expand_ids "$1")
     ensure_data; cd "$REPO_DIR"
     jq --argjson ids "$ids_json" 'map(if .id as $i | $ids | index($i) then (if .status == "canceled" then .status = "pending" else .status = "canceled" end) else . end)' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
-    git add notes.json && git commit -q -m "chore: cancel/reactivate items $1"
+    git add notes.json && git commit -q -m "chore: cancel/reactivate items $1" && auto_sync_push
     echo -e "${COLOR_GREEN}✓ Toggled cancel/reactivate for items: $1${COLOR_RESET}"
 }
 
@@ -346,7 +346,7 @@ clear_completed() {
     local count=$(jq '[.[] | select(.completed == true)] | length' "$DATA_FILE")
     if [ "$count" -eq 0 ]; then echo -e "${COLOR_GRAY}No completed items to clear.${COLOR_RESET}"; return; fi
     jq 'map(select(.completed != true))' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
-    git add notes.json && git commit -q -m "chore: clear completed items"
+    git add notes.json && git commit -q -m "chore: clear completed items" && auto_sync_push
     echo -e "${COLOR_GREEN}✓ Cleared $count completed items${COLOR_RESET}"
 }
 
@@ -356,7 +356,7 @@ clear_canceled() {
     local count=$(jq '[.[] | select(.status == "canceled")] | length' "$DATA_FILE")
     if [ "$count" -eq 0 ]; then echo -e "${COLOR_GRAY}No canceled items to clear.${COLOR_RESET}"; return; fi
     jq 'map(select(.status != "canceled"))' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
-    git add notes.json && git commit -q -m "chore: clear canceled items"
+    git add notes.json && git commit -q -m "chore: clear canceled items" && auto_sync_push
     echo -e "${COLOR_GREEN}✓ Cleared $count canceled items${COLOR_RESET}"
 }
 
@@ -374,7 +374,7 @@ set_priority() {
     jq --argjson ids "$ids_json" --argjson priority "$priority" \
        'map(if .id as $i | $ids | index($i) then .priority = $priority else . end)' \
        "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
-    git add notes.json && git commit -q -m "chore: set priority for items $1"
+    git add notes.json && git commit -q -m "chore: set priority for items $1" && auto_sync_push
     echo -e "${COLOR_GREEN}✓ Set priority $priority for items: $1${COLOR_RESET}"
 }
 
@@ -385,7 +385,7 @@ set_due() {
     fi
     ensure_data; cd "$REPO_DIR"
     jq --arg id "$id" --arg date "$date" 'map(if .id == ($id | tonumber) then .due_date = $date else . end)' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
-    git add notes.json && git commit -q -m "chore: set due date for #$id"
+    git add notes.json && git commit -q -m "chore: set due date for #$id" && auto_sync_push
     echo -e "${COLOR_GREEN}✓ Set due date for item #$id to $date${COLOR_RESET}"
 }
 
@@ -419,35 +419,35 @@ delete_items() {
     local ids_json=$(expand_ids "$1")
     ensure_data; cd "$REPO_DIR"
     jq --argjson ids "$ids_json" 'map(select(.id as $i | $ids | index($i) | not))' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
-    git add notes.json && git commit -q -m "chore: delete items $1"
+    git add notes.json && git commit -q -m "chore: delete items $1" && auto_sync_push
     echo -e "${COLOR_GREEN}✓ Deleted items: $1${COLOR_RESET}"
 }
 
 archive_items() {
     local ids_json=$(expand_ids "$1"); ensure_data; cd "$REPO_DIR"
     jq --argjson ids "$ids_json" 'map(if .id as $i | $ids | index($i) then .archived = true else . end)' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
-    git add notes.json && git commit -q -m "chore: archive items $1"
+    git add notes.json && git commit -q -m "chore: archive items $1" && auto_sync_push
     echo -e "${COLOR_GREEN}✓ Archived items: $1${COLOR_RESET}"
 }
 
 unarchive_items() {
     local ids_json=$(expand_ids "$1"); ensure_data; cd "$REPO_DIR"
     jq --argjson ids "$ids_json" 'map(if .id as $i | $ids | index($i) then .archived = false else . end)' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
-    git add notes.json && git commit -q -m "chore: unarchive items $1"
+    git add notes.json && git commit -q -m "chore: unarchive items $1" && auto_sync_push
     echo -e "${COLOR_GREEN}✓ Unarchived items: $1${COLOR_RESET}"
 }
 
 edit_item() {
     local id="$1" desc="$2"; ensure_data; cd "$REPO_DIR"
     jq --arg id "$id" --arg desc "$desc" 'map(if .id == ($id | tonumber) then .description = $desc else . end)' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
-    git add notes.json && git commit -q -m "chore: edit item #$id"
+    git add notes.json && git commit -q -m "chore: edit item #$id" && auto_sync_push
     echo -e "${COLOR_GREEN}✓ Edited item #$id${COLOR_RESET}"
 }
 
 move_items() {
     local ids_json=$(expand_ids "$1") board="$2"; ensure_data; cd "$REPO_DIR"
     jq --argjson ids "$ids_json" --arg board "$board" 'map(if .id as $i | $ids | index($i) then .board = $board else . end)' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
-    git add notes.json && git commit -q -m "chore: move items $1 to $board"
+    git add notes.json && git commit -q -m "chore: move items $1 to $board" && auto_sync_push
     echo -e "${COLOR_GREEN}✓ Moved items $1 to board '$board'${COLOR_RESET}"
 }
 
@@ -461,7 +461,7 @@ copy_items() {
 toggle_star() {
     local ids_json=$(expand_ids "$1"); ensure_data; cd "$REPO_DIR"
     jq --argjson ids "$ids_json" 'map(if .id as $i | $ids | index($i) then .starred = (if .starred then false else true end) else . end)' "$DATA_FILE" > "$DATA_FILE.tmp" && mv "$DATA_FILE.tmp" "$DATA_FILE"
-    git add notes.json && git commit -q -m "chore: toggle star for items $1"
+    git add notes.json && git commit -q -m "chore: toggle star for items $1" && auto_sync_push
     echo -e "${COLOR_GREEN}✓ Toggled star for items: $1${COLOR_RESET}"
 }
 
