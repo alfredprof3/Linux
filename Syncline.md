@@ -496,6 +496,7 @@ sync_items() {
     echo -e "${COLOR_GREEN}✓ Sync complete${COLOR_RESET}"
 }
 
+
 setup_native_credential_helper() {
     cd "$REPO_DIR"
     # Auto-detect and configure the best available native Git credential helper
@@ -518,20 +519,23 @@ set_remote() {
     
     git remote add origin "$url" 2>/dev/null || git remote set-url origin "$url"
     
-    # 1. Configure the best available native credential helper
+    # 1. Configure the best available native credential helper (handles PATs securely)
     setup_native_credential_helper
     
-    # 2. Explicitly ensure local branch is named 'main' to match GitHub's default
-    git branch -M main 2>/dev/null || true
-    
+    # 2. Determine the default branch (main or master)
+    local branch="main"
+    if git rev-parse --verify master >/dev/null 2>&1 && ! git rev-parse --verify main >/dev/null 2>&1; then
+        branch="master"
+    fi
+
     # 3. Gracefully handle "fetch first" rejections by pulling with rebase before pushing
     echo -e "${COLOR_CYAN}⟳ Resolving remote state...${COLOR_RESET}"
-    if git ls-remote --heads origin main >/dev/null 2>&1; then
-        git pull --rebase -q origin main >/dev/null 2>&1 || true
+    if git ls-remote --heads origin "$branch" >/dev/null 2>&1; then
+        git pull --rebase -q origin "$branch" >/dev/null 2>&1 || true
     fi
     
-    # 4. Push and set upstream to 'main'
-    if git push -q -u origin main >/dev/null 2>&1; then
+    # 4. Push and set upstream
+    if git push -q -u origin "$branch" >/dev/null 2>&1; then
         echo -e "${COLOR_GREEN}✓ Remote set and initial push complete.${COLOR_RESET}"
     else
         echo -e "${COLOR_RED}✗ Initial push failed. The remote may have conflicting history.${COLOR_RESET}"
@@ -539,6 +543,8 @@ set_remote() {
         return 1
     fi
 }
+
+
 
 update_token() {
     if ! command -v secret-tool >/dev/null 2>&1; then echo -e "${COLOR_RED}✗ 'secret-tool' required.${COLOR_RESET}"; exit 1; fi
