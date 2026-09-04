@@ -200,6 +200,7 @@ Para estandarizar un repositorio viejo y evitar desincronización entre sistemas
 Git Credential Storage: Cache, Store, and Manage Passwords Securely 
 https://oneuptime.com/blog/post/2026-01-24-git-credential-storage/view
 
+<<<<<<< HEAD
 ●
 
 Cómo descargar e instalar MagisTV en una Smart TV
@@ -217,3 +218,25 @@ Confirmados
 - Jimena, 6 septiembre 2026         $250
 - Angélica, 6 septiembre 2026       $250
                         TOTAL       $1,750
+=======
+⟳ DEBUG: Fetching remote...
+remote: Enumerating objects: 347, done.
+remote: Counting objects: 100% (347/347), done.
+remote: Compressing objects: 100% (129/129), done.
+remote: Total 347 (delta 117), reused 339 (delta 109), pack-reused 0 (from 0)
+Receiving objects: 100% (347/347), 32.29 KiB | 1001.00 KiB/s, done.
+Resolving deltas: 100% (117/117), done.
+From https://github.com/alfredprof3/syncline-repo-1
+ * [new branch]      master     -> origin/master
+⟳ DEBUG: Attempting to pull from 'main'...
+From https://github.com/alfredprof3/syncline-repo-1
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+⟳ DEBUG: Attempting to push to 'main'...
+branch 'main' set up to track 'origin/main'.
+Everything up-to-date
+✓ Remote set and initial push complete.
+
+
+https://youtu.be/Y67Z8xwl7t4?si=4xsxUzMu9tbO-U0i
+>>>>>>> 975d36e ([nb] Edit: Daily Notes.md)
