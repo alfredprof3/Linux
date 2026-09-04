@@ -491,11 +491,18 @@ sync_items() {
     if ! git remote | grep -q origin; then echo -e "${COLOR_RED}✗ No remote configured.${COLOR_RESET}"; return 1; fi
     echo -e "${COLOR_CYAN}⟳ Syncing with remote...${COLOR_RESET}"
     git fetch origin
-    if git rev-parse --verify origin/main >/dev/null 2>&1; then git pull --rebase origin main && git push origin main
-    else git pull --rebase origin master && git push origin master; fi
-    echo -e "${COLOR_GREEN}✓ Sync complete${COLOR_RESET}"
+    
+    local branch
+    branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    [ -z "$branch" ] || [ "$branch" = "HEAD" ] && branch="main"
+    
+    if git pull --rebase origin "$branch" && git push origin "$branch"; then
+        echo -e "${COLOR_GREEN}✓ Sync complete${COLOR_RESET}"
+    else
+        echo -e "${COLOR_RED}✗ Sync failed. Resolve conflicts in $REPO_DIR${COLOR_RESET}"
+        return 1
+    fi
 }
-
 
 setup_native_credential_helper() {
     cd "$REPO_DIR"
@@ -519,17 +526,27 @@ set_remote() {
     
     git remote add origin "$url" 2>/dev/null || git remote set-url origin "$url"
     
-    # 1. Configure the best available native credential helper (handles PATs securely)
+    # 1. Configure the best available native credential helper
     setup_native_credential_helper
     
-    # 2. Determine the default branch (main or master)
+    # 2. Discover remote branches to adapt dynamically
+    echo -e "${COLOR_CYAN}⟳ Resolving remote state...${COLOR_RESET}"
+    git fetch origin -q 2>/dev/null || true
+    
+    # Determine which branch the remote actually uses
     local branch="main"
-    if git rev-parse --verify master >/dev/null 2>&1 && ! git rev-parse --verify main >/dev/null 2>&1; then
+    if git rev-parse --verify origin/master >/dev/null 2>&1 && ! git rev-parse --verify origin/main >/dev/null 2>&1; then
         branch="master"
     fi
-
-    # 3. Gracefully handle "fetch first" rejections by pulling with rebase before pushing
-    echo -e "${COLOR_CYAN}⟳ Resolving remote state...${COLOR_RESET}"
+    
+    # Align local branch to match remote
+    if git rev-parse --verify "$branch" >/dev/null 2>&1; then
+        git checkout "$branch" -q 2>/dev/null || true
+    else
+        git branch -M "$branch" 2>/dev/null || true
+    fi
+    
+    # 3. Gracefully handle "fetch first" rejections
     if git ls-remote --heads origin "$branch" >/dev/null 2>&1; then
         git pull --rebase -q origin "$branch" >/dev/null 2>&1 || true
     fi
@@ -544,8 +561,6 @@ set_remote() {
     fi
 }
 
-
-
 update_token() {
     if ! command -v secret-tool >/dev/null 2>&1; then echo -e "${COLOR_RED}✗ 'secret-tool' required.${COLOR_RESET}"; exit 1; fi
     echo -e "${COLOR_CYAN}Enter your new GitHub Personal Access Token (PAT):${COLOR_RESET}"
@@ -559,7 +574,10 @@ update_token() {
 auto_sync_push() {
     if git remote | grep -q origin; then
         echo -e "${COLOR_CYAN}⟳ Syncing with remote...${COLOR_RESET}"
-        local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "main")
+        local branch
+        branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+        [ -z "$branch" ] || [ "$branch" = "HEAD" ] && branch="main"
+        
         if git pull --rebase -q origin "$branch" >/dev/null 2>&1 && git push -q origin "$branch" >/dev/null 2>&1; then
             echo -e "${COLOR_GREEN}✓ Sync complete${COLOR_RESET}"
         else
@@ -571,7 +589,10 @@ auto_sync_push() {
 auto_sync_pull() {
     if git remote | grep -q origin; then
         echo -e "${COLOR_CYAN}⟳ Syncing with remote...${COLOR_RESET}"
-        local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "main")
+        local branch
+        branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+        [ -z "$branch" ] || [ "$branch" = "HEAD" ] && branch="main"
+        
         if git pull --rebase -q origin "$branch" >/dev/null 2>&1; then
             echo -e "${COLOR_GREEN}✓ Sync complete${COLOR_RESET}"
         else
