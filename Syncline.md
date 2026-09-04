@@ -518,31 +518,26 @@ set_remote() {
     
     git remote add origin "$url" 2>/dev/null || git remote set-url origin "$url"
     
-    # 1. Configure the best available native credential helper (handles PATs securely)
+    # 1. Configure the best available native credential helper
     setup_native_credential_helper
     
-    # 2. Determine the default branch (main or master)
-    local branch="main"
-    if git rev-parse --verify master >/dev/null 2>&1 && ! git rev-parse --verify main >/dev/null 2>&1; then
-        branch="master"
+    # 2. Explicitly ensure local branch is named 'main' to match GitHub's default
+    git branch -M main 2>/dev/null || true
+    
+    # 3. Gracefully handle "fetch first" rejections by pulling with rebase before pushing
+    echo -e "${COLOR_CYAN}⟳ Resolving remote state...${COLOR_RESET}"
+    if git ls-remote --heads origin main >/dev/null 2>&1; then
+        git pull --rebase -q origin main >/dev/null 2>&1 || true
     fi
-
-    # 3. VERBOSE DEBUG: Fetch and Pull
-    echo -e "${COLOR_CYAN}⟳ DEBUG: Fetching remote...${COLOR_RESET}"
-    git fetch origin
     
-    echo -e "${COLOR_CYAN}⟳ DEBUG: Attempting to pull from '$branch'...${COLOR_RESET}"
-    git pull --rebase origin "$branch" || echo -e "${COLOR_YELLOW}⚠ DEBUG: Pull from '$branch' failed. This is the root cause.${COLOR_RESET}"
-    
-    # 4. VERBOSE DEBUG: Push
-    echo -e "${COLOR_CYAN}⟳ DEBUG: Attempting to push to '$branch'...${COLOR_RESET}"
-    if git push -u origin "$branch"; then
+    # 4. Push and set upstream to 'main'
+    if git push -q -u origin main >/dev/null 2>&1; then
         echo -e "${COLOR_GREEN}✓ Remote set and initial push complete.${COLOR_RESET}"
     else
-        echo -e "${COLOR_RED}✗ DEBUG: Initial push failed. See Git output above.${COLOR_RESET}"
+        echo -e "${COLOR_RED}✗ Initial push failed. The remote may have conflicting history.${COLOR_RESET}"
+        echo -e "${COLOR_YELLOW}  Tip: Run 'syncline sync' to manually resolve conflicts.${COLOR_RESET}"
         return 1
     fi
-
 }
 
 update_token() {
