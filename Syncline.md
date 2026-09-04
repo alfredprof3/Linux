@@ -494,13 +494,51 @@ sync_items() {
     echo -e "${COLOR_GREEN}✓ Sync complete${COLOR_RESET}"
 }
 
+setup_native_credential_helper() {
+    cd "$REPO_DIR"
+    # Auto-detect and configure the best available native Git credential helper
+    if [[ "$(uname)" == "Darwin" ]] && command -v git-credential-osxkeychain >/dev/null 2>&1; then
+        git config credential.helper osxkeychain
+    elif command -v git-credential-libsecret >/dev/null 2>&1; then
+        git config credential.helper libsecret
+    elif command -v git-credential-kwallet >/dev/null 2>&1; then
+        git config credential.helper kwallet
+    else
+        # Universal fallback (stores in ~/.git-credentials). Less secure, but guaranteed to work.
+        git config credential.helper store
+    fi
+}
+
 set_remote() {
-    local url="$1"; ensure_data; cd "$REPO_DIR"
+    local url="$1"
+    ensure_data
+    cd "$REPO_DIR"
+    
     git remote add origin "$url" 2>/dev/null || git remote set-url origin "$url"
-    local helper_path=$(command -v syncline-git-credential 2>/dev/null || echo "$(dirname "$(command -v syncline)")/syncline-git-credential")
-    git config credential.helper "!$helper_path"
-    if git rev-parse --verify main >/dev/null 2>&1; then git push -u origin main; else git push -u origin master; fi
-    echo -e "${COLOR_GREEN}✓ Remote set and initial push complete.${COLOR_RESET}"
+    
+    # 1. Configure the best available native credential helper (handles PATs securely)
+    setup_native_credential_helper
+    
+    # 2. Determine the default branch (main or master)
+    local branch="main"
+    if git rev-parse --verify master >/dev/null 2>&1 && ! git rev-parse --verify main >/dev/null 2>&1; then
+        branch="master"
+    fi
+
+    # 3. Gracefully handle "fetch first" rejections by pulling with rebase before pushing
+    echo -e "${COLOR_CYAN}⟳ Resolving remote state...${COLOR_RESET}"
+    if git ls-remote --heads origin "$branch" >/dev/null 2>&1; then
+        git pull --rebase -q origin "$branch" >/dev/null 2>&1 || true
+    fi
+    
+    # 4. Push and set upstream
+    if git push -q -u origin "$branch" >/dev/null 2>&1; then
+        echo -e "${COLOR_GREEN}✓ Remote set and initial push complete.${COLOR_RESET}"
+    else
+        echo -e "${COLOR_RED}✗ Initial push failed. The remote may have conflicting history.${COLOR_RESET}"
+        echo -e "${COLOR_YELLOW}  Tip: Run 'syncline sync' to manually resolve conflicts.${COLOR_RESET}"
+        return 1
+    fi
 }
 
 update_token() {
