@@ -133,3 +133,22 @@ https://github.com/languitar/pass-git-helper
 
 El proceso fue el siguiente, tengo el archivo 'build_installer.sh' creado junto con el archivo 'syncline.sh'. Cree una maquina virtual para hacer mis pruebas. Instalé satisfactoriamente syncline, para comprobar que todo este correcto ejecute el comando syncline y el mensaje fue el siguiente '✓ Initialized synclinxuser@debian:~$ syncline note "El proceso fue el siguiente, tengo el archivo 'build_installer.sh' creado junto con el archivo 'syncline.sh'. Cree una maquina virtual para hacer mis pruebas. Instalé satisfactoriamente syncline, para comprobar que todo este correcto ejecute el comando syncline y el mensaje fue el siguiente '✓ Initialized syncline repository at /home/xuser/.syncline/repo No items found.' Por lo tanto puedo comprobar que todo esta bien sin embargo, al momento de conectarlo con mi repositorio de GitHub mediante el comando 'syncline remote add [url-repo]' el mensaje es el siguiente [en nb 6 esta el mensaje completo], quiero entender que no he configurado el gestor de contraseñas o para el access token (PAT). Creo que se podría dividir en dos partes esta solución, la primera sería darle la opción o guiar al usuario sobre cómo configurar el wallet keyring o keychain y segundo el problema que dice específicamente ![rejected] master -> master (fetch first) tengo entendido por mi conocimiento básico que esto se le suele llamar, resolución de conflictos en Git.
 
+
+
+⟳ DEBUG: Fetching remote...
+remote: Enumerating objects: 347, done.
+remote: Counting objects: 100% (347/347), done.
+remote: Compressing objects: 100% (129/129), done.
+remote: Total 347 (delta 117), reused 339 (delta 109), pack-reused 0 (from 0)
+Receiving objects: 100% (347/347), 32.29 KiB | 1001.00 KiB/s, done.
+Resolving deltas: 100% (117/117), done.
+From https://github.com/alfredprof3/syncline-repo-1
+ * [new branch]      master     -> origin/master
+⟳ DEBUG: Attempting to pull from 'main'...
+From https://github.com/alfredprof3/syncline-repo-1
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+⟳ DEBUG: Attempting to push to 'main'...
+branch 'main' set up to track 'origin/main'.
+Everything up-to-date
+✓ Remote set and initial push complete.
