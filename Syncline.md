@@ -172,6 +172,8 @@ init_data() {
         mkdir -p "$REPO_DIR"
         cd "$REPO_DIR"
         git init -q
+        # Explicitly rename default branch to 'main' to prevent macOS 'master' conflicts
+        git branch -M main
         git config user.name "syncline" 2>/dev/null || true
         git config user.email "syncline@local" 2>/dev/null || true
         echo "[]" > "$DATA_FILE"
