@@ -1,16 +1,15 @@
-# Vim installation
+# Neovim
 
 Install
+-----
 
-```bash
-sudo apt install vim-gtk3
-```
+`sudo apt install neovim`
+
 
 Usage
+-----
 
-```bash
-vim
-```
+`nvim`
 
 Creating a new file with Vim
 
@@ -115,3 +114,8 @@ read dirName
 
 git clone --depth=1 $github ~/.vim/pack/plug-ins/start/$dirName/
 ```
+
+Reference
+-----
+
+1. [Vim learning - Learn Vim in your browser](https://ridhsuki.github.io/vim-learning/#modes-intro)
