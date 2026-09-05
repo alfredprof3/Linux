@@ -196,4 +196,6 @@ Para estandarizar un repositorio viejo y evitar desincronización entre sistemas
 3. `git branch -u origin/main main`
 4. `git remote set-head origin -a`
 
-test
+
+Git Credential Storage: Cache, Store, and Manage Passwords Securely 
+https://oneuptime.com/blog/post/2026-01-24-git-credential-storage/view
