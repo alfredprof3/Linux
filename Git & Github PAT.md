@@ -1,4 +1,8 @@
 # Git Credential Manager GCM - How to configure
+
+Source: [Git Credential Storage: Cache, Store, and Manage Passwords Securely](https://oneuptime.com/blog/post/2026-01-24-git-credential-storage/view)
+
+
 # 1. Download `git-credential-manager` from the official Github repository
 Go to the [Git Credential Manager Github Repository](https://github.com/git-ecosystem/git-credential-manager/releases/download/v2.9.1/gcm-linux-x64-2.9.1.deb) and download the `.deb` file for Debian Linux distribution.
 
