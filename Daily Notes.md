@@ -195,3 +195,5 @@ Para estandarizar un repositorio viejo y evitar desincronización entre sistemas
 2. `git branch -m master main`
 3. `git branch -u origin/main main`
 4. `git remote set-head origin -a`
+
+test
