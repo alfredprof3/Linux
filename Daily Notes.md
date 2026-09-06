@@ -217,7 +217,10 @@ Confirmados
 - Elizabeth, 6 septiembre 2026      $250
 - Jimena, 6 septiembre 2026         $250
 - Angélica, 6 septiembre 2026       $250
-                        TOTAL       $1,750
+- Paola, 6 sept8embre 2026          $250
+- Hiromy, 6 septiembre 2026         $250
+- Arath, 6 septiembre 2026          $250
+                        TOTAL       $2,500
 =======
 ⟳ DEBUG: Fetching remote...
 remote: Enumerating objects: 347, done.
