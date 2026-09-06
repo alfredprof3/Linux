@@ -18,12 +18,14 @@ Mod = Alt Key
 [Mod]+[Shift]+[c]       - to kill a window.
 [Mod]+[Shift]+[q]       - to quit dwm cleanly.
 
+
 Layout Modes
 ============
 
 [Mod]+[t]               - tiled mode. []=
 [Mod]+[f]               - floating mode. ><>
 [Mod]+[m]               - monocle mode. [M]
+
 
 Floating
 ========
