@@ -206,3 +206,14 @@ Cómo descargar e instalar MagisTV en una Smart TV
 -----
 
 https://www.ardilu.com/guias/como-descargar-e-instalar-magis-tv-para-smart-tv
+
+
+Confirmados
+- Alondra, 3 septiembre 2026        $250
+- Sofia, 6 septiembre 2026          $250
+- Narda, 6 septiembre 2026          $250
+- Jon, 6 septiembre 2026            $250
+- Elizabeth, 6 septiembre 2026      $250
+- Jimena, 6 septiembre 2026         $250
+- Angélica, 6 septiembre 2026       $250
+                        TOTAL       $1,750
