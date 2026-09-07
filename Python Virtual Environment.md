@@ -38,7 +38,7 @@ macOS Environment
 
 Create a new virtual environment.
 
-→ `python3 -m venv yt-dlp`
+→ `python3.14 -m venv yt-dlp`
 
 Activates a virtual environment.
 
@@ -50,19 +50,20 @@ Desactivates a virtual environment.
 
 Install, prepare and update the packages from a virtual environment.
 
-→ `python3 -m pip install --upgrade pip`
+→ `python3.14 -m pip install --upgrade pip`
 
 Check the actual version.
 
-→ `python3 -m pip --version`
+→ `python3.14 -m pip --version`
 
 Install a package (e.g., `yt-dlp` command line tool)
 
-→ `python3 -m pip install yt-dlp`
+→ `python3.14 -m pip install yt-dlp`
 
 Upgrade the packages of a program installed in the virtual environment.
 
-→ `python3 -m pip install --upgrade yt-dlp`
+→ `python3.14 -m pip install --upgrade yt-dlp`
+
 
 Documentation
 -----
