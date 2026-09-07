@@ -223,3 +223,8 @@ Confirmados
 
 
 https://youtu.be/Y67Z8xwl7t4?si=4xsxUzMu9tbO-U0i
+
+OpenCode - LastDragon
+-----
+
+[Cómo instalar OpenCode en local](https://www.youtube.com/watch?v=lsG-wC3zDfI)
