@@ -1,3 +1,17 @@
 # AI Videos by LastDragon
 
-
+1. [Inteligencia Artificial con Llama3 y Ollama en Debian](https://www.youtube.com/watch?v=Y67Z8xwl7t4)
+2. [Combine Multiple GPUs to Build a Super AI Server](https://www.youtube.com/watch?v=_FNOJyUemkw)
+3. [Qwen3.8 Humilla a Opus 5 Programando un Tetris](https://www.youtube.com/watch?v=uYiZFCNtiNk)
+4. [Descarga Qwen3.8](https://www.youtube.com/watch?v=vKRXEpOzrWs)
+5. [IA sin GPU](https://www.youtube.com/watch?v=55YalspUVHY)
+6. [Corre Cualquier Modelo de IA Localmente en tu GPU](https://www.youtube.com/watch?v=6CmRE5ELn4g)
+7. [La IA de LastDragon Escapa y Ataca](https://www.youtube.com/watch?v=Xlv7CKH6TEQ)
+8. [Compilando Llama.cpp con Soporte a CUDA](https://www.youtube.com/watch?v=pEX0gUd08r8)
+9. [Lemonade-Server: All Types of AI Running Locally](https://www.youtube.com/watch?v=7glO7TMcaL0)
+10. [The AI Bubble is not going to burst](https://www.youtube.com/watch?v=BNtsLDBkDa8)
+11. [AI Should be Locally](https://www.youtube.com/watch?v=z9XpJDxBUmg)
+12. [Programa Sin Saber Programar Usando OpenCode](https://www.youtube.com/watch?v=lsG-wC3zDfI)
+13. [IACode my MCP script to control Linux machines with AI](https://www.youtube.com/watch?v=IeFmj2KVCmE)
+14. [Microsoft controversial Copilot AI](https://www.youtube.com/watch?v=J6zlET5JrVw)
+15. [Interview with OpenAI/GPT-oss-20b free ChatGPT Model](https://www.youtube.com/watch?v=PThvsBJuR_8)
