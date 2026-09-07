@@ -219,6 +219,9 @@ Confirmados
 - Paola, 6 sept8embre 2026          $250
 - Hiromy, 6 septiembre 2026         $250
 - Arath, 6 septiembre 2026          $250
+- Pamela, 6 septiembre 2026         $250
+- Diana, 6 septiembre 2026          $250
+- Tamara, 6 septiembre 2026         $250
                         TOTAL       $2,500
 
 
