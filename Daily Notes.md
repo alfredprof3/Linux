@@ -217,10 +217,10 @@ Confirmados
 - Jimena, 6 septiembre 2026         $250 638180010175253682 Banco NU Jimena Torres Gomez
 - Angélica, 6 septiembre 2026       $250
 - Paola, 6 sept8embre 2026          $250
-- Hiromy, 6 septiembre 2026         $250
-- Arath, 6 septiembre 2026          $250
-- Pamela, 6 septiembre 2026         $250
-- Diana, 6 septiembre 2026          $250
+- Hiromy, 6 septiembre 2026         $250 4169161465672383 Bancoppel Hiromy Andueza Herrera
+- Arath, 6 septiembre 2026          $250 4152314404341474 BBVA Arath Juarez Hernandez
+- Pamela, 6 septiembre 2026         $250 012180015583477969 BBVA Pamela Miramontes Cortes
+- Diana, 6 septiembre 2026          $250 722969069832326846 Mercado Pago Diana Marting Chi
 - Tamara, 6 septiembre 2026         $250 4152314080252417 BBVA Tamara Garcia Vazquez
 - Donnovan, 7 septiembre 2026       $250
 
