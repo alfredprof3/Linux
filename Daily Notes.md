@@ -213,7 +213,7 @@ Confirmados
 - Sofia, 6 septiembre 2026          $250
 - Narda, 6 septiembre 2026          $250 638180010154295823 Banco NU Narda Yañez Faustino
 - Jon, 6 septiembre 2026            $250
-- Elizabeth, 6 septiembre 2026      $250
+- Elizabeth, 6 septiembre 2026      $250 012180015051113991 BBVA Elizabeth Hermida Bojorquez
 - Jimena, 6 septiembre 2026         $250 638180010175253682 Banco NU Jimena Torres Gomez
 - Angélica, 6 septiembre 2026       $250
 - Paola, 6 sept8embre 2026          $250
