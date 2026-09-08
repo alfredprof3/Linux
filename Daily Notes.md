@@ -211,17 +211,17 @@ https://www.ardilu.com/guias/como-descargar-e-instalar-magis-tv-para-smart-tv
 Confirmados
 - Alondra, 3 septiembre 2026        $250
 - Sofia, 6 septiembre 2026          $250
-- Narda, 6 septiembre 2026          $250
+- Narda, 6 septiembre 2026          $250 638180010154295823 Banco NU Narda Yañez Faustino
 - Jon, 6 septiembre 2026            $250
 - Elizabeth, 6 septiembre 2026      $250
-- Jimena, 6 septiembre 2026         $250
+- Jimena, 6 septiembre 2026         $250 638180010175253682 Banco NU Jimena Torres Gomez
 - Angélica, 6 septiembre 2026       $250
 - Paola, 6 sept8embre 2026          $250
 - Hiromy, 6 septiembre 2026         $250
 - Arath, 6 septiembre 2026          $250
 - Pamela, 6 septiembre 2026         $250
 - Diana, 6 septiembre 2026          $250
-- Tamara, 6 septiembre 2026         $250
+- Tamara, 6 septiembre 2026         $250 4152314080252417 BBVA Tamara Garcia Vazquez
 - Donnovan, 7 septiembre 2026       $250
 
 
