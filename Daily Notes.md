@@ -248,3 +248,19 @@ Descargar Qwen3.8
 
 
 En la ruta `/opt/homebrew` existen archivos que no para IA que no me había dado cuenta. Ya venían por defecto en la MacBook Air M4
+
+
+AI Skills
+-----
+
+impeccable
+
+taste skill
+
+playwright CLI
+
+Image to 3JS
+
+awesome deaign md
+
+ui skills
